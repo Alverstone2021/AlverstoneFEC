@@ -7,3 +7,5 @@ const RelatedProducts = (props) => {
     </div>
   )
 }
+
+export default RelatedProducts;
