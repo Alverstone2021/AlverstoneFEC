@@ -4,6 +4,7 @@ import RelatedProducts from './components/RelatedProducts/RelatedProducts.jsx'
 import QA from './components/QA/QaIndex.jsx'
 import Ratings from './components/Ratings/RatingsIndex.jsx'
 import axios from 'axios'
+import token from '../../config.js'
 import {useEffect, useState} from 'react'
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
       method: 'get',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/',
       headers: {
-        'Authorization': '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'
+        'Authorization': token,
       }
     };
 
