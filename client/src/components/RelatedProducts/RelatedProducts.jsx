@@ -1,9 +1,12 @@
 import React from 'react';
+import RelatedProductsTray from './RelatedProductsTray';
+import OutfitTray from './OutfitTray';
 
 const RelatedProducts = (props) => {
   return (
     <div>
-      <div>Hello World~!~!~!😎!!!!</div>
+      <RelatedProductsTray />
+      <OutfitTray />
     </div>
   )
 }
