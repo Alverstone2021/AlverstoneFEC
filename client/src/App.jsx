@@ -24,7 +24,7 @@ const App = () => {
 
     axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data[0]));
+      // console.log(JSON.stringify(response.data[0]));
       setCurrentProduct(response.data[0])
       setAllProducts(response.data)
     })
