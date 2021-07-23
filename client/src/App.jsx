@@ -35,7 +35,7 @@ const App = () => {
   }, [])
 
   return (
-    <div>
+    <div className="hi">
       THE MASTER APP
       <Overview currentProduct={currentProduct}/>
       <RelatedProducts setAllProducts={setAllProducts} currentProduct={currentProduct}/>
