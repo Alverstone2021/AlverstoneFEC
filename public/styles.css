@@ -1,1 +1,27 @@
 /* Start of css */
+
+/* font-family: 'Heebo', sans-serif; (100, 300, 500); */
+
+p {
+  font-weight: 100;
+}
+
+h3, h2, h1 {
+  font-weight: 500;
+}
+
+h4, h5 {
+  font-weight: 300;
+}
+
+#root {
+  font-family: 'Heebo', sans-serif;
+}
+
+button {
+  font-family: 'Heebo', sans-serif;
+}
+
+input {
+  font-family: 'Heebo', sans-serif;
+}
