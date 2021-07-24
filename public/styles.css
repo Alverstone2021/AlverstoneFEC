@@ -25,3 +25,20 @@ button {
 input {
   font-family: 'Heebo', sans-serif;
 }
+
+
+/* Ratings review css */
+.flex-rating-header {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  align-items: flex-start;
+  justify-content: normal;
+}
+
+.flex-rating-score {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: normal;
+}
