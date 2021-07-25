@@ -1,12 +1,14 @@
 import React from 'react';
+import ReviewsList from './ReviewsList.jsx';
 
 const RatingsIndex = (props) => {
   return (
     <div>
       <h1>This is my ratingsIndex app</h1>
-      <h3>More info here dog</h3>
+
+      <ReviewsList allRatings={props.allRatings} />
     </div>
   );
-}
+};
 
 export default RatingsIndex;
