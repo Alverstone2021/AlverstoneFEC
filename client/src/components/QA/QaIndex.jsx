@@ -6,10 +6,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const QaIndex = () => {
-  // console.log('props currentProduct', currentProduct)
-  // console.log('props allQuestions', allQuestions)
 
-  // const [currentProductQAs, setCurrentProductQAs] = useState('')
   const allQuestions = {
     "product_id": "19251",
     "results": [

@@ -3,9 +3,9 @@ import QaAnswersList from './QaAnswersList.jsx';
 import moment from 'moment';
 
 const QaQuestion = ({question}) => {
-  console.log(question)
+  // console.log('QaQuestion', question)
   return (
-    <div class='question'>
+    <div className='question'>
 
       <div>
         <div>
