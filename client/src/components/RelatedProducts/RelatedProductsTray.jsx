@@ -3,7 +3,7 @@ import RelatedProductCard from './RelatedProductCard.jsx'
 
 const RelatedProductsTray = (props) => {
   return (
-    <div>
+    <div className='related-product-tray'>
       {props.allProducts.map((product) => {
         return <RelatedProductCard product={product} />
       })}
