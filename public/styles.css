@@ -27,6 +27,32 @@ input {
 }
 
 
+/* Reviews comments styling */
+
+.reviews-comments-parent {
+  width: 600px;
+}
+
+.reviewListItem-parent {
+  display: flex;
+  flex-direction: column;
+
+}
+.reviewListItem-parent>* {
+
+}
+
+.flex-review-starLabel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.review-divider {
+  height: 2px;
+  background-color: gray;
+}
+
 
 /* Ratings review css */
 .flex-rating-header {
