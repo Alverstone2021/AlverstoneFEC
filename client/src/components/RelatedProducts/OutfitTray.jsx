@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const OutfitTray = (props) => {
   return (
     <div>
