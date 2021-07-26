@@ -65,13 +65,13 @@ const getAverage = (ratingArray) => {
 
 const getRecommend = (ratingArray) => {
   var total = ratingArray.length;
-  var totalReccomended = 0;
+  var totalRecomended = 0;
   ratingArray.forEach((review) => {
     if (review.recommend) {
-      totalReccomended += 1;
+      totalRecomended += 1;
     }
   });
-  var percentage = Math.ceil((totalReccomended / total) * (100));
+  var percentage = Math.ceil((totalRecomended / total) * (100));
   return percentage;
 }
 
