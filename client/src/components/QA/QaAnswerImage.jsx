@@ -2,7 +2,7 @@ import React from 'react';
 
 const QaAnswerImage = ({image}) => {
   return (
-      <img src={image} class="QaImage"></img>
+      <img src={image} className="QaImage"></img>
   )
 }
 
