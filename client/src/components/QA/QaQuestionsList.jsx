@@ -1,10 +1,11 @@
 import React from 'react';
 import QaQuestion from './QaQuestion.jsx'
 
-const QaQuestionsList = (props) => {
+const QaQuestionsList = ({allQuestions}) => {
+  // console.log(allQuestions)
   return (
     <div>
-      <QaQuestion />
+      <QaQuestion question={allQuestions.results[0]} />
       <div><strong>Load More Answers</strong></div>
     </div>
   )

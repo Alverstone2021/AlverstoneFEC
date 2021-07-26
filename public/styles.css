@@ -25,7 +25,20 @@ button {
 input {
   font-family: 'Heebo', sans-serif;
 }
-
+/* QA */
+.QaImage {
+  max-height: 100px;
+  max-width: 100px;
+}
+.answer {
+  border: 3px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+.question {
+  border: 3px solid blue;
+  padding: 10px;
+}
 
 /* Reviews comments styling */
 
@@ -110,3 +123,4 @@ input {
 .flex-comfort-score > h5:nth-of-type(3) {
   text-align: right;
 }
+
