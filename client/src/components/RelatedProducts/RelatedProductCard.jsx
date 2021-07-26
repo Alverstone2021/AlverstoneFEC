@@ -2,11 +2,11 @@ import React from 'react';
 
 const RelatedProductCard = (props) => {
   return (
-    <div>
-      <div>Product Category</div>
-      <div>Product Name</div>
-      <div>Price</div>
-      <div>Star Rating</div>
+    <div className='related-product-card'>
+      <div>{props.product.category}</div>
+      <div>{props.product.name}</div>
+      <div>{props.product.price}</div>
+      <div>5 Stars baby</div>
     </div>
   )
 }

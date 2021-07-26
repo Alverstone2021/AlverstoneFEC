@@ -4,8 +4,9 @@ import RelatedProductCard from './RelatedProductCard.jsx'
 const RelatedProductsTray = (props) => {
   return (
     <div>
-      These are all the related products
-      <RelatedProductCard />
+      {props.allProducts.map((product) => {
+        return <RelatedProductCard product={product} />
+      })}
     </div>
   )
 }

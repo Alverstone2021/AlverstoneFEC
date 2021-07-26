@@ -124,3 +124,8 @@ input {
   text-align: right;
 }
 
+/* ---- Related Products ---- */
+
+.related-product-card {
+  border: 2px solid blue;
+}

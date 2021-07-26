@@ -6,7 +6,8 @@ import OutfitTray from './OutfitTray.jsx';
 const RelatedProducts = (props) => {
   return (
     <div>
-      <RelatedProductsTray />
+      <h2>Start of Related Products</h2>
+      <RelatedProductsTray allProducts={props.allProducts}/>
       <OutfitTray />
     </div>
   )
