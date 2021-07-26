@@ -124,3 +124,20 @@ input {
   text-align: right;
 }
 
+/* ---- Related Products ---- */
+
+.related-product-tray {
+  width: calc(800% + 10px);
+  display: grid;
+  grid-template-columns: repeat(20,minmax(0,1fr));
+  grid-column-gap: 0 20px
+}
+
+.related-product-card {
+  border: 2px solid blue;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}

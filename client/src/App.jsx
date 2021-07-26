@@ -52,7 +52,7 @@ const App = () => {
     <div className="hi">
       THE MASTER APP
       <Overview currentProduct={currentProduct} />
-      <RelatedProducts setAllProducts={setAllProducts} currentProduct={currentProduct} />
+      <RelatedProducts setAllProducts={setAllProducts} currentProduct={currentProduct} allProducts={allProducts} />
       <QA currentProduct={currentProduct} allQuestions={allQuestions} />
       <Ratings currentProduct={currentProduct} allRatings={allRatings} />
     </div>
