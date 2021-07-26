@@ -9,6 +9,7 @@ const RelatedProducts = (props) => {
       <h2>Start of Related Products</h2>
       <RelatedProductsTray allProducts={props.allProducts}/>
       <OutfitTray />
+      <h2>End of Related Products</h2>
     </div>
   )
 }
