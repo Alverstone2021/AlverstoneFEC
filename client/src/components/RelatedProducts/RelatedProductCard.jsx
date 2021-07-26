@@ -9,23 +9,12 @@ const RelatedProductCard = (props) => {
   const [imageUrl, setImageUrl] = useState('');
   const [cardStyles, setCardStyles] = useState({});
 
-  // const imageChecker = () => {
-  //   console.log('imageChecker', cardStyles)
-  //   if (cardStyles.photos[0].url === null) {
-  //     setImageUrl('https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png')
-  //   } else {
-  //     setImageUrl(cardStyles.photos[0].url)
-  //   }
-  // }
-
   useEffect(() => {
     apiCalls.getStyles(props.product.id)
       .then((styles) => {
-        // console.log(styles)
         var style = styles.data.results
         for (var i = 0; i < style.length; i++) {
           if (style[i].['default?']) {
-            console.log(style[i])
             setCardStyles(style[i])
             setImageUrl(style[i].photos[0].url || 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png')
           }
