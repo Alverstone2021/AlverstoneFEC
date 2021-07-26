@@ -21,13 +21,13 @@ const App = () => {
 
     apiCalls.getAllProducts()
       .then((products) => {
-        console.log('All products: ', products);
+        // console.log('All products: ', products);
         setCurrentProduct(products.data[0]);
         setAllProducts(products.data);
         // Get Q and A after initail products
         apiCalls.getQandA(products.data[0].id)
           .then((questions) => {
-            console.log('Questions: ', questions.data.results);
+            // console.log('Questions: ', questions.data.results);
             setAllQuestions(questions.data.results);
           })
           .catch((error) => {
@@ -36,7 +36,7 @@ const App = () => {
         // get reviews
         apiCalls.getRatings(products.data[0].id)
           .then((ratings) => {
-            console.log('Reviews: ', ratings.data.results);
+            // console.log('Reviews: ', ratings.data.results);
             setAllRatings(ratings.data.results);
           })
           .catch((error) => {

@@ -4,11 +4,12 @@ import QaAnswer from './QaAnswer.jsx'
 
 const QaAnswersList = ({answers}) => {
   // console.log('answers', answers)
-  // console.log('answers', answers.1185718)
-  // console.log('answers', answers[1185718])
+
   return (
     <div>
-      <QaAnswer answer={answers[1185718]}/>
+      {Object.values(answers).map(a => {
+        return <QaAnswer answer={a} key={a.id} />;
+      })}
     </div>
   )
 }

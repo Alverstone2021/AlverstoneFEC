@@ -1,13 +1,18 @@
 import React from 'react';
 import moment from 'moment';
-
+import QaAnswerImage from './QaAnswerImage.jsx'
 
 const QaAnswers = ({answer}) => {
-  // console.log(answer)
+  // console.log('single answer', answer)
   return (
-    <div class='answer'>
+    <div className='answer'>
       <h3>A: {answer.body}</h3>
-      <img src={answer.photos[0]} class="QaImage"></img>
+
+      {answer.photos.map(i => {
+        return <QaAnswerImage image={i} key={i} />;
+      })}
+
+      {/* <img src={answer.photos[0]} class="QaImage"></img> */}
       <h4>by {answer.answerer_name}, {moment(answer.date).format('MMMM Do YYYY')}  |  Helpful? Yes({answer.helpfulness})  |  Report</h4>
 
     </div>
