@@ -25,3 +25,9 @@ button {
 input {
   font-family: 'Heebo', sans-serif;
 }
+
+
+.QaImage {
+  max-height: 100px;
+  max-width: 100px;
+}
