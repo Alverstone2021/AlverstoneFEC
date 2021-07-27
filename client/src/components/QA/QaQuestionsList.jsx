@@ -1,14 +1,18 @@
 import React from 'react';
 import QaQuestion from './QaQuestion.jsx'
+import { useEffect, useState } from 'react'
 
-const QaQuestionsList = ({allQuestions}) => {
+const QaQuestionsList = ({allQuestions, qLimit, questions}) => {
   // console.log('QaQuestionsList allQuestions', allQuestions)
+  console.log('qlimit', qLimit)
+  console.log('questions', questions)
+
   return (
     <div>
-      {allQuestions.results.map(q => {
+      {questions.map(q => {
         return <QaQuestion question={q} key={q.question_id}/>;
       })}
-      <div><strong>Load More Answers</strong></div>
+
     </div>
   )
 }

@@ -15,6 +15,7 @@ const QaQuestion = ({question}) => {
           </div>
         </div>
        <QaAnswersList answers={question.answers}/>
+       <button><strong>Load More Answers</strong></button>
       </div>
 
     </div>

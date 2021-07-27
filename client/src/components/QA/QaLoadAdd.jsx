@@ -1,9 +1,10 @@
 import React from 'react';
 
 const QaLoadAdd = (props) => {
+  // console.log('load props', props)
   return (
     <div>
-      <button>MORE ANSWERED QUESTIONS</button>
+      <button onClick={props.qLimitPlusTwo}>MORE ANSWERED QUESTIONS</button>
       <button>ADD A QUESTION +</button>
     </div>
   )
