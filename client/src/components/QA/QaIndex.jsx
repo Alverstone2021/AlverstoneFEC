@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const QaIndex = () => {
-
   const allQuestions = {
     "product_id": "19251",
     "results": [
@@ -394,15 +393,48 @@ const QaIndex = () => {
     ]
 }
 
+  var temparr = [];
+  for (var i = 0; i < 4; i++) {
+      if (allQuestions.results[i] !== undefined) {
+        temparr.push(allQuestions.results[i])
+      }
+  }
+
+  const [qLimit, setQLimit] = useState(4)
+  const [questions, setQuestions] = useState(temparr)
+
+  const updateQuestions = () => {
+    // setQuestions([])
+    var temp = [];
+    // console.log('going to loop', qLimit)
+    for (var i = 0; i < qLimit + 2; i++) {
+        if (allQuestions.results[i] !== undefined) {
+          temp.push(allQuestions.results[i])
+        }
+    }
+    setQuestions(temp)
+  }
+
+  const qLimitPlusTwo = () => {
+      setQLimit(qLimit + 2)
+      updateQuestions()
+  }
+
+
+//   useEffect() {
+//       updateQuestions()
+//   }
+
 
   return (
     <div>
-      <h1>***Start of QA***</h1>
+      <h1 className='center'>***Start of QA***</h1>
       <h3>QUESTIONS & ANSWERS</h3>
       <QaSearchBar />
-      <QaQuestionsList allQuestions={allQuestions} />
-      <QaLoadAdd />
-      <h1>***End of QA***</h1>
+      <QaQuestionsList allQuestions={allQuestions} qLimit={qLimit} questions={questions}/>
+      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo}/>
+      <div>num of Q's to show is {qLimit}</div>
+      <h1 className='center'>***End of QA***</h1>
     </div>
   )
 }
