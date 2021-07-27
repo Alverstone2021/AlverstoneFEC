@@ -15,7 +15,7 @@ const QaQuestion = ({question}) => {
       temparr.push(Object.values(question.answers)[i])
     }
   }
-  console.log('temparr answers', temparr)
+  // console.log('temparr answers', temparr)
 
   const [answerLimit, setAnswerLimit] = useState(2)
   const [answers, setAnswers] = useState(temparr)

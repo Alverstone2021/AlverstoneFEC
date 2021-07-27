@@ -3,8 +3,8 @@ import QaAnswer from './QaAnswer.jsx'
 
 
 const QaAnswersList = ({answers, answerLimit, limitedAnswers}) => {
-  console.log('answerLimit', answerLimit)
-  console.log('limitedAnswers', limitedAnswers)
+  // console.log('answerLimit', answerLimit)
+  // console.log('limitedAnswers', limitedAnswers)
 
   return (
     <div>
