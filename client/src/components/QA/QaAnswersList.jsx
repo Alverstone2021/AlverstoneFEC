@@ -2,12 +2,13 @@ import React from 'react';
 import QaAnswer from './QaAnswer.jsx'
 
 
-const QaAnswersList = ({answers}) => {
-  // console.log('answers', answers)
+const QaAnswersList = ({answers, answerLimit, limitedAnswers}) => {
+  console.log('answerLimit', answerLimit)
+  console.log('limitedAnswers', limitedAnswers)
 
   return (
     <div>
-      {Object.values(answers).map(a => {
+      {limitedAnswers.map(a => {
         return <QaAnswer answer={a} key={a.id} />;
       })}
     </div>

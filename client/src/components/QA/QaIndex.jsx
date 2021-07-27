@@ -1443,9 +1443,7 @@ const QaIndex = () => {
   const [questions, setQuestions] = useState(temparr)
 
   const updateQuestions = () => {
-    // setQuestions([])
     var temp = [];
-    // console.log('going to loop', qLimit)
     for (var i = 0; i < qLimit + 2; i++) {
         if (allQuestions.results[i] !== undefined) {
           temp.push(allQuestions.results[i])
@@ -1458,12 +1456,6 @@ const QaIndex = () => {
       setQLimit(qLimit + 2)
       updateQuestions()
   }
-
-
-//   useEffect() {
-//       updateQuestions()
-//   }
-
 
   return (
     <div>

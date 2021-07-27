@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 
 const QaQuestionsList = ({allQuestions, qLimit, questions}) => {
   // console.log('QaQuestionsList allQuestions', allQuestions)
-  console.log('qlimit', qLimit)
-  console.log('questions', questions)
+  // console.log('qlimit', qLimit)
+  // console.log('questions', questions)
 
   return (
     <div>
