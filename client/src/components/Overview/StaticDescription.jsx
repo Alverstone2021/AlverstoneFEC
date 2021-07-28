@@ -3,7 +3,8 @@ import React from 'react';
 const StaticDescription = (props) => {
   return (
     <div>
-      <p>These are words that have to do with things</p>
+      <h3>{props.currentProduct.slogan}</h3>
+      <p>{props.currentProduct.description}</p>
     </div>
   )
 }
