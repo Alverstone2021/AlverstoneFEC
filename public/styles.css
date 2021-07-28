@@ -90,3 +90,134 @@ input {
 }
 
 /*-----END OF OVERIEW-----*/
+
+/* START of QA */
+.QaImage {
+  max-height: 100px;
+  max-width: 100px;
+}
+.answer {
+  border: 3px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+.question {
+  border: 3px solid blue;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.qasearchbar {
+  width: 60%;
+  height: 70px;
+}
+.center {
+  text-align: center;
+}
+/* END of QA */
+
+/* Reviews comments styling */
+
+.reviews-comments-parent {
+  width: 600px;
+}
+
+.reviewListItem-parent {
+  display: flex;
+  flex-direction: column;
+
+}
+.reviewListItem-parent>* {
+
+}
+
+.flex-review-starLabel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.review-divider {
+  height: 2px;
+  background-color: gray;
+}
+
+
+/* Ratings review css */
+.flex-rating-header {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  align-items: flex-start;
+  justify-content: normal;
+}
+
+.flex-rating-score {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: normal;
+}
+
+/* comfort/size bars */
+
+.flex-comfortBar-parent {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.flex-comfortBar-parent h4 {
+  margin-bottom: 16px;
+}
+
+.flex-comfort-score {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  column-gap: 8px;
+}
+
+.flex-comfort-score>* {
+  flex: 0 0 calc(33.333333% - 8px);
+}
+
+.flex-comfort-score div {
+  background-color: rgb(209, 209, 209);
+  height: 8px;
+}
+
+.flex-comfort-score h5 {
+  margin-top: 4px;
+}
+
+.flex-comfort-score > h5:nth-of-type(2) {
+  text-align: center;
+}
+
+.flex-comfort-score > h5:nth-of-type(3) {
+  text-align: right;
+}
+
+/* ---- Related Products ---- */
+
+.related-product-tray {
+  width: calc(800% + 10px);
+  display: grid;
+  grid-template-columns: repeat(20,minmax(0,1fr));
+  grid-column-gap: 0 20px
+}
+
+.related-product-card {
+  border: 2px solid blue;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
+
