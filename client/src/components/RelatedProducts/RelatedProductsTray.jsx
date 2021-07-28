@@ -6,7 +6,7 @@ const RelatedProductsTray = (props) => {
   return (
     <div className='related-product-tray'>
       {props.allProducts.map((product) => {
-        return <RelatedProductCard product={product} key={product.id}/>
+        return <RelatedProductCard product={product} key={product.id} currentProduct={props.currentProduct}/>
       })}
     </div>
   )

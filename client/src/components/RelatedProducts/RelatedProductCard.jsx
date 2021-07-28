@@ -1,13 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
+import CompareModal from './CompareModal.jsx'
 
-
-
+//each card represents a related product
 const RelatedProductCard = (props) => {
 
   const [imageUrl, setImageUrl] = useState('');
   const [cardStyles, setCardStyles] = useState({});
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     apiCalls.getStyles(props.product.id)
@@ -20,22 +21,20 @@ const RelatedProductCard = (props) => {
           }
         }
       })
-
   }, [])
 
 
   return (
     <div className='related-product-card'>
+      <button onClick={() => setShow(true) }>Compare</button>
+      <CompareModal currentProduct={props.currentProduct} productOnCard={props.product} onClose={() => setShow(false)} show={show}/>
       <img src={imageUrl} height='400' width='300'/>
       <div>{props.product.category}</div>
       <div>{props.product.name}</div>
-      <div>{props.product.price}</div>
+      <div>{props.product.default_price}</div>
       <div>5 Stars baby</div>
     </div>
   )
 }
-
-//imageChecker checks if the style that will be rendered has an image associated with it, and if it doesn't assigns a placeholder.
-
 
 export default RelatedProductCard;
