@@ -25,6 +25,72 @@ button {
 input {
   font-family: 'Heebo', sans-serif;
 }
+
+/*-----START OF OVERIEW-----*/
+
+.overview-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.banner {
+  background: pink;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  height: 23px;
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-view-container {
+  /* background: yellow; */
+  flex: 3;
+  /* width: 700px;
+  height: 500px; */
+  border-right: 0px;
+  margin-right: 0px;
+  order: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.carousel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.name-and-style-container {
+  flex: 1;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .image-carousel {
+  float: left;
+  position: relative;
+} */
+
+/* .style-selector {
+  flex: 2;
+  order: 3;
+} */
+
+.static-description {
+  align-self: flex-end;
+}
+
+/*-----END OF OVERIEW-----*/
+
 /* START of QA */
 .QaImage {
   max-height: 100px;
@@ -154,3 +220,4 @@ input {
   box-sizing: border-box;
   display: block;
 }
+
