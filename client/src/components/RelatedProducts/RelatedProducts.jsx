@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 import RelatedProductsTray from './RelatedProductsTray.jsx';
 import OutfitTray from './OutfitTray.jsx';
 
+//represents the section that contains the related products tray and the outfit tray
 const RelatedProducts = (props) => {
   return (
     <div>

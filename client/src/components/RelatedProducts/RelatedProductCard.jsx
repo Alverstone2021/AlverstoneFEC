@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
 import CompareModal from './CompareModal.jsx'
 
-
+//each card represents a related product
 const RelatedProductCard = (props) => {
 
   const [imageUrl, setImageUrl] = useState('');
@@ -21,7 +21,6 @@ const RelatedProductCard = (props) => {
           }
         }
       })
-
   }, [])
 
 
