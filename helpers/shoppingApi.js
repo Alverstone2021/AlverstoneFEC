@@ -51,11 +51,23 @@ const getStyles = function(productId) {
   return axios(config);
 }
 
+const getFeatures = function(productId) {
+  var config = {
+    method: 'get',
+    url: `${baseUrl}products/${productId}`,
+    headers: {
+      'Authorization': token,
+    }
+  }
+  return axios(config);
+}
+
 const apiCalls = {
   getAllProducts: getAllProducts,
   getQandA: getQandA,
   getRatings: getRatings,
-  getStyles: getStyles
+  getStyles: getStyles,
+  getFeatures: getFeatures
 };
 
 export default apiCalls;

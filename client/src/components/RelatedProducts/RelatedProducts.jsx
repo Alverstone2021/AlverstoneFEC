@@ -7,7 +7,7 @@ const RelatedProducts = (props) => {
   return (
     <div>
       <h2>Start of Related Products</h2>
-      <RelatedProductsTray allProducts={props.allProducts}/>
+      <RelatedProductsTray allProducts={props.allProducts} currentProduct={props.currentProduct}/>
       <OutfitTray />
       <h2>End of Related Products</h2>
     </div>
