@@ -142,7 +142,7 @@ input {
 .related-product-tray {
   width: calc(800% + 10px);
   display: grid;
-  grid-template-columns: repeat(20,minmax(0,1fr));
+  grid-template-columns: repeat(24,minmax(0,1fr));
   grid-column-gap: 0 10px
 }
 
@@ -153,6 +153,7 @@ input {
   padding: 0;
   box-sizing: border-box;
   display: block;
+  width: 310px;
 }
 
 .modal {
@@ -168,7 +169,7 @@ input {
 }
 
 .modal-content {
-  width: 500px;
+  width: 300px;
   background-color: #fff;
 }
 
@@ -176,8 +177,27 @@ input {
   margin: 0;
 }
 
+.modal-close-button {
+  float: right;
+}
+
 .modal-body {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
 }
+
+.current-product-left-column {
+  order: 1;
+}
+
+.modal-checkmarks {
+  order: 2;
+}
+
+.related-product-right-column {
+  order: 3;
+}
+

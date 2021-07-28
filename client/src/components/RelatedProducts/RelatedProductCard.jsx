@@ -31,7 +31,7 @@ const RelatedProductCard = (props) => {
       <img src={imageUrl} height='400' width='300'/>
       <div>{props.product.category}</div>
       <div>{props.product.name}</div>
-      <div>{props.product.price}</div>
+      <div>{props.product.default_price}</div>
       <div>5 Stars baby</div>
     </div>
   )
