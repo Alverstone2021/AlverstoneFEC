@@ -3,8 +3,7 @@ import ScoreBarItem from './ScoreBarItem.jsx';
 
 const ScoresList = (props) => {
   return (
-    <div>
-      <h4>RATINGS & REVIEWS</h4>
+    <div className='review-grid-item2'>
       <div className='flex-rating-header'>
         <h1>EXAMPLE: 3.5</h1>
         <p>Stars Component here!!</p>

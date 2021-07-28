@@ -3,7 +3,7 @@ import ReviewListItem from './ReviewListItem.jsx';
 
 const ReviewsList = (props) => {
   return (
-    <div className='reviews-comments-parent'>
+    <div className='review-grid-item3'>
       <h3>{props.allRatings.length} reviews, sorted by relevance</h3>
       <div className='reviewList-scrollable'>
         {props.allRatings.map((review, i) => {
