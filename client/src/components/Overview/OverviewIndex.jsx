@@ -10,7 +10,7 @@ const Overview = (props) => {
 
   const [productImage, setProductImage] = useState('');
   const [productStyles, setProductStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState(''); //<-- will be ENTIRE STYLE OBJECT??
+  const [currentStyle, setCurrentStyle] = useState({});
 
   useEffect(() => {
     apiCalls.getStyles(props.currentProduct.id || '19089')
@@ -29,7 +29,7 @@ const Overview = (props) => {
     <div className="overview-container">
       <AnnouncementBanner/>
       <div className="product-info-container">
-        <ImageView className="image-view-container" currentProduct={props.currentProduct} productStyles={productStyles} productImage={productImage}/>
+        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage}/>
         <div className="name-and-style-container">
           <h4>{props.currentProduct.category}</h4>
           <h1>{props.currentProduct.name}</h1>

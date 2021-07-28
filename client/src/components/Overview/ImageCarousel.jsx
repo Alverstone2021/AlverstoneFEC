@@ -6,15 +6,22 @@ import React from 'react';
 // }
 
 const ImageCarousel = (props) => {
-  return (
-    <div>
-      {props.productStyles.map((style) => {
-        return (
-          <div></div>
-        )
-      })}
-    </div>
-  )
+  {if (props.currentStyle.photos) {
+    {console.log('FOR THUMBIES', props.currentStyle.photos)}
+    return (
+      <div className="carousel-container">
+        {props.currentStyle.photos.map((img) => {
+          return (
+            <div>
+              <img className="indv-thumbnail" src={img.thumbnail_url}></img>
+            </div>
+          )
+        })}
+      </div>
+    )
+  } else {
+    return null;
+  }}
 }
 
 export default ImageCarousel;
