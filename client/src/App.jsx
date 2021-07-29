@@ -53,11 +53,18 @@ const App = () => {
       });
   }, []);
 
+  useEffect(() => {
+    apiCalls.getRelatedProducts(currentProduct.id)
+      .then((RPIds) => {
+        setRelatedProductIds(RPIds.data)
+      })
+  }, [currentProduct])
+
   return (
     <div className="hi">
       THE MASTER APP
       <Overview currentProduct={currentProduct} />
-      <RelatedProducts setAllProducts={setAllProducts} currentProduct={currentProduct} relatedProductIds={relatedProductIds} />
+      <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} relatedProductIds={relatedProductIds} />
       <QA currentProduct={currentProduct} allQuestions={allQuestions} />
       <Ratings currentProduct={currentProduct} allRatings={allRatings} />
     </div>
