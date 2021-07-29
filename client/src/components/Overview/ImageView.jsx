@@ -5,7 +5,7 @@ import ImageCarousel from './ImageCarousel.jsx';
 const ImageView = (props) => {
   return (
     <div className="image-view-container">
-      <ImageCarousel className="carousel" currentStyle={props.currentStyle}/>
+      <ImageCarousel className="carousel" productImageCarousel={props.productImageCarousel} currentStyle={props.currentStyle} setProductImage={props.setProductImage}/>
       <div className="main-image-div">
         <img src={props.productImage} className="main-image"/>
       </div>

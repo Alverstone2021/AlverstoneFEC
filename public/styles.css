@@ -76,7 +76,8 @@ input {
 }
 
 .carousel {
-  opacity: 0.3;
+  background: red;
+  opacity: 0.5;
   position: absolute;
   top: 50%;
   left: 50%;

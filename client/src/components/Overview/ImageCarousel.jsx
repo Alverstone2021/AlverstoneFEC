@@ -6,14 +6,13 @@ import React from 'react';
 // }
 
 const ImageCarousel = (props) => {
-  {if (props.currentStyle.photos) {
-    // {console.log('FOR THUMBIES', props.currentStyle.photos)}
+  {if (props.productImageCarousel !== []) {
     return (
       <div className="carousel-container">
-        {props.currentStyle.photos.map((img) => {
+        {props.productImageCarousel.map((img) => {
           return (
             <div>
-              <img className="indv-thumbnail" src={img.thumbnail_url}></img>
+              <img className="indv-thumbnail" src={img.thumbnail_url} onClick={() => {props.setProductImage(img.url)}}></img>
             </div>
           )
         })}
@@ -23,5 +22,6 @@ const ImageCarousel = (props) => {
     return null;
   }}
 }
+
 
 export default ImageCarousel;
