@@ -1,8 +1,15 @@
 import React from 'react';
+import ImageCarousel from './ImageCarousel.jsx';
+
 
 const ImageView = (props) => {
   return (
-    <div></div>
+    <div className="image-view-container">
+      <ImageCarousel className="carousel" productImageCarousel={props.productImageCarousel} currentStyle={props.currentStyle} setProductImage={props.setProductImage}/>
+      <div className="main-image-div">
+        <img src={props.productImage} className="main-image"/>
+      </div>
+    </div>
   )
 }
 

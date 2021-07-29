@@ -25,6 +25,103 @@ button {
 input {
   font-family: 'Heebo', sans-serif;
 }
+
+/*-----START OF OVERIEW-----*/
+
+.overview-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 50px
+}
+
+.banner {
+  background: pink;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  height: 23px;
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-view-container {
+  /* background: yellow; */
+  flex: 2;
+  width: 600px;
+  height: 500px;
+  border-right: 0px;
+  margin-right: 0px;
+  order: 0;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.main-image-div {
+  background: black;
+  max-width: 600px;
+  max-height: 500px;
+}
+
+.main-image {
+  max-width: 600px;
+  max-height: 500px;
+  display: block;
+}
+
+.carousel {
+  background: red;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.indv-thumbnail {
+  max-height: 60px;
+  max-width: 60px;
+}
+
+.style-thumbnails {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.name-and-style-container {
+  flex: 1;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+/* .image-carousel {
+  float: left;
+  position: relative;
+} */
+
+/* .style-selector {
+  flex: 2;
+  order: 3;
+} */
+
+.static-description {
+  align-self: flex-end;
+}
+
+/*-----END OF OVERIEW-----*/
+
 /*------- START of QA ------- */
 .QaImage {
   max-height: 100px;
@@ -176,8 +273,8 @@ input {
 .related-product-tray {
   width: calc(800% + 10px);
   display: grid;
-  grid-template-columns: repeat(20,minmax(0,1fr));
-  grid-column-gap: 0 20px
+  grid-template-columns: repeat(35,minmax(0,1fr));
+  grid-column-gap: 0 10px
 }
 
 .related-product-card {
@@ -187,4 +284,50 @@ input {
   padding: 0;
   box-sizing: border-box;
   display: block;
+  width: 310px;
+}
+
+.modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(48, 48, 48, 0.192);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 300px;
+  background-color: #fff;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-close-button {
+  float: right;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-product-left-column {
+  order: 1;
+}
+
+.modal-checkmarks {
+  order: 2;
+}
+
+.related-product-right-column {
+  order: 3;
 }
