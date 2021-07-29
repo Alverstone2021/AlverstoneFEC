@@ -19,13 +19,14 @@ const OutfitCard = (props) => {
       })
   }, [])
 
-  const removeFromOutfit = (item) => {
-
+  const removeFromOutfit = () => {
+    localStorage.removeItem(JSON.stringify(props.product.id))
+    props.setTrigger(props.trigger+1)
   }
 
   return (
     <div className='outfit-card'>
-      <button>Remove</button>
+      <button onClick={() => {removeFromOutfit()}}>Remove</button>
       <img src={imageUrl} height='400' width='300'/>
       <div>{props.product.category}</div>
       <div>{props.product.name}</div>

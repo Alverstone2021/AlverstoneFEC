@@ -26,7 +26,7 @@ const OutfitTray = (props) => {
     <div className='outfit-tray'>
       <AddToOutfit trigger={trigger} setTrigger={setTrigger} currentProduct={props.currentProduct}/>
         {outfit.map((product) => {
-          return <OutfitCard key={product.id+20000} product={product} />
+          return <OutfitCard key={product.id+20000} product={product} outfit={outfit} setOutfit={setOutfit} trigger={trigger} setTrigger={setTrigger}/>
         })}
     </div>
   )
