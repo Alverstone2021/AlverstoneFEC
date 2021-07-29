@@ -270,14 +270,14 @@ input {
 
 /* ---- Related Products ---- */
 
-.related-product-tray {
+.related-product-tray, .outfit-tray{
   width: calc(800% + 10px);
   display: grid;
   grid-template-columns: repeat(35,minmax(0,1fr));
   grid-column-gap: 0 10px
 }
 
-.related-product-card {
+.related-product-card, .outfit-card{
   border: 2px solid blue;
   position: relative;
   margin: 0;
@@ -331,3 +331,18 @@ input {
 .related-product-right-column {
   order: 3;
 }
+
+.outfit-card .remove-outfit-btn {
+  position: absolute;
+  left: 90%;
+  background-color: #555;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.outfit-card .remove-outfit-btn:hover {
+  background-color: black;
+}
+
+
