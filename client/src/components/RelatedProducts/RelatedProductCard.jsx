@@ -27,10 +27,10 @@ const RelatedProductCard = (props) => {
   }, [])
 
   return (
-    <div className='related-product-card' onClick={() => props.setCurrentProduct(productOnCard)}>
+    <div className='related-product-card' >
       <button onClick={() => setShow(true) }>Compare</button>
       <CompareModal currentProduct={props.currentProduct} productOnCard={productOnCard} onClose={() => setShow(false)} show={show}/>
-      <img src={imageUrl} height='400' width='300'/>
+      <img src={imageUrl} height='400' width='300' onClick={() => props.setCurrentProduct(productOnCard)}/>
       <div>{productOnCard.category}</div>
       <div>{productOnCard.name}</div>
       <div>{productOnCard.default_price}</div>
