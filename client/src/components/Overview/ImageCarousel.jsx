@@ -6,11 +6,11 @@ import React from 'react';
 // }
 
 const ImageCarousel = (props) => {
-  {if (props.currentStyle.photos) {
-    {console.log('FOR THUMBIES', props.currentStyle.photos)}
+  {if (props.productImageCarousel !== []) {
+    {console.log('ooohhhh', props)}
     return (
       <div className="carousel-container">
-        {props.currentStyle.photos.map((img) => {
+        {props.productImageCarousel.map((img) => {
           return (
             <div>
               <img className="indv-thumbnail" src={img.thumbnail_url}></img>
