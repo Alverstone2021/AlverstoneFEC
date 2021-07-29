@@ -7,13 +7,12 @@ import React from 'react';
 
 const ImageCarousel = (props) => {
   {if (props.productImageCarousel !== []) {
-    {console.log('ooohhhh', props)}
     return (
       <div className="carousel-container">
         {props.productImageCarousel.map((img) => {
           return (
             <div>
-              <img className="indv-thumbnail" src={img.thumbnail_url}></img>
+              <img className="indv-thumbnail" src={img.thumbnail_url} onClick={() => {props.setProductImage(img.url)}}></img>
             </div>
           )
         })}

@@ -2,9 +2,7 @@ import React from 'react';
 
 
 const StyleThumbnails = (props) => {
-  // ADD ON CLICK FUNCTION TO THUMBNAILS
-  // ALSO TINY CHECKMARK
-  // {console.log(props)}
+  // ADD TINY CHECKMARK
 
   return (
     <div>

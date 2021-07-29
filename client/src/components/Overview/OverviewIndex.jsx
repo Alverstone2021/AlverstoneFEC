@@ -29,19 +29,11 @@ const Overview = (props) => {
       })
   }, [props]);
 
-  // useEffect(() => {
-
-  //   setProductImage(currentStyle.photos[0].url);
-
-  //   console.log('current style:', currentStyle)
-  //   setProductImageCarousel(currentStyle.photos);
-  // }, [currentStyle]);
-
   return (
     <div className="overview-container">
       <AnnouncementBanner/>
       <div className="product-info-container">
-        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel}/>
+        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage}/>
         <div className="name-and-style-container">
           <h4>{props.currentProduct.category}</h4>
           <h1>{props.currentProduct.name}</h1>
