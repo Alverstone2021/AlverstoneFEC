@@ -49,7 +49,7 @@ const QaQuestion = ({question}) => {
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
        <button onClick={answerLimitPlusTwo}><strong>Load More Answers</strong></button>
-       <div>Currently showing {answerLimit} Answers</div>
+       {/* <div>Currently showing {answerLimit} Answers</div> */}
       </div>
 
     </div>
