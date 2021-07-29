@@ -19,8 +19,13 @@ const OutfitCard = (props) => {
       })
   }, [])
 
+  const removeFromOutfit = (item) => {
+
+  }
+
   return (
     <div className='outfit-card'>
+      <button>Remove</button>
       <img src={imageUrl} height='400' width='300'/>
       <div>{props.product.category}</div>
       <div>{props.product.name}</div>
@@ -28,15 +33,5 @@ const OutfitCard = (props) => {
     </div>
   )
 }
-
-{/* <div className='related-product-card' >
-      <button onClick={() => setShow(true) }>Compare</button>
-      <CompareModal currentProduct={props.currentProduct} productOnCard={productOnCard} onClose={() => setShow(false)} show={show}/>
-      <img src={imageUrl} height='400' width='300' onClick={() => props.setCurrentProduct(productOnCard)}/>
-      <div>{productOnCard.category}</div>
-      <div>{productOnCard.name}</div>
-      <div>{productOnCard.default_price}</div>
-      <div>5 Stars baby</div>
-    </div> */}
 
 export default OutfitCard

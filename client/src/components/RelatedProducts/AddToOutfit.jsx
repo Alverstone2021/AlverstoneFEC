@@ -26,6 +26,4 @@ const addToLocalStorage = (item) => {
   localStorage.setItem(stringifiedItemId, JSON.stringify(item))
 }
 
-// onClick={() => {setTrigger(trigger+1)}}
-
 export default AddToOutfit;
