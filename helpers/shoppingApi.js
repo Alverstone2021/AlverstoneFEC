@@ -62,12 +62,24 @@ const getFeatures = function(productId) {
   return axios(config);
 }
 
+const getRelatedProducts = function(productId) {
+  var config = {
+    method: 'get',
+    url: `${baseUrl}products/${productId}/related`,
+    headers: {
+      'Authorization': token,
+    }
+  }
+  return axios(config)
+}
+
 const apiCalls = {
   getAllProducts: getAllProducts,
   getQandA: getQandA,
   getRatings: getRatings,
   getStyles: getStyles,
-  getFeatures: getFeatures
+  getFeatures: getFeatures,
+  getRelatedProducts: getRelatedProducts
 };
 
 export default apiCalls;

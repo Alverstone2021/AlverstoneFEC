@@ -15,6 +15,7 @@ const App = () => {
   const [allQuestions, setAllQuestions] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [allRatings, setAllRatings] = useState([]);
+  const [relatedProductIds, setRelatedProductIds] = useState([]);
 
   // On mounting get all our data
   useEffect(() => {
@@ -42,17 +43,28 @@ const App = () => {
           .catch((error) => {
             console.log('Error fetching reviews: ', error);
           })
+        apiCalls.getRelatedProducts(products.data[0].id)
+          .then((RPIds) => {
+            setRelatedProductIds(RPIds.data)
+          })
       })
       .catch((error) => {
         console.log('Error fetching all products');
       });
   }, []);
 
+  useEffect(() => {
+    apiCalls.getRelatedProducts(currentProduct.id)
+      .then((RPIds) => {
+        setRelatedProductIds(RPIds.data)
+      })
+  }, [currentProduct])
+
   return (
     <div className="hi">
       THE MASTER APP
       <Overview currentProduct={currentProduct} />
-      <RelatedProducts setAllProducts={setAllProducts} currentProduct={currentProduct} allProducts={allProducts} />
+      <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} relatedProductIds={relatedProductIds} />
       <QA currentProduct={currentProduct} allQuestions={allQuestions} />
       <Ratings currentProduct={currentProduct} allRatings={allRatings} />
     </div>
