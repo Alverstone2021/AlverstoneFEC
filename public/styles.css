@@ -238,7 +238,7 @@ input {
 .related-product-tray {
   width: calc(800% + 10px);
   display: grid;
-  grid-template-columns: repeat(24,minmax(0,1fr));
+  grid-template-columns: repeat(35,minmax(0,1fr));
   grid-column-gap: 0 10px
 }
 

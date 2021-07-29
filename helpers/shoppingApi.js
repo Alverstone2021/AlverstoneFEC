@@ -65,7 +65,7 @@ const getFeatures = function(productId) {
 const getRelatedProducts = function(productId) {
   var config = {
     method: 'get',
-    url: `${baseUrl}products/${productId}`,
+    url: `${baseUrl}products/${productId}/related`,
     headers: {
       'Authorization': token,
     }

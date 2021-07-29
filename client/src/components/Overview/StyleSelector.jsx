@@ -3,7 +3,7 @@ import StyleThumbnails from './StyleThumbnails.jsx';
 import DropDownMenus from './DropDownMenus.jsx';
 
 const StyleSelector = (props) => {
-  {console.log('style props', props)}
+  // {console.log('style props', props)}
 
   return (
     <div >

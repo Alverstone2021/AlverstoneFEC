@@ -7,7 +7,7 @@ import React from 'react';
 
 const ImageCarousel = (props) => {
   {if (props.currentStyle.photos) {
-    {console.log('FOR THUMBIES', props.currentStyle.photos)}
+    // {console.log('FOR THUMBIES', props.currentStyle.photos)}
     return (
       <div className="carousel-container">
         {props.currentStyle.photos.map((img) => {
