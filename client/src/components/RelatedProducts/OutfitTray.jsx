@@ -4,7 +4,6 @@ import OutfitCard from './OutfitCard.jsx'
 import AddToOutfit from './AddToOutfit.jsx'
 
 const OutfitTray = (props) => {
-
   const [outfit, setOutfit] = useState([]);
   const [trigger, setTrigger] = useState(0);
 
