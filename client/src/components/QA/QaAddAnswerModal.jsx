@@ -2,13 +2,10 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 
 
-const QaAddQuestionModal = ({setQuestionModal}) => {
-
-  const [questionInput, setQuestionInput] = useState('')
+const QaAddAnswerModal = ({setAnswerModal, question}) => {
+  const [answerInput, setAnswerInput] = useState('')
   const [nicknameInput, setNicknameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
-
-
 
 
   return (
@@ -16,20 +13,21 @@ const QaAddQuestionModal = ({setQuestionModal}) => {
       <div className="modal-content">
 
         <div className="modal-header">
-          <button onClick={() => {setQuestionModal(false)}}>X</button>
-          <h3 className="modal-title"><strong>Submit a new Question</strong></h3>
+          <button onClick={() => {setAnswerModal(false)}}>X</button>
+          <h3 className="modal-title"><strong>Submit your Answer</strong></h3>
+          <h4>Product Name: {question}</h4>
         </div>
 
         <form>
           <div className="modal-body">
             <div>
-              <label>Question*</label>
-              <input type="text" placeholder="What's your question?" maxLength="1000" name="question" value={questionInput} onChange={(e) => {setQuestionInput(e.target.value)}}/>
-              <h5>{questionInput.length} / 1000 characters</h5>
+              <label>Answer*</label>
+              <input type="text" placeholder="What's your Answer?" maxLength="1000" value={answerInput} onChange={(e) => {setAnswerInput(e.target.value)}}/>
+              <h5>{answerInput.length} / 1000 characters</h5>
             </div>
             <div>
               <label>Nickname*</label>
-              <input type="text" placeholder="Example: jackson11" maxLength="60" value={nicknameInput} onChange={(e) => {setNicknameInput(e.target.value)}}/>
+              <input type="text" placeholder="Example: jack543" maxLength="60" value={nicknameInput} onChange={(e) => {setNicknameInput(e.target.value)}}/>
               <h5>For privacy reasons, do not use your full name or email address</h5>
               <h5>{nicknameInput.length} / 60 characters</h5>
               <label>Email*</label>
@@ -38,7 +36,6 @@ const QaAddQuestionModal = ({setQuestionModal}) => {
             </div>
           </div>
         </form>
-
 
         <div className="modal-footer">
           <button className="button">Submit</button>
@@ -49,4 +46,4 @@ const QaAddQuestionModal = ({setQuestionModal}) => {
   )
 }
 
-export default QaAddQuestionModal;
+export default QaAddAnswerModal;
