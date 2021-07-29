@@ -15,7 +15,6 @@ const RelatedProductCard = (props) => {
     apiCalls.getStyles(props.productId)
       .then((styles) => {
         var style = styles.data.results
-        console.log(styles.data)
         for (var i = 0; i < style.length; i++) {
           if (style[i].['default?']) {
             setCardStyles(style[i])
