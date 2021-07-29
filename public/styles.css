@@ -296,3 +296,18 @@ input {
 .related-product-right-column {
   order: 3;
 }
+
+.outfit-card .remove-outfit-btn {
+  position: absolute;
+  left: 90%;
+  background-color: #555;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.outfit-card .remove-outfit-btn:hover {
+  background-color: black;
+}
+
+

@@ -3,21 +3,12 @@ import React from 'react'
 const AddToOutfit = (props) => {
 
   return (
-    <div>
-
-      <div onClick={() => {
+      <div className='add-to-outfit-btn' onClick={() => {
         addToLocalStorage(props.currentProduct);
         props.setTrigger(props.trigger + 1);
       }}>
-        PLUS (clicking this adds something to the outfit.)
+        PLUS (clicking this adds something to the outfit)
       </div>
-      <div onClick={() => {
-        localStorage.clear();
-        props.setTrigger(props.trigger + 1)
-      }}>
-        CLICKING THIS CLEARS OUTFIT
-      </div>
-    </div>
   )
 }
 

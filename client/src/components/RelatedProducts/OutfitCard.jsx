@@ -26,8 +26,8 @@ const OutfitCard = (props) => {
 
   return (
     <div className='outfit-card'>
-      <button onClick={() => {removeFromOutfit()}}>Remove</button>
-      <img src={imageUrl} height='400' width='300'/>
+      <button className='remove-outfit-btn' onClick={() => {removeFromOutfit()}}>X</button>
+      <img className='outfit-img' src={imageUrl} height='400' width='300'/>
       <div>{props.product.category}</div>
       <div>{props.product.name}</div>
       <div>{props.product.default_price}</div>
