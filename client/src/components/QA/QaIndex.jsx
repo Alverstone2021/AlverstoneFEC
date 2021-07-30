@@ -1463,8 +1463,7 @@ const QaIndex = () => {
       <h3>QUESTIONS & ANSWERS</h3>
       <QaSearchBar />
       <QaQuestionsList allQuestions={allQuestions} qLimit={qLimit} questions={questions}/>
-      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo}/>
-      {/* <div>num of Q's to show is {qLimit}</div> */}
+      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo}  product_id={allQuestions.product_id}/>
       <h1 className='center'>***End of QA***</h1>
     </div>
   )
