@@ -12,6 +12,7 @@ const Overview = (props) => {
   const [productImageCarousel, setProductImageCarousel] = useState([]);
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
+  const [zoomClicked, setZoomClicked] = useState(false);
 
   useEffect(() => {
     apiCalls.getStyles(props.currentProduct.id || '19089')
@@ -33,11 +34,12 @@ const Overview = (props) => {
     <div className="overview-container">
       <AnnouncementBanner/>
       <div className="product-info-container">
-        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage}/>
+        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage} setZoomClicked={setZoomClicked} zoomClicked={zoomClicked}/>
         <div className="name-and-style-container">
-          <h4>{props.currentProduct.category}</h4>
-          <h1>{props.currentProduct.name}</h1>
-          <h5>${props.currentProduct.default_price}</h5>
+          <p className="rating">⭐️⭐️⭐️⭐️⭐️ </p>
+          <h4 className="category">{props.currentProduct.category}</h4>
+          <h1 className="product-name">{props.currentProduct.name}</h1>
+          <h5 className="price">${props.currentProduct.default_price}</h5>
           <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage}/>
         </div>
       </div>
