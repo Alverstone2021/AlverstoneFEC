@@ -184,6 +184,12 @@ input {
   color: blue;
 }
 
+.questionsList {
+  position: relative;
+  height: 500px;
+  overflow-y: scroll;
+}
+
 /*------- END of QA ------- */
 
 

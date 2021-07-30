@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
-  console.log('load props product_id', typeof Number(product_id))
+  // console.log('load props product_id', typeof Number(product_id))
 
 
   const [questionInput, setQuestionInput] = useState('')
