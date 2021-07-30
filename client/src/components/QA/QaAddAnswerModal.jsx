@@ -9,7 +9,7 @@ const QaAddAnswerModal = ({setAnswerModal, question}) => {
 
 
   return (
-    <div className="modal">
+    <div className="modal-qa">
       <div className="modal-content">
 
         <div className="modal-header">

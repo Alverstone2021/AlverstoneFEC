@@ -3,7 +3,7 @@ import QaAddQuestionModal from './QaAddQuestionModal.jsx'
 import {useState} from 'react';
 
 const QaLoadAdd = (props) => {
-  // console.log('load props', props)
+
 
   const [questionModal, setQuestionModal] = useState(false)
 
@@ -12,7 +12,7 @@ const QaLoadAdd = (props) => {
     <div>
       <button onClick={props.qLimitPlusTwo}>MORE ANSWERED QUESTIONS</button>
       <button onClick={() => {setQuestionModal(true)}}>ADD A QUESTION +</button>
-      {questionModal && <QaAddQuestionModal setQuestionModal={setQuestionModal}/>}
+      {questionModal && <QaAddQuestionModal setQuestionModal={setQuestionModal} product_id={props.product_id}/>}
     </div>
   )
 }

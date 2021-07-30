@@ -50,7 +50,7 @@ const QaQuestion = ({question}) => {
         <div>
           <h3><strong>Q: {question.question_body}</strong></h3>
           <div>
-            <h4>{question.asker_name}, {moment(question.question_date).format('MMMM Do YYYY')} | Helpful? Yes({question.question_helpfulness}) | <button onClick={() => {setAnswerModal(true)}}>Add Answer</button> | Report</h4>
+            <h4>{question.asker_name}, {moment(question.question_date).format('MMMM Do YYYY')} | Helpful? Yes({question.question_helpfulness}) | <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}>Add Answer</span> | Report</h4>
           </div>
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
