@@ -89,10 +89,10 @@ input {
   overflow: scroll;
 }
 
-.review-grid-item4 {
+.comfort-bar-parent {
   /* grid-column: 1 / 3;
   grid-row: 3; */
-  grid-area: 3 / 2 / 4 / 4;
+  max-width: 350px;
 }
 
 /* Reviews comments styling */

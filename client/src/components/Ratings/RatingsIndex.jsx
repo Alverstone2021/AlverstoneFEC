@@ -1,7 +1,6 @@
 import React from 'react';
 import ReviewsList from './ReviewsList.jsx';
 import ScoresList from './ScoresList.jsx';
-import ComfortSizeBar from './ComfortSizeBar.jsx';
 
 
 const RatingsIndex = (props) => {
@@ -12,7 +11,6 @@ const RatingsIndex = (props) => {
       </div>
       <ScoresList allRatings={props.allRatings} />
       <ReviewsList allRatings={props.allRatings} />
-      <ComfortSizeBar />
     </div>
   );
 };
