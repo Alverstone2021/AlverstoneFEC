@@ -361,7 +361,7 @@ input {
   width: calc(800% + 10px);
   display: grid;
   grid-template-columns: repeat(35,minmax(0,1fr));
-  grid-column-gap: 0 10px
+  grid-column-gap: 0 10px;
 }
 
 .related-product-card, .outfit-card{
@@ -374,6 +374,11 @@ input {
   width: 310px;
 }
 
+.outfit-tray {
+  padding-top: 10px;
+}
+
+/* ----- Related Products Modal Styling ------ */
 .modal {
   position: absolute;
   left: 0;
