@@ -1,10 +1,10 @@
 import React from 'react';
 import ScoreBarItem from './ScoreBarItem.jsx';
+import ComfortSizeBar from './ComfortSizeBar.jsx';
 
 const ScoresList = (props) => {
   return (
-    <div>
-      <h4>RATINGS & REVIEWS</h4>
+    <div className='review-grid-item2'>
       <div className='flex-rating-header'>
         <h1>EXAMPLE: 3.5</h1>
         <p>Stars Component here!!</p>
@@ -13,6 +13,10 @@ const ScoresList = (props) => {
       {getAverage(props.allRatings).map((rating, i) => {
         return <ScoreBarItem key={i} starLabel={rating.value} starScore={rating.score} />
       })}
+      <div className='comfort-bar-parent'>
+        <ComfortSizeBar title={'Size'} label1={'Too small'} label2={'Perfect'} label3={'Too large'} />
+        <ComfortSizeBar title={'Comfort'} label1={'Poor'} label2={''} label3={'Perfect'} />
+      </div>
     </div>
   );
 };
