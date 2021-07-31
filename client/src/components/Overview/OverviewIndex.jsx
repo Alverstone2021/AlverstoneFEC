@@ -13,6 +13,8 @@ const Overview = (props) => {
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [zoomClicked, setZoomClicked] = useState(false);
+  const [sizeSelection, setSizeSelection] = useState('');
+  const [available, setAvailable] = useState(1);
 
   useEffect(() => {
     apiCalls.getStyles(props.currentProduct.id || '19089')
@@ -40,7 +42,7 @@ const Overview = (props) => {
           <h4 className="category">{props.currentProduct.category}</h4>
           <h1 className="product-name">{props.currentProduct.name}</h1>
           <h5 className="price">${props.currentProduct.default_price}</h5>
-          <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage}/>
+          <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage} setSizeSelection={setSizeSelection} sizeSelection={sizeSelection} setAvailable={setAvailable} available={available}/>
         </div>
       </div>
       <StaticDescription className="static-description" currentProduct={props.currentProduct}/>
