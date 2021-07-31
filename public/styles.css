@@ -190,7 +190,7 @@ input {
   text-align: center;
 }
 
-.modal {
+.modal-qa {
   position: fixed;
   left: 0;
   top: 0;
@@ -219,6 +219,16 @@ input {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+}
+
+.addAnswerBtn {
+  color: blue;
+}
+
+.questionsList {
+  position: relative;
+  height: 500px;
+  overflow-y: scroll;
 }
 
 /*------- END of QA ------- */
