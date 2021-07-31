@@ -144,6 +144,7 @@ input {
 .qasearchbar {
   width: 60%;
   height: 70px;
+  margin: 10px;
 }
 .center {
   text-align: center;

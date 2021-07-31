@@ -7,6 +7,10 @@ const QaAddAnswerModal = ({setAnswerModal, question}) => {
   const [nicknameInput, setNicknameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
 
+  const createNewAnswer = (e) => {
+
+  }
+
 
   return (
     <div className="modal-qa">
@@ -26,13 +30,19 @@ const QaAddAnswerModal = ({setAnswerModal, question}) => {
               <h5>{answerInput.length} / 1000 characters</h5>
             </div>
             <div>
+
               <label>Nickname*</label>
               <input type="text" placeholder="Example: jack543" maxLength="60" value={nicknameInput} onChange={(e) => {setNicknameInput(e.target.value)}}/>
               <h5>For privacy reasons, do not use your full name or email address</h5>
               <h5>{nicknameInput.length} / 60 characters</h5>
+
               <label>Email*</label>
               <input type="text" placeholder="Example: jack@email.com"/>
               <h5>For authentication reasons, you will not be emailed</h5>
+
+              <label>Photo(s) URL</label>
+              <input type="text" placeholder="Just a placeholder for now"/>
+              <h5>add some photo urls if you want</h5>
             </div>
           </div>
         </form>
