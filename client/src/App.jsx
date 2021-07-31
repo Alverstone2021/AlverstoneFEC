@@ -28,8 +28,8 @@ const App = () => {
         // Get Q and A after initail products
         apiCalls.getQandA(products.data[0].id)
           .then((questions) => {
-            console.log('Questions data: ', questions.data);
-            console.log('Questions data results: ', questions.data.results);
+            // console.log('Questions data: ', questions.data);
+            // console.log('Questions data results: ', questions.data.results);
             setAllQuestions(questions.data);
           })
           .catch((error) => {
@@ -55,7 +55,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    console.log('product changed')
     apiCalls.getRelatedProducts(currentProduct.id)
       .then((RPIds) => {
         setRelatedProductIds(RPIds.data)
@@ -63,7 +62,6 @@ const App = () => {
       setAllQuestions([])
     apiCalls.getQandA(currentProduct.id)
       .then((questions) => {
-        console.log('new product questions', questions.data)
         setAllQuestions(questions.data)
       })
   }, [currentProduct])
