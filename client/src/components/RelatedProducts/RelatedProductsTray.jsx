@@ -5,7 +5,7 @@ import RelatedProductCard from './RelatedProductCard.jsx'
 //Renders a tray that holds all the related product cards, still needs to have scrolling functionality
 const RelatedProductsTray = (props) => {
 
-  const [visibleProductIds, setVisibleProductIds] = useState([props.relatedProductIds[0], props.relatedProductIds[1], props.relatedProductIds[2]] || [])
+  const [visibleProductIds, setVisibleProductIds] = useState(props.relatedProductIds)
   const [allProductIds, setAllProductIds] = useState([])
   const [leftIndex, setLeftIndex] = useState(0)
   const [rightIndex, setRightIndex] = useState(3)
