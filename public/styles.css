@@ -355,6 +355,35 @@ input {
   text-align: right;
 }
 
+/* Dropdown reviewList */
+.review-dropdown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.review-dropspan {
+  position: relative;
+  display: inline;
+  text-decoration: underline;
+  margin-left: 8px;
+}
+
+.review-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 0.5;
+}
+
+.review-dropspan:hover .review-dropdown-content {
+  display: block;
+}
+
+
 /* ---- Related Products ---- */
 
 .related-product-tray, .outfit-tray{
