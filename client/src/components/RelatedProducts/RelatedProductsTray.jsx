@@ -14,7 +14,9 @@ const RelatedProductsTray = (props) => {
   useEffect(() => {
     var renderedProductIds = [];
     for (var i = leftIndex; i < rightIndex; i++) {
-      renderedProductIds.push(props.relatedProductIds[i])
+      if (props.relatedProductIds[i] !== props.currentProduct.id) {
+        renderedProductIds.push(props.relatedProductIds[i])
+      }
     }
     setVisibleProductIds(renderedProductIds)
     setAllProductIds(props.relatedProductIds)
@@ -23,7 +25,9 @@ const RelatedProductsTray = (props) => {
   useEffect(() => {
     var renderedProductIds = [];
     for (var i = leftIndex; i < rightIndex; i++) {
-      renderedProductIds.push(props.relatedProductIds[i])
+      if (props.relatedProductIds[i] !== props.currentProduct.id) {
+        renderedProductIds.push(props.relatedProductIds[i])
+      }
     }
     setVisibleProductIds(renderedProductIds)
     setAllProductIds(props.relatedProductIds)
