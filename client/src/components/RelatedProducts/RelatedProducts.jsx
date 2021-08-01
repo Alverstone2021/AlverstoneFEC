@@ -7,12 +7,10 @@ import OutfitTray from './OutfitTray.jsx';
 const RelatedProducts = (props) => {
 
   return (
-    <div>
-      <h2>Start of Related Products</h2>
+    <React.Fragment>
       <RelatedProductsTray relatedProductIds={props.relatedProductIds} currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct}/>
       <OutfitTray currentProduct={props.currentProduct}/>
-      <h2>End of Related Products</h2>
-    </div>
+    </React.Fragment>
   )
 }
 

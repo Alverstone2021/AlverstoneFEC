@@ -31,7 +31,7 @@ const RelatedProductsTray = (props) => {
     }
     setVisibleProductIds(renderedProductIds)
     setAllProductIds(props.relatedProductIds)
-  })
+  }, [props.relatedProductIds])
 
 
   /* click handlers */
@@ -61,7 +61,7 @@ const RelatedProductsTray = (props) => {
           return <RelatedProductCard trigger={trigger} setTrigger={setTrigger} productId={productId} key={productId} currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct} />
         })}
       </div>
-      {rightIndex === props.relatedProductIds.length - 1 ? <div className='rp-right-arrow'></div> : <div className='rp-right-arrow' onClick={() => {rightClickHandler()}}>Right Arrow</div>}
+      {rightIndex === props.relatedProductIds.length ? <div className='rp-right-arrow'></div> : <div className='rp-right-arrow' onClick={() => {rightClickHandler()}}>Right Arrow</div>}
     </div>
   )
 }
