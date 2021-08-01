@@ -35,14 +35,14 @@ const App = () => {
             console.log('Error fetching questions: ', error);
           });
         // get reviews
-        apiCalls.getRatings(products.data[0].id)
-          .then((ratings) => {
-            // console.log('Reviews: ', ratings.data.results);
-            setAllRatings(ratings.data.results);
-          })
-          .catch((error) => {
-            console.log('Error fetching reviews: ', error);
-          })
+        // apiCalls.getRatings(products.data[0].id)
+        //   .then((ratings) => {
+        //     // console.log('Reviews: ', ratings.data.results);
+        //     setAllRatings(ratings.data.results);
+        //   })
+        //   .catch((error) => {
+        //     console.log('Error fetching reviews: ', error);
+        //   })
         apiCalls.getRelatedProducts(products.data[0].id)
           .then((RPIds) => {
             setRelatedProductIds(RPIds.data)
