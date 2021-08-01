@@ -31,7 +31,6 @@ const RelatedProductsTray = (props) => {
     }
     setVisibleProductIds(renderedProductIds)
     setAllProductIds(props.relatedProductIds)
-    // console.log(visibleProductIds)
   })
 
 
@@ -56,13 +55,13 @@ const RelatedProductsTray = (props) => {
 
   return (
     <div className='related-products-container'>
-      <div className='rp-left-arrow' onClick={() => {leftClickHandler()}}>Left Arrow</div>
+      {leftIndex === 0 ? <div className='rp-left-arrow'></div> : <div className='rp-left-arrow' onClick={() => {leftClickHandler()}}>Left Arrow</div>}
       <div className='related-product-tray'>
         {visibleProductIds.map((productId) => {
           return <RelatedProductCard trigger={trigger} setTrigger={setTrigger} productId={productId} key={productId} currentProduct={props.currentProduct} setCurrentProduct={props.setCurrentProduct} />
         })}
       </div>
-      <div className='rp-right-arrow' onClick={() => {rightClickHandler()}}>Right Arrow</div>
+      {rightIndex === props.relatedProductIds.length - 1 ? <div className='rp-right-arrow'></div> : <div className='rp-right-arrow' onClick={() => {rightClickHandler()}}>Right Arrow</div>}
     </div>
   )
 }
