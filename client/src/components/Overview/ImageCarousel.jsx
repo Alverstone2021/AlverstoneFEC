@@ -12,8 +12,8 @@ const ImageCarousel = (props) => {
         {props.productImageCarousel.map((img, i) => {
           let total = props.productImageCarousel.length;
           return (
-            <div>
-              <img className="indv-thumbnail" id={'thumb' + i} tabindex="1"src={img.thumbnail_url} onClick={(e) => {props.setProductImage(img.url); underline(e, total)}}></img>
+            <div className="indv-thumbnail-div">
+              <img className="indv-thumbnail" id={'thumb' + i} src={img.thumbnail_url} onClick={(e) => {props.setProductImage(img.url); underline(e, total)}}></img>
             </div>
           )
         })}
@@ -31,9 +31,7 @@ function underline(e, total) {
     let thumbnail = document.getElementById('thumb' + i);
     thumbnail.style['border'] = "none"
   }
-  console.log('targ', e.target.id)
   let current = document.getElementById(e.target.id)
-  console.log('currr', current)
   current.style['border-bottom'] = "5px solid black"
 }
 

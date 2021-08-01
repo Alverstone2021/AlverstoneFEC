@@ -29,17 +29,23 @@ input {
 /*-----START OF OVERIEW-----*/
 
 .overview-container {
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-left: 175px;
-  margin-right: 175px;
-  margin-top: 50px
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 0px;
+}
+
+.logo-header {
+  background: rgb(114, 114, 114);
+  height: 60px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 .banner {
-  background: pink;
   padding: 0px;
   margin: 0px;
   border: 0px;
@@ -70,10 +76,12 @@ input {
   /* max-width: 100%; */
   max-height: 500px;
   display: flex;
-  width: 100%;
+  width: 70%;
   height: auto;
   position: relative;
   overflow: hidden;
+  cursor: zoom-in;
+  order: 2;
 }
 
 .main-image {
@@ -90,12 +98,22 @@ input {
 }
 
 .carousel-container {
-  position: absolute;
+  position: relative;
+  flex: 2;
+  order: 0;
   /* bottom: 0; */
   /* background: rgba(0, 0, 0, 0.5); */
-  float: left;
+  /* float: left; */
   padding-left: 20px;
+}
 
+/* .carousel {
+
+} */
+
+.indv-thumbnail-div {
+  padding: 0px;
+  margin: 0px;
 }
 
 .indv-thumbnail {
@@ -117,6 +135,18 @@ input {
   border-radius: 50%;
 }
 
+.right-arrow {
+  float: right;
+  width: 30px;
+  order: 3;
+}
+
+.left-arrow {
+  float: left;
+  width: 30px;
+  order: 1;
+}
+
 .name-and-style-container {
   flex: 1;
   order: 1;
@@ -130,6 +160,11 @@ input {
   margin: 0px;
   padding-top: 40px;
   padding-bottom: 0px;
+}
+
+.rating a {
+  font-size: 11px;
+  color:black;
 }
 
 .category {
