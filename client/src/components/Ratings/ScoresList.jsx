@@ -16,7 +16,7 @@ const ScoresList = (props) => {
       <div className='comfort-bar-parent'>
         {createCharBars(props.characteristics).map((bar, i) => {
           return (
-            <ComfortSizeBar key={i} title={bar.title} label1={bar.label1} label2={bar.label2} label3={bar.label3} value={bar.value} />
+            <ComfortSizeBar id={'reviewbar' + i} key={i} title={bar.title} label1={bar.label1} label2={bar.label2} label3={bar.label3} value={bar.value} />
           );
         })}
       </div>

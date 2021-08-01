@@ -5,7 +5,7 @@ const ReviewsList = (props) => {
   return (
     <div className='review-grid-item3'>
       <div className='review-dropdown'>
-        <h3>{props.allRatings.length} reviews, sorted by </h3>
+        <h3>{props.filteredReviews.length} reviews, sorted by </h3>
         <span className='review-dropspan'><h3>Relevance</h3>
           <div className='review-dropdown-content'>
             <p>Helpfulness</p>
@@ -15,7 +15,7 @@ const ReviewsList = (props) => {
         </span>
       </div>
       <div className='reviewList-scrollable'>
-        {props.allRatings.map((review, i) => {
+        {props.filteredReviews.map((review, i) => {
           return <ReviewListItem key={i} review={review} />
         })}
       </div>

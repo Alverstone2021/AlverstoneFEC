@@ -12,6 +12,9 @@ const RatingsIndex = (props) => {
   const [averageScore, setAverageScore] = useState(0);
   const [recommendVal, setRecommendVal] = useState(0);
   const [starsArray, setStarsArray] = useState([]);
+  // filtering
+  const [filterObj, setFilterObj] = useState({ main: 'r' });
+  const [filteredReviews, setFilteredReviews] = useState([]);
   //console.log('current product: ', props.currentProduct);
 
   useEffect(() => {
@@ -21,6 +24,7 @@ const RatingsIndex = (props) => {
         // console.log('Reviews: ', ratings.data.results);
         setAllRatings(ratings.data.results);
         console.log('ratings results: ', ratings.data.results);
+        setFilteredReviews(sortData(ratings.data.results));
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
@@ -42,7 +46,7 @@ const RatingsIndex = (props) => {
         console.log('Error fetching meta data: ', error);
       });
 
-  }, [props]);
+  }, [props.currentProduct]);
 
   return (
     <div className='reviews-grid-container'>
@@ -50,7 +54,7 @@ const RatingsIndex = (props) => {
         <h4>RATINGS & REVIEWS</h4>
       </div>
       <ScoresList average={averageScore} recommend={recommendVal} starsArray={starsArray} characteristics={metaData.characteristics} allRatings={allRatings} />
-      <ReviewsList allRatings={allRatings} />
+      <ReviewsList filteredReviews={filteredReviews} />
     </div>
   );
 };
@@ -128,4 +132,27 @@ const getStarsPercentage = (metaData) => {
   return scoresArray;
 }
 
+
+// filtering the data for the list
+const setfilters = (key) => {
+
+}
+
+const sortData = (unfilteredArray, mainFilter = 'r') => {
+  if (unfilteredArray.length === 0) {
+    return [];
+  }
+  //const newArray = unfilteredArray.map(obj => ({ ...obj }));
+
+  if (mainFilter === 'r') {
+    unfilteredArray.sort(function (a, b) {
+      return b.helpfulness - a.helpfulness;
+    });
+    return unfilteredArray;
+  }
+}
+
+const clearFiltering = () => {
+
+}
 export default RatingsIndex;

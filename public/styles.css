@@ -332,6 +332,7 @@ input {
   flex-wrap: wrap;
   width: 100%;
   column-gap: 8px;
+  position: relative;
 }
 
 .flex-comfort-score>* {
@@ -355,6 +356,16 @@ input {
   text-align: right;
 }
 
+/* triangles */
+.down-sym {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  border-top: 15px solid rgb(191, 28, 231);
+}
+
 /* Dropdown reviewList */
 .review-dropdown {
   display: flex;
@@ -376,7 +387,7 @@ input {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 16px;
-  z-index: 0.5;
+  z-index: 1;
 }
 
 .review-dropspan:hover .review-dropdown-content {
