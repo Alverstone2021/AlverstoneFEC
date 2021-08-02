@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const QaIndex = ({allQuestions}) => {
 
-  console.log('qaindex', allQuestions)
+  // console.log('qaindex', allQuestions)
 
 
   var temparr = [];

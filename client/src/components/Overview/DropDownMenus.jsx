@@ -26,11 +26,13 @@ const DropDownMenus = (props) => {
       <form className="selectors">
         <select id="SIZE" required onChange={(e) => {props.setSizeSelection(e.target.value)}}>
           <option value="">SELECT SIZE</option>
-          {inventory.map((sku) => {
+          {inventory.map((sku, index) => {
             //if the sku.size value already exists, skip it
-            return (
-              <option value={sku.size}>{sku.size}</option>
-            )
+            if (index < 5) {
+              return (
+                <option value={sku.size}>{sku.size}</option>
+              )
+            }
           })}
         </select>
           {inventory.map((sku, index) => {
