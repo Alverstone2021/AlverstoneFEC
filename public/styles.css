@@ -559,7 +559,14 @@ select {
 
 .modal-checkmarks {
   order: 2;
+  display: flex;
 }
+
+.current-prod-feature, .prod-on-card-feature {
+  order: 2;
+}
+
+
 
 .related-product-right-column {
   order: 3;

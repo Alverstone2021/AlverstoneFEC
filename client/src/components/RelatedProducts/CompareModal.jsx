@@ -22,9 +22,16 @@ const CompareModal = (props) => {
         <div className="modal-body">
           <div className="current-product-left-column">
             {props.currentProduct.name}
+
           </div>
           <div className="modal-checkmarks">
             v
+            <div className='compared-features'>
+            {props.currentProduct.features.map((feature) => <div className='current-prod-feature'>{feature.feature}</div>)}
+            {props.currentProduct.features.map((feature) => <div className='current-prod-feature-value'>{feature.value}</div>)}
+            {props.productOnCard.features.map((feature) => <div className='prod-on-card-feature'>{feature.feature}</div>)}
+            {props.productOnCard.features.map((feature) => <div className='prod-on-card-feature-value'>{feature.value}</div>)}
+            </div>
           </div>
           <div className="related-product-right-column">
             {props.productOnCard.name}
