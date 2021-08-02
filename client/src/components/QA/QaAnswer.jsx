@@ -9,6 +9,7 @@ const QaAnswers = ({answer}) => {
   // console.log('single answer', answer)
 
   const [answerHelpfulness, setAnswerHelpfulness] = useState(answer.helpfulness)
+  const [reported, setReported] = useState(false)
 
   const clickHelpfulness = () => {
     apiCalls.answerHelpful(answer.id)
@@ -20,6 +21,15 @@ const QaAnswers = ({answer}) => {
     })
   }
 
+  const clickReport = () => {
+    apiCalls.answerReport(answer.id)
+    .then(() => {
+      setReported(true)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
 
   return (
     <div className='answer'>
@@ -27,7 +37,12 @@ const QaAnswers = ({answer}) => {
       {answer.photos.map(i => {
         return <QaAnswerImage image={i} key={i} />;
       })}
-      <h4>by {answer.answerer_name}, {moment(answer.date).format('MMMM Do YYYY')}  | <div onClick={clickHelpfulness}>Helpful? Yes({answerHelpfulness})</div>  |  Report</h4>
+      <div>
+        <h4>by {answer.answerer_name},</h4>
+        <h4>{moment(answer.date).format('MMMM Do YYYY')}  | </h4>
+        <div onClick={clickHelpfulness}>Helpful? Yes({answerHelpfulness})</div>
+        <div onClick={clickReport}>|  {reported ? 'Reported' : 'Report'} </div>
+      </div>
     </div>
   )
 }

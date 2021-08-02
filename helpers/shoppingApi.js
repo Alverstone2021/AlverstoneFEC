@@ -143,7 +143,7 @@ const questionHelpful = function(question_id) {
     headers: {
       'Authorization': token,
       'Content-Type': 'application/json'
-    },
+    }
   }
   return axios(config)
 }
@@ -155,7 +155,31 @@ const answerHelpful = function(answer_id) {
     headers: {
       'Authorization': token,
       'Content-Type': 'application/json'
-    },
+    }
+  }
+  return axios(config)
+}
+
+const answerReport = function(answer_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/answers/${answer_id}/report`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
+  }
+  return axios(config)
+}
+
+const questionReport = function(question_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/questions/${question_id}/report`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
   }
   return axios(config)
 }
@@ -174,6 +198,8 @@ const apiCalls = {
   postNewAnswer: postNewAnswer,
   questionHelpful: questionHelpful,
   answerHelpful: answerHelpful,
+  answerReport: answerReport,
+  questionReport: questionReport,
 };
 
 export default apiCalls;
