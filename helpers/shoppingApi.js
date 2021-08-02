@@ -31,16 +31,28 @@ const getQandA = function (productId) {
 const getRatings = function (productId) {
   var config = {
     method: 'get',
-    url: `${baseUrl}reviews/?product_id=${productId}`,
+    url: `${baseUrl}reviews/?product_id=${productId}&count=1000`,
     headers: {
       'Authorization': token,
     }
   }
-  // Return call for QA
+  // Return call for ratings
   return axios(config);
 }
 
-const getStyles = function(productId) {
+const getMetaData = function (productId) {
+  var config = {
+    method: 'get',
+    url: `${baseUrl}reviews/meta?product_id=${productId}`,
+    headers: {
+      'Authorization': token,
+    }
+  }
+  // Return call for metaData
+  return axios(config);
+}
+
+const getStyles = function (productId) {
   var config = {
     method: 'get',
     url: `${baseUrl}products/${productId}/styles`,
@@ -51,7 +63,7 @@ const getStyles = function(productId) {
   return axios(config);
 }
 
-const getFeatures = function(productId) {
+const getFeatures = function (productId) {
   var config = {
     method: 'get',
     url: `${baseUrl}products/${productId}`,
@@ -62,7 +74,7 @@ const getFeatures = function(productId) {
   return axios(config);
 }
 
-const getRelatedProducts = function(productId) {
+const getRelatedProducts = function (productId) {
   var config = {
     method: 'get',
     url: `${baseUrl}products/${productId}/related`,
@@ -79,7 +91,8 @@ const apiCalls = {
   getRatings: getRatings,
   getStyles: getStyles,
   getFeatures: getFeatures,
-  getRelatedProducts: getRelatedProducts
+  getRelatedProducts: getRelatedProducts,
+  getMetaData: getMetaData
 };
 
 export default apiCalls;
