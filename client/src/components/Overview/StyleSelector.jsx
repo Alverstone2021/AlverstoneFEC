@@ -4,7 +4,7 @@ import DropDownMenus from './DropDownMenus.jsx';
 import apiCalls from '../../../../helpers/shoppingApi.js';
 
 const StyleSelector = (props) => {
-  console.log('pops', props)
+  // console.log('pops', props)
 
   return (
     <div >

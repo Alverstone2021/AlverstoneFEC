@@ -113,7 +113,20 @@ const addToCart = function (skus, size) {
 const postNewQuestion = function(data) {
   var config = {
     method: 'post',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/',
+    url: `${baseUrl}/qa/questions/`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+    data: data
+  }
+  return axios(config)
+}
+
+const postNewAnswer = function(data, question_id) {
+  var config = {
+    method: 'post',
+    url: `${baseUrl}qa/questions/${question_id}/answers`,
     headers: {
       'Authorization': token,
       'Content-Type': 'application/json'
@@ -134,6 +147,7 @@ const apiCalls = {
   getMetaData: getMetaData,
   addToCart: addToCart,
   postNewQuestion: postNewQuestion,
+  postNewAnswer: postNewAnswer,
 };
 
 export default apiCalls;
