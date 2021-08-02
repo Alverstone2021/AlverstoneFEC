@@ -62,7 +62,6 @@ const App = () => {
 
   return (
     <div className="hi">
-      THE MASTER APP
       <Overview currentProduct={currentProduct} />
       <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} relatedProductIds={relatedProductIds} />
       <QA currentProduct={currentProduct} allQuestions={allQuestions} />

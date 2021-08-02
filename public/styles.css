@@ -29,17 +29,23 @@ input {
 /*-----START OF OVERIEW-----*/
 
 .overview-container {
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-left: 175px;
-  margin-right: 175px;
-  margin-top: 50px
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 0px;
+}
+
+.logo-header {
+  background: rgb(114, 114, 114);
+  height: 60px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
 .banner {
-  background: pink;
   padding: 0px;
   margin: 0px;
   border: 0px;
@@ -70,10 +76,12 @@ input {
   /* max-width: 100%; */
   max-height: 500px;
   display: flex;
-  width: 100%;
+  width: 70%;
   height: auto;
   position: relative;
   overflow: hidden;
+  cursor: zoom-in;
+  order: 2;
 }
 
 .main-image {
@@ -90,21 +98,43 @@ input {
 }
 
 .carousel-container {
-  position: absolute;
+  position: relative;
+  /* flex: 2; */
+  order: 2;
   /* bottom: 0; */
   /* background: rgba(0, 0, 0, 0.5); */
-  float: left;
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
+.up-arrow {
+  float: top;
+  width: 30px;
+  order: 0;
+  height: 30px;
+}
+
+.down-arrow {
+  float: bottom;
+  width: 30px;
+  order: 2;
+}
+
+.indv-thumbnail-div {
+  padding: 0px;
+  margin: 0px;
+  display: block;
 }
 
 .indv-thumbnail {
-  max-height: 70px;
-  max-width: 70px;
+  max-height: 50px;
+  max-width: 50px;
   overflow: hidden;
   padding-bottom: 5px;
   display: inline-block;
   position: relative;
+
 }
 
 .style-thumbnails {
@@ -115,6 +145,18 @@ input {
   overflow: hidden;
   padding: 6px;
   border-radius: 50%;
+}
+
+.right-arrow {
+  float: right;
+  width: 30px;
+  order: 3;
+}
+
+.left-arrow {
+  float: left;
+  width: 30px;
+  order: 1;
 }
 
 .name-and-style-container {
@@ -132,6 +174,11 @@ input {
   padding-bottom: 0px;
 }
 
+.rating a {
+  font-size: 11px;
+  color:black;
+}
+
 .category {
   margin: 0px;
   padding-bottom: 0px;
@@ -146,6 +193,58 @@ input {
   margin: 0px;
   padding-bottom: 0px;
 }
+
+.style-selector {
+  margin-bottom: 20px;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+.cart-button, .favorite-button {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+.cart-button:hover, .favorite-button:hover {
+  color:#000000;
+  background-color:#FFFFFF;
+}
+
+@media all and (max-width:30em){
+  .cart-button, .favorite-button {
+  display:block;
+  margin:0.4em auto;
+  }
+}
+
+/*
+#share {
+  padding: 15px;
+  margin: 20px;
+  order: 5;
+} */
 
 /* .image-carousel {
   float: left;
