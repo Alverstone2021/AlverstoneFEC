@@ -13,17 +13,18 @@ const RatingsIndex = (props) => {
   const [recommendVal, setRecommendVal] = useState(0);
   const [starsArray, setStarsArray] = useState([]);
   // filtering
-  const [filterObj, setFilterObj] = useState({ main: 'r' });
+  const [mainFilter, setMainFilter] = useState('r');
   const [filteredReviews, setFilteredReviews] = useState([]);
+  const [filterTitle, setFilterTitle] = useState('Relevance');
   //console.log('current product: ', props.currentProduct);
 
+  //on props updated
   useEffect(() => {
     if (!props.currentProduct.id) return;
     apiCalls.getRatings(props.currentProduct.id)
       .then((ratings) => {
         // console.log('Reviews: ', ratings.data.results);
         setAllRatings(ratings.data.results);
-        console.log('ratings results: ', ratings.data.results);
         setFilteredReviews(sortData(ratings.data.results));
       })
       .catch((error) => {
@@ -33,7 +34,6 @@ const RatingsIndex = (props) => {
     // now fetch the meta data
     apiCalls.getMetaData(props.currentProduct.id)
       .then((results) => {
-        console.log('Metadata: ', results.data);
         setMetaData(results.data);
         //get our average on results
         setAverageScore(getAverage(results.data));
@@ -48,13 +48,44 @@ const RatingsIndex = (props) => {
 
   }, [props.currentProduct]);
 
+  //on filterObject update
+  useEffect(() => {
+  }, [mainFilter]);
+
   return (
     <div className='reviews-grid-container'>
       <div className='review-grid-item1'>
         <h4>RATINGS & REVIEWS</h4>
       </div>
       <ScoresList average={averageScore} recommend={recommendVal} starsArray={starsArray} characteristics={metaData.characteristics} allRatings={allRatings} />
-      <ReviewsList filteredReviews={filteredReviews} />
+      <div className='review-grid-item3'>
+        <div className='review-dropdown'>
+          <h3>{filteredReviews.length} reviews, sorted by </h3>
+          <span className='review-dropspan'><h3>{filterTitle}</h3>
+            <div className='review-dropdown-content'>
+              <p onClick={() => {
+                setFilterTitle('Helpfulness');
+                setMainFilter('h');
+                setFilteredReviews(sortData(allRatings, 'h'));
+              }
+              }>Helpfulness</p>
+              <p onClick={() => {
+                setFilterTitle('Newest');
+                setMainFilter('n');
+                setFilteredReviews(sortData(allRatings, 'n'));
+              }
+              }>Newest</p>
+              <p onClick={() => {
+                setFilterTitle('Relevance');
+                setMainFilter('r');
+                setFilteredReviews(sortData(allRatings, 'r'));
+              }
+              }>Relevance</p>
+            </div>
+          </span>
+        </div>
+        <ReviewsList filteredReviews={filteredReviews} />
+      </div>
     </div>
   );
 };
@@ -142,11 +173,20 @@ const sortData = (unfilteredArray, mainFilter = 'r') => {
   if (unfilteredArray.length === 0) {
     return [];
   }
-  //const newArray = unfilteredArray.map(obj => ({ ...obj }));
 
   if (mainFilter === 'r') {
     unfilteredArray.sort(function (a, b) {
       return b.helpfulness - a.helpfulness;
+    });
+    return unfilteredArray;
+  } else if (mainFilter === 'h') {
+    unfilteredArray.sort(function (a, b) {
+      return a.helpfulness - b.helpfulness;
+    });
+    return unfilteredArray;
+  } else if (mainFilter === 'n') {
+    unfilteredArray.sort(function (a, b) {
+      return b.date - a.date;
     });
     return unfilteredArray;
   }

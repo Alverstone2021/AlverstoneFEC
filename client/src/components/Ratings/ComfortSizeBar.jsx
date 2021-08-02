@@ -10,7 +10,6 @@ const ComfortSizeBar = (props) => {
         <div />
         <div />
         <span style={{ left: scorePercentage(props.value) }} className='down-sym'>
-
         </span>
         <h5>{props.label1}</h5>
         <h5>{props.label2}</h5>
@@ -31,7 +30,7 @@ const scorePercentage = (score) => {
   }
 
 
-  return '' + percentage + '%';
+  return percentage + '%';
 }
 
 export default ComfortSizeBar;
