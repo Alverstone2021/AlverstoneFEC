@@ -28,7 +28,7 @@ const RelatedProductsTray = (props) => {
     setVisibleProductIds(renderedProductIds)
     setAllProductIds(props.relatedProductIds)
     // console.log(visibleProductIds)
-  })
+  }, []) // :P
 
 
   /* click handlers */
