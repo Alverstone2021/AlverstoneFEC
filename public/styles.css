@@ -508,7 +508,7 @@ select {
   position:fixed;
   background: rgb(238, 234, 234);
   width: 80%;
-  height: 40%;
+  height: auto;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
@@ -520,6 +520,11 @@ select {
 
 .display-none {
   display: none;
+}
+
+.review-modal-layout {
+  display: flex;
+  flex-direction: column;
 }
 
 

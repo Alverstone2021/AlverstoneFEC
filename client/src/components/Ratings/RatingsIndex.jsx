@@ -181,12 +181,12 @@ const sortData = (unfilteredArray, mainFilter = 'r') => {
 
   if (mainFilter === 'r') {
     unfilteredArray.sort(function (a, b) {
-      return b.helpfulness - a.helpfulness;
+      return a.helpfulness - b.helpfulness;
     });
     return unfilteredArray;
   } else if (mainFilter === 'h') {
     unfilteredArray.sort(function (a, b) {
-      return a.helpfulness - b.helpfulness;
+      return b.helpfulness - a.helpfulness;
     });
     return unfilteredArray;
   } else if (mainFilter === 'n') {
