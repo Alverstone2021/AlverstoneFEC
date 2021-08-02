@@ -6,9 +6,9 @@ import QaAddAnswerModal from './QaAddAnswerModal.jsx'
 
 const QaQuestion = ({question}) => {
 
+  // console.log('qaquestion', question.question_id)
 
-
-  var temparr = [];
+var temparr = [];
   for (var i = 0; i < 2; i++) {
     if (Object.values(question.answers)[i] !== undefined) {
       temparr.push(Object.values(question.answers)[i])
@@ -17,26 +17,14 @@ const QaQuestion = ({question}) => {
 
   const [answerLimit, setAnswerLimit] = useState(2)
   const [answers, setAnswers] = useState(temparr)
-
-
   const [numOfAnswersShowing, setNumOfAnswersShowing] = useState(answers.length)
   const [totalNumOfAnswers, setTotalNumOfAnswers] = useState(Object.values(question.answers).length)
-
-
-
-
   const [moreAnswers, setMoreAnswers] = useState(false)
-  console.log('init number of answers showing', answers.length)
-  console.log('init number of total answers for this Q', Object.values(question.answers).length)
-  // console.log('show more answers?', moreAnswers)
 
   if (totalNumOfAnswers > 2 && moreAnswers === false && totalNumOfAnswers > numOfAnswersShowing) {
-    console.log('button should show')
+    // console.log('button should show')
     setMoreAnswers(true)
   }
-
-
-
 
   const updateAnswers = () => {
     var temp = [];
@@ -66,8 +54,6 @@ const QaQuestion = ({question}) => {
     updateAnswers()
   }
 
-
-
   const [answerModal, setAnswerModal] = useState(false)
 
   return (
@@ -82,7 +68,7 @@ const QaQuestion = ({question}) => {
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
        {moreAnswers && <button onClick={answerLimitPlusTwo}><strong>Load More Answers</strong></button>}
-       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question={question.question_body}/>}
+       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body}/>}
       </div>
 
     </div>

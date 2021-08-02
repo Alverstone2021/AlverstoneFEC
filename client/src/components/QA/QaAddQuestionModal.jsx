@@ -12,7 +12,7 @@ const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
   const [nicknameInput, setNicknameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
 
-  const createNewQuestion = (e) => {
+  const createNewQuestion = () => {
 
     if (questionInput.length < 15) {
       alert('Please write a longer question with a minimum of 15 characters.')
