@@ -1,7 +1,7 @@
 import axios from 'axios';
 import token from '../config.js';
 
-const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/';
+const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
 // Retrieves the first five products from the API
 const getAllProducts = function () {
@@ -136,6 +136,30 @@ const postNewAnswer = function(data, question_id) {
   return axios(config)
 }
 
+const questionHelpful = function(question_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/questions/${question_id}/helpful`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+  }
+  return axios(config)
+}
+
+const answerHelpful = function(answer_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/answers/${answer_id}/helpful`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+  }
+  return axios(config)
+}
+
 
 const apiCalls = {
   getAllProducts: getAllProducts,
@@ -148,6 +172,8 @@ const apiCalls = {
   addToCart: addToCart,
   postNewQuestion: postNewQuestion,
   postNewAnswer: postNewAnswer,
+  questionHelpful: questionHelpful,
+  answerHelpful: answerHelpful,
 };
 
 export default apiCalls;

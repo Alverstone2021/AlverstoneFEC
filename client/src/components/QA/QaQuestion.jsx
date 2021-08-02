@@ -3,12 +3,11 @@ import QaAnswersList from './QaAnswersList.jsx';
 import moment from 'moment';
 import { useEffect, useState } from 'react'
 import QaAddAnswerModal from './QaAddAnswerModal.jsx'
+import apiCalls from '../../../../helpers/shoppingApi.js';
 
 const QaQuestion = ({question}) => {
 
-  // console.log('qaquestion', question.question_id)
-
-var temparr = [];
+  var temparr = [];
   for (var i = 0; i < 2; i++) {
     if (Object.values(question.answers)[i] !== undefined) {
       temparr.push(Object.values(question.answers)[i])
@@ -20,6 +19,7 @@ var temparr = [];
   const [numOfAnswersShowing, setNumOfAnswersShowing] = useState(answers.length)
   const [totalNumOfAnswers, setTotalNumOfAnswers] = useState(Object.values(question.answers).length)
   const [moreAnswers, setMoreAnswers] = useState(false)
+  const [helpfulnessRating, setHelpfulnessRating] = useState(question.question_helpfulness)
 
   if (totalNumOfAnswers > 2 && moreAnswers === false && totalNumOfAnswers > numOfAnswersShowing) {
     // console.log('button should show')
@@ -56,6 +56,19 @@ var temparr = [];
 
   const [answerModal, setAnswerModal] = useState(false)
 
+
+  const clickHelpfulness = () => {
+    apiCalls.questionHelpful(question.question_id)
+    .then(() => {
+      setHelpfulnessRating(helpfulnessRating + 1)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
+
+
   return (
     <div className='question'>
 
@@ -63,7 +76,7 @@ var temparr = [];
         <div>
           <h3><strong>Q: {question.question_body}</strong></h3>
           <div>
-            <h4>{question.asker_name}, {moment(question.question_date).format('MMMM Do YYYY')} | Helpful? Yes({question.question_helpfulness}) | <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}>Add Answer</span> | Report</h4>
+            <h4>{question.asker_name}, {moment(question.question_date).format('MMMM Do YYYY')} | <div onClick={clickHelpfulness}>Helpful? Yes({helpfulnessRating})</div> | <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}>Add Answer</span> | Report</h4>
           </div>
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
