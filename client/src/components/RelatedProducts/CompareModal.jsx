@@ -7,6 +7,11 @@ const CompareModal = (props) => {
     return null
   }
 
+  useEffect(() => {
+    console.log('current prod', props.currentProduct)
+    console.log('on card', props.productOnCard)
+  }, [])
+
   return (
     <div className="modal" onClick={props.onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
