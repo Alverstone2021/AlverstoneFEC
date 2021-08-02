@@ -10,6 +10,7 @@ const RelatedProductCard = (props) => {
   const [cardStyles, setCardStyles] = useState({});
   const [show, setShow] = useState(false);
   const [productOnCard, setProductOnCard] = useState({});
+  const [currentProductFeatures, setCurrentProductFeatures] = useState({})
 
   useEffect(() => {
     apiCalls.getStyles(props.productId)
@@ -24,12 +25,16 @@ const RelatedProductCard = (props) => {
       .then((features) => {
         setProductOnCard(features.data)
       })
+    apiCalls.getFeatures(props.currentProduct.id)
+      .then((features) => {
+        setCurrentProductFeatures(features.data)
+      })
   }, [])
 
   return (
     <div className='related-product-card' >
       <button onClick={() => setShow(true) }>Compare</button>
-      <CompareModal currentProduct={props.currentProduct} productOnCard={productOnCard} onClose={() => setShow(false)} show={show}/>
+      <CompareModal currentProduct={currentProductFeatures} productOnCard={productOnCard} onClose={() => setShow(false)} show={show}/>
       <img src={imageUrl} height='400' width='300' onClick={() => {props.setCurrentProduct(productOnCard); props.setTrigger(props.trigger + 1); }} />
       <div>{productOnCard.category}</div>
       <div>{productOnCard.name}</div>
