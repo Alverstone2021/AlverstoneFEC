@@ -12,6 +12,9 @@ const Overview = (props) => {
   const [productImageCarousel, setProductImageCarousel] = useState([]);
   const [productStyles, setProductStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
+  const [zoomClicked, setZoomClicked] = useState(false);
+  const [sizeSelection, setSizeSelection] = useState('');
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     apiCalls.getStyles(props.currentProduct.id || '19089')
@@ -31,14 +34,17 @@ const Overview = (props) => {
 
   return (
     <div className="overview-container">
+      <header className="logo-header">HELLO CRUEL WORLD</header>
       <AnnouncementBanner/>
       <div className="product-info-container">
-        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage}/>
+        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage} setZoomClicked={setZoomClicked} zoomClicked={zoomClicked}/>
         <div className="name-and-style-container">
-          <h4>{props.currentProduct.category}</h4>
-          <h1>{props.currentProduct.name}</h1>
-          <h5>${props.currentProduct.default_price}</h5>
-          <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage}/>
+          <p className="rating">⭐️⭐️⭐️⭐️⭐️ <a href="#reviews">Read all reviews</a></p>
+          <h4 className="category">{props.currentProduct.category}</h4>
+          <h1 className="product-name">{props.currentProduct.name}</h1>
+          <h5 className="price">${props.currentProduct.default_price}</h5>
+          <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage} setSizeSelection={setSizeSelection} sizeSelection={sizeSelection} setQuantity={setQuantity} quantity={quantity}/>
+          <div class="sharethis-inline-share-buttons" id="share"></div>
         </div>
       </div>
       <StaticDescription className="static-description" currentProduct={props.currentProduct}/>
