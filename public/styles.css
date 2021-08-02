@@ -43,6 +43,7 @@ input {
   height: 60px;
   padding-top: 0px;
   margin-top: 0px;
+  text-align: center;
 }
 
 .banner {
@@ -223,14 +224,14 @@ select {
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
-  color:#FFFFFF;
+  color:#000000;
   text-align:center;
   transition: all 0.2s;
 }
 
 .cart-button:hover, .favorite-button:hover {
   color:#000000;
-  background-color:#FFFFFF;
+  background-color:#77716e;
 }
 
 @media all and (max-width:30em){
