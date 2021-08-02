@@ -1,22 +1,31 @@
 import React from 'react';
+import { IconContext } from 'react-icons';
+import { AiOutlineArrowDown } from 'react-icons/ai';
+import { AiOutlineArrowUp } from 'react-icons/ai';
 
-// const style = {
-//   maxWidth: '80px',
-//   height: '300px',
-// }
 
 const ImageCarousel = (props) => {
   {if (props.productImageCarousel !== []) {
     return (
       <div className="carousel-container">
+        <IconContext.Provider value={{ style: {fontSize: "30px",  top: "0%", position: "absolute"}}}>
+          <div className="up-arrow" >
+            <AiOutlineArrowUp/>
+          </div>
+      </IconContext.Provider >
         {props.productImageCarousel.map((img, i) => {
           let total = props.productImageCarousel.length;
           return (
-            <div>
-              <img className="indv-thumbnail" id={'thumb' + i} tabindex="1"src={img.thumbnail_url} onClick={(e) => {props.setProductImage(img.url); underline(e, total)}}></img>
+            <div className="indv-thumbnail-div">
+              <img className="indv-thumbnail" id={'thumb' + i} src={img.thumbnail_url} onClick={(e) => {props.setProductImage(img.url); underline(e, total)}}></img>
             </div>
           )
         })}
+        <IconContext.Provider value={{ style: {fontSize: "30px",  bottom: "0%", position: "absolute"}}}>
+          <div className="down-arrow" >
+            <AiOutlineArrowDown/>
+          </div>
+      </IconContext.Provider >
       </div>
     )
   } else {
@@ -31,9 +40,7 @@ function underline(e, total) {
     let thumbnail = document.getElementById('thumb' + i);
     thumbnail.style['border'] = "none"
   }
-  console.log('targ', e.target.id)
   let current = document.getElementById(e.target.id)
-  console.log('currr', current)
   current.style['border-bottom'] = "5px solid black"
 }
 

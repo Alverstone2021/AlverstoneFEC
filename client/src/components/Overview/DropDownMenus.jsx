@@ -1,6 +1,4 @@
-// import React from 'react';
 
-// // MAP FOR OPTIONS AND USE THEM TO CHANGE THE STATE OF THE CURRENTLY SELECTED STYLE
 // const DropDownMenus = (props) => {
 //   return (
 //     <div className="select">
@@ -23,7 +21,7 @@ const DropDownMenus = (props) => {
 
   if (props.currentStyle.skus) {
     {let inventory = Object.values(props.currentStyle.skus)
-    //console.log('inventory', inventory)
+    let sizeSelected = false;
     return (
       <form className="selectors">
         <select id="SIZE" required onChange={(e) => {props.setSizeSelection(e.target.value)}}>
@@ -35,30 +33,38 @@ const DropDownMenus = (props) => {
             )
           })}
         </select>
-        {inventory.map((sku) => {
-          if (props.sizeSelection === sku.size) {
-          let amount = [];
-          for (let i = 1; i < sku.quantity; i++) {
-            amount.push(<option value={i} key={i}>{i}</option>);
-          }
-          return(
-            <select id="QUANTITY">
-              {amount}
-            </select>)
-        } else {
-          return null
-        }
-        })}
+          {inventory.map((sku, index) => {
+            if (props.sizeSelection === sku.size) {
+              sizeSelected = true;
+              let amount = [];
+              for (let i = 1; i < sku.quantity; i++) {
+                amount.push(<option value={i} key={i}>{i}</option>);
+              }
+              return(
+                <select id="QUANTITY" required onChange={(e) => {props.setQuantity(e.target.value)}}>
+                  {amount}
+                </select>)
+            } else if (sizeSelected === false && (inventory.length - 1) === index) {
+              return (
+                <select id="QUANTITY" required onChange={(e) => {props.setQuantity(e.target.value)}}>
+                  <option value="">-</option>
+                </select>
+              )
+            } else {
+              return null;
+            }
+          })}
       </form>
-
     )}
   } else {
     return (
       <select id="QUANTITY">
-        <option value="">1</option>
+        <option value="">-</option>
       </select>
     )
   }
 }
+
+
 
 export default DropDownMenus;

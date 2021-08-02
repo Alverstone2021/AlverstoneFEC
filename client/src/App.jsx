@@ -35,14 +35,14 @@ const App = () => {
             console.log('Error fetching questions: ', error);
           });
         // get reviews
-        apiCalls.getRatings(products.data[0].id)
-          .then((ratings) => {
-            // console.log('Reviews: ', ratings.data.results);
-            setAllRatings(ratings.data.results);
-          })
-          .catch((error) => {
-            console.log('Error fetching reviews: ', error);
-          })
+        // apiCalls.getRatings(products.data[0].id)
+        //   .then((ratings) => {
+        //     // console.log('Reviews: ', ratings.data.results);
+        //     setAllRatings(ratings.data.results);
+        //   })
+        //   .catch((error) => {
+        //     console.log('Error fetching reviews: ', error);
+        //   })
         apiCalls.getRelatedProducts(products.data[0].id)
           .then((RPIds) => {
             setRelatedProductIds(RPIds.data)
@@ -62,7 +62,6 @@ const App = () => {
 
   return (
     <div className="hi">
-      THE MASTER APP
       <Overview currentProduct={currentProduct} />
       <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} relatedProductIds={relatedProductIds} />
       <QA currentProduct={currentProduct} allQuestions={allQuestions} />
