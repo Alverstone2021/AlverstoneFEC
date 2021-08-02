@@ -1,14 +1,18 @@
 import React from 'react';
+import { IconContext } from 'react-icons';
+import { AiOutlineArrowDown } from 'react-icons/ai';
+import { AiOutlineArrowUp } from 'react-icons/ai';
 
-// const style = {
-//   maxWidth: '80px',
-//   height: '300px',
-// }
 
 const ImageCarousel = (props) => {
   {if (props.productImageCarousel !== []) {
     return (
       <div className="carousel-container">
+        <IconContext.Provider value={{ style: {fontSize: "30px",  top: "0%", position: "absolute"}}}>
+          <div className="up-arrow" >
+            <AiOutlineArrowUp/>
+          </div>
+      </IconContext.Provider >
         {props.productImageCarousel.map((img, i) => {
           let total = props.productImageCarousel.length;
           return (
@@ -17,6 +21,11 @@ const ImageCarousel = (props) => {
             </div>
           )
         })}
+        <IconContext.Provider value={{ style: {fontSize: "30px",  bottom: "0%", position: "absolute"}}}>
+          <div className="down-arrow" >
+            <AiOutlineArrowDown/>
+          </div>
+      </IconContext.Provider >
       </div>
     )
   } else {

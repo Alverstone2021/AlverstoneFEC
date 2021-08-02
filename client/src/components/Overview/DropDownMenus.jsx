@@ -21,9 +21,10 @@ const DropDownMenus = (props) => {
 
   if (props.currentStyle.skus) {
     {let inventory = Object.values(props.currentStyle.skus)
+    let sizeSelected = false;
     return (
       <form className="selectors">
-        <select id="SIZE" required onChange={(e) => {props.setSizeSelection(e.target.value) /* OR JUST TRGGER RERENDER HERE */}}>
+        <select id="SIZE" required onChange={(e) => {props.setSizeSelection(e.target.value)}}>
           <option value="">SELECT SIZE</option>
           {inventory.map((sku) => {
             //if the sku.size value already exists, skip it
@@ -32,28 +33,28 @@ const DropDownMenus = (props) => {
             )
           })}
         </select>
-        <select id="QUANTITY" required onChange={(e) => {props.setQuantity(e.target.value)}}>
-          <option value="">-</option>
-          {inventory.map((sku) => {
-            console.log('WTF', sku)
+          {inventory.map((sku, index) => {
             if (props.sizeSelection === sku.size) {
-            let amount = [];
-            for (let i = 1; i < sku.quantity; i++) {
-              amount.push(i);
-            }
-            amount.map((amt) => {
-              //console.log('hi y u no work', amt)
+              sizeSelected = true;
+              let amount = [];
+              for (let i = 1; i < sku.quantity; i++) {
+                amount.push(<option value={i} key={i}>{i}</option>);
+              }
+              return(
+                <select id="QUANTITY" required onChange={(e) => {props.setQuantity(e.target.value)}}>
+                  {amount}
+                </select>)
+            } else if (sizeSelected === false && (inventory.length - 1) === index) {
               return (
-              <option value={amt}>{amt}</option>
+                <select id="QUANTITY" required onChange={(e) => {props.setQuantity(e.target.value)}}>
+                  <option value="">-</option>
+                </select>
               )
-            })
-          } else {
-            return null;
-          }
-        })}
-        </select>
+            } else {
+              return null;
+            }
+          })}
       </form>
-
     )}
   } else {
     return (
@@ -63,5 +64,7 @@ const DropDownMenus = (props) => {
     )
   }
 }
+
+
 
 export default DropDownMenus;

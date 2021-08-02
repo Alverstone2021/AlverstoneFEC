@@ -9,8 +9,8 @@ const StyleSelector = (props) => {
       <h4>STYLE > <b>{props.currentStyle.name}</b></h4>
       <StyleThumbnails productStyles={props.productStyles} setCurrentStyle={props.setCurrentStyle} setProductImageCarousel={props.setProductImageCarousel} setProductImage={props.setProductImage}/>
       <DropDownMenus currentStyle={props.currentStyle} setSizeSelection={props.setSizeSelection} sizeSelection={props.sizeSelection} setQuantity={props.setQuantity} quantity={props.quantity}/>
-      <button>ADD TO BAG</button>
-      <button>❤️</button>
+      <button className="cart-button">ADD TO BAG</button>
+      <button className="favorite-button">❤️</button>
     </div>
   )
 }

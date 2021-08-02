@@ -44,6 +44,7 @@ const Overview = (props) => {
           <h1 className="product-name">{props.currentProduct.name}</h1>
           <h5 className="price">${props.currentProduct.default_price}</h5>
           <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage} setSizeSelection={setSizeSelection} sizeSelection={sizeSelection} setQuantity={setQuantity} quantity={quantity}/>
+          <div class="sharethis-inline-share-buttons" id="share"></div>
         </div>
       </div>
       <StaticDescription className="static-description" currentProduct={props.currentProduct}/>
