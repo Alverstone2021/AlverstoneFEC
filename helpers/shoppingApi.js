@@ -19,7 +19,7 @@ const getAllProducts = function () {
 const getQandA = function (productId) {
   var config = {
     method: 'get',
-    url: `${baseUrl}qa/questions/?product_id=${productId}`,
+    url: `${baseUrl}qa/questions/?product_id=${productId}&count=10000`,
     headers: {
       'Authorization': token,
     }
@@ -85,6 +85,7 @@ const getRelatedProducts = function (productId) {
   return axios(config)
 }
 
+
 const addToCart = function (skus, size) {
   // console.log('skus', skus)
   // console.log('size', size)
@@ -109,6 +110,20 @@ const addToCart = function (skus, size) {
   return axios(config);
 }
 
+const postNewQuestion = function(data) {
+  var config = {
+    method: 'post',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/',
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+    data: data
+  }
+  return axios(config)
+}
+
+
 const apiCalls = {
   getAllProducts: getAllProducts,
   getQandA: getQandA,
@@ -117,7 +132,8 @@ const apiCalls = {
   getFeatures: getFeatures,
   getRelatedProducts: getRelatedProducts,
   getMetaData: getMetaData,
-  addToCart: addToCart
+  addToCart: addToCart,
+  postNewQuestion: postNewQuestion,
 };
 
 export default apiCalls;

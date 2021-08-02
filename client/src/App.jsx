@@ -28,8 +28,9 @@ const App = () => {
         // Get Q and A after initail products
         apiCalls.getQandA(products.data[0].id)
           .then((questions) => {
-            // console.log('Questions: ', questions.data.results);
-            setAllQuestions(questions.data.results);
+            // console.log('Questions data: ', questions.data);
+            // console.log('Questions data results: ', questions.data.results);
+            setAllQuestions(questions.data);
           })
           .catch((error) => {
             console.log('Error fetching questions: ', error);
@@ -58,13 +59,19 @@ const App = () => {
       .then((RPIds) => {
         setRelatedProductIds(RPIds.data)
       })
+      setAllQuestions([])
+    apiCalls.getQandA(currentProduct.id)
+      .then((questions) => {
+        setAllQuestions(questions.data)
+      })
   }, [currentProduct])
+
 
   return (
     <div className="hi">
       <Overview currentProduct={currentProduct} />
       <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} relatedProductIds={relatedProductIds} />
-      <QA currentProduct={currentProduct} allQuestions={allQuestions} />
+      {JSON.stringify(allQuestions) !== '[]' && <QA currentProduct={currentProduct} allQuestions={allQuestions} />}
       <Ratings currentProduct={currentProduct} allRatings={allRatings} />
     </div>
   );
