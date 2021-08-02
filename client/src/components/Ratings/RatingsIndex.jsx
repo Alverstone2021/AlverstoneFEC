@@ -3,6 +3,7 @@ import ReviewsList from './ReviewsList.jsx';
 import ScoresList from './ScoresList.jsx';
 import { useEffect, useState } from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
+import ReviewModal from './ReviewModal.jsx';
 
 
 const RatingsIndex = (props) => {
@@ -16,6 +17,8 @@ const RatingsIndex = (props) => {
   const [mainFilter, setMainFilter] = useState('r');
   const [filteredReviews, setFilteredReviews] = useState([]);
   const [filterTitle, setFilterTitle] = useState('Relevance');
+  // modal stuff
+  const [showModal, setShowModal] = useState(false);
   //console.log('current product: ', props.currentProduct);
 
   //on props updated
@@ -85,6 +88,8 @@ const RatingsIndex = (props) => {
           </span>
         </div>
         <ReviewsList filteredReviews={filteredReviews} />
+        <button onClick={() => setShowModal(true)}>Add a review</button>
+        <ReviewModal show={showModal} handleClose={setShowModal} />
       </div>
     </div>
   );
