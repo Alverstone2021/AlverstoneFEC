@@ -85,6 +85,30 @@ const getRelatedProducts = function (productId) {
   return axios(config)
 }
 
+const addToCart = function (skus, size) {
+  // console.log('skus', skus)
+  // console.log('size', size)
+  let sku_id;
+
+  for (const [key, value] of Object.entries(skus)) {
+    if (value.size === size) {
+      sku_id = key;
+    }
+  }
+
+  var config = {
+    method: 'post',
+    url: `${baseUrl}cart/`,
+    headers: {
+      'Authorization': token,
+    },
+    data: {
+      sku_id: sku_id
+    }
+  }
+  return axios(config);
+}
+
 const apiCalls = {
   getAllProducts: getAllProducts,
   getQandA: getQandA,
@@ -92,7 +116,8 @@ const apiCalls = {
   getStyles: getStyles,
   getFeatures: getFeatures,
   getRelatedProducts: getRelatedProducts,
-  getMetaData: getMetaData
+  getMetaData: getMetaData,
+  addToCart: addToCart
 };
 
 export default apiCalls;

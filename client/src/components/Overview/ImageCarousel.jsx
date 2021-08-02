@@ -8,7 +8,7 @@ const ImageCarousel = (props) => {
   {if (props.productImageCarousel !== []) {
     return (
       <div className="carousel-container">
-        <IconContext.Provider value={{ style: {fontSize: "30px",  top: "0%", position: "absolute"}}}>
+        <IconContext.Provider value={{ style: {fontSize: "20px",  top: "0%", position: "absolute"}}}>
           <div className="up-arrow" >
             <AiOutlineArrowUp/>
           </div>
@@ -21,7 +21,7 @@ const ImageCarousel = (props) => {
             </div>
           )
         })}
-        <IconContext.Provider value={{ style: {fontSize: "30px",  bottom: "0%", position: "absolute"}}}>
+        <IconContext.Provider value={{ style: {fontSize: "20px",  bottom: "0%", position: "absolute"}}}>
           <div className="down-arrow" >
             <AiOutlineArrowDown/>
           </div>
