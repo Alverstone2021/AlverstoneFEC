@@ -20,6 +20,7 @@ const QaQuestion = ({question}) => {
   const [totalNumOfAnswers, setTotalNumOfAnswers] = useState(Object.values(question.answers).length)
   const [moreAnswers, setMoreAnswers] = useState(false)
   const [helpfulnessRating, setHelpfulnessRating] = useState(question.question_helpfulness)
+  const [reported, setReported] = useState(false)
 
   if (totalNumOfAnswers > 2 && moreAnswers === false && totalNumOfAnswers > numOfAnswersShowing) {
     // console.log('button should show')
@@ -67,7 +68,15 @@ const QaQuestion = ({question}) => {
     })
   }
 
-
+  const clickReport = () => {
+    apiCalls.questionReport(question.question_id)
+    .then(() => {
+      setReported(true)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
 
   return (
     <div className='question'>
@@ -76,7 +85,11 @@ const QaQuestion = ({question}) => {
         <div>
           <h3><strong>Q: {question.question_body}</strong></h3>
           <div>
-            <h4>{question.asker_name}, {moment(question.question_date).format('MMMM Do YYYY')} | <div onClick={clickHelpfulness}>Helpful? Yes({helpfulnessRating})</div> | <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}>Add Answer</span> | Report</h4>
+            <h4>{question.asker_name}, </h4>
+            <h4>{moment(question.question_date).format('MMMM Do YYYY')} | </h4>
+            <div onClick={clickHelpfulness}>Helpful? Yes({helpfulnessRating})</div>
+            <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}> | Add Answer</span>
+            <div onClick={clickReport}> | {reported ? 'Reported' : 'Report'}</div>
           </div>
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
