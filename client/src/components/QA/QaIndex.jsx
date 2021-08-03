@@ -32,10 +32,20 @@ const QaIndex = ({allQuestions}) => {
       updateQuestions()
   }
 
+  const updateSearch = (e) => {
+
+    if (e.length >= 3) {
+      setQuestions(allQuestions.results.filter(answer => answer.question_body.toLowerCase().includes(e.toLowerCase())))
+    } else if (e.length <3) {
+      setQuestions(temparr)
+    }
+  }
+
+
   return (
     <div>
       <h3>QUESTIONS & ANSWERS</h3>
-      <QaSearchBar />
+      <QaSearchBar updateSearch={updateSearch}/>
       <QaQuestionsList questions={questions}/>
       <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo} product_id={allQuestions.product_id}/>
     </div>
