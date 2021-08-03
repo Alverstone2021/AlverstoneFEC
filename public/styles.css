@@ -616,4 +616,6 @@ select {
   background-color: black;
 }
 
-
+td {
+  text-align: center;
+}
