@@ -17,8 +17,13 @@ const RelatedProductCard = (props) => {
       .then((styles) => {
         var style = styles.data.results
         for (var i = 0; i < style.length; i++) {
+          if (style[i]['default?']) {
             setCardStyles(style[i])
             setImageUrl(style[i].photos[0].thumbnail_url || 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png')
+          } else if (style[i]['default?'] === false && i === style.length - 1) {
+            setCardStyles(style[0])
+            setImageUrl(style[0].photos[0].thumbnail_url || 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png')
+          }
         }
       })
     apiCalls.getFeatures(props.productId)
