@@ -7,9 +7,6 @@ import axios from 'axios'
 
 const QaIndex = ({allQuestions}) => {
 
-  // console.log('qaindex', allQuestions)
-
-
   var temparr = [];
   for (var i = 0; i < 4; i++) {
       if (allQuestions.results[i] !== undefined) {
@@ -37,12 +34,10 @@ const QaIndex = ({allQuestions}) => {
 
   return (
     <div>
-      <h1 className='center'>***Start of QA***</h1>
       <h3>QUESTIONS & ANSWERS</h3>
       <QaSearchBar />
-      <QaQuestionsList allQuestions={allQuestions} qLimit={qLimit} questions={questions}/>
-      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo}  product_id={allQuestions.product_id}/>
-      <h1 className='center'>***End of QA***</h1>
+      <QaQuestionsList questions={questions}/>
+      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo} product_id={allQuestions.product_id}/>
     </div>
   )
 }
