@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
 import CompareModal from './CompareModal.jsx'
+import classNames from 'classnames'
 
 //each card represents a related product
 const RelatedProductCard = (props) => {
@@ -36,15 +37,17 @@ const RelatedProductCard = (props) => {
       })
   }, [])
 
+  const iconClass = classNames('remove-outfit-btn', 'fas fa-tshirt')
+
   return (
     <div className='related-product-card' >
-      <button onClick={() => setShow(true) }>Compare</button>
+      <i className={iconClass} onClick={() => setShow(true) } />
       <CompareModal currentProduct={currentProductFeatures} productOnCard={productOnCard} onClose={() => setShow(false)} show={show}/>
-      <img src={imageUrl} height='400' width='300' onClick={() => {props.setCurrentProduct(productOnCard); props.setTrigger(props.trigger + 1); }} />
-      <div>{productOnCard.category}</div>
-      <div>{productOnCard.name}</div>
-      <div>{productOnCard.default_price}</div>
-      <div>5 Stars baby</div>
+      <img src={imageUrl} height='400' width='310' onClick={() => {props.setCurrentProduct(productOnCard); props.setTrigger(props.trigger + 1); }} />
+      <div className='rp-card-text'>{productOnCard.category}</div>
+      <div className='rp-card-text'>{productOnCard.name}</div>
+      <div className='rp-card-text'>{productOnCard.default_price}</div>
+      <div className='rp-card-text'>5 Stars baby</div>
     </div>
   )
 }

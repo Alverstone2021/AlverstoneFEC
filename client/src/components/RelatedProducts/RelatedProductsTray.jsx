@@ -12,6 +12,7 @@ const RelatedProductsTray = (props) => {
   const [trigger, setTrigger] = useState(0)
 
   useEffect(() => {
+    console.log(props.relatedProductIds)
     var renderedProductIds = [];
     for (var i = leftIndex; i < rightIndex; i++) {
       if (props.relatedProductIds[i] !== props.currentProduct.id) {
@@ -36,8 +37,6 @@ const RelatedProductsTray = (props) => {
   /* click handlers */
   const leftClickHandler = () => {
     if (leftIndex > 0) {
-      // console.log(props.relatedProductIds)
-      // console.log(visibleProductIds)
       setLeftIndex(leftIndex - 1)
       setRightIndex(rightIndex - 1)
       setTrigger(trigger + 1)
