@@ -7,7 +7,7 @@ const AddToOutfit = (props) => {
         addToLocalStorage(props.currentProduct);
         props.setTrigger(props.trigger + 1);
       }}>
-        PLUS (clicking this adds something to the outfit)
+        <img className='ato-btn' src='https://cdn.icon-icons.com/icons2/1339/PNG/512/plussign_87467.png' height='300' width='300'/>
       </div>
   )
 }
