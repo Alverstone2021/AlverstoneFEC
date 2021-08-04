@@ -540,17 +540,40 @@ select {
   width: calc(800% + 10px);
   display: grid;
   grid-template-columns: repeat(35,minmax(0,1fr));
-  grid-column-gap: 0 10px;
+
 }
 
 .related-product-card, .outfit-card{
-  border: 2px solid blue;
+  background-color: rgba(58, 56, 52, 0.1);
   position: relative;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   display: block;
   width: 310px;
+}
+
+.compare-modal-btn {
+  position: absolute;
+  z-index: 9;
+  right: 0;
+  color:rgb(182, 16, 16);
+}
+
+.remove-outfit-btn {
+  position: absolute;
+  z-index: 9;
+  right: 0;
+  color:rgb(182, 16, 16);
+}
+
+.ato-btn {
+  padding-top: 80px;
+  align-items: center;
+}
+
+.rp-card-text {
+  padding-left: 4px;
 }
 
 .outfit-tray {
@@ -571,8 +594,8 @@ select {
 }
 
 .modal-content {
-  width: 300px;
-  background-color: #fff;
+  width: 325px;
+  background-color: rgb(231, 230, 230);
 }
 
 .modal-title {
@@ -597,6 +620,11 @@ select {
 
 .modal-checkmarks {
   order: 2;
+  display: flex;
+}
+
+.current-prod-feature, .prod-on-card-feature {
+  order: 2;
 }
 
 .related-product-right-column {
@@ -619,3 +647,4 @@ select {
 td {
   text-align: center;
 }
+

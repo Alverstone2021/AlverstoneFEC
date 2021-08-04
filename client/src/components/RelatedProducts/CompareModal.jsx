@@ -46,7 +46,7 @@ const CompareModal = (props) => {
   return (
     <div className="modal" onClick={props.onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-      <button className="modal-close-button" onClick={props.onClose} >X</button>
+      <button className="modal-close-button" onClick={props.onClose} type='button'>X</button>
         <div className="modal-header">
           <h4 className="modal-title">Comparing</h4>
         </div>
