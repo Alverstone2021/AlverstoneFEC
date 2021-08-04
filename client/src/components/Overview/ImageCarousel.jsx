@@ -5,7 +5,7 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
 
 
 const ImageCarousel = (props) => {
-  {if (props.productImageCarousel !== []) {
+  {if (props.productImageCarousel.length !== 0) {
     return (
       <div className="carousel-container">
         <IconContext.Provider value={{ style: {fontSize: "20px",  top: "0%", position: "absolute"}}}>
