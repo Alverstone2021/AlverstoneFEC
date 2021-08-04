@@ -36,6 +36,7 @@ const ImageCarousel = (props) => {
 function underline(e, total) {
   e.preventDefault();
   // FOR ALL OTHER THUMBNAILS, SET BORDER TO NONE
+
   for (let i = 0; i < total; i++) {
     let thumbnail = document.getElementById('thumb' + i);
     thumbnail.style['border'] = "none"

@@ -34,7 +34,10 @@ const Overview = (props) => {
 
   return (
     <div className="overview-container">
-      <header className="logo-header">LOGO</header>
+      <header className="logo-header">
+        <h2 className="logo-boi" >THE STORE</h2>
+        <input type="text" className="search-bar" placeholder="Search.."></input>
+      </header>
       <AnnouncementBanner/>
       <div className="product-info-container">
         <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage} setZoomClicked={setZoomClicked} zoomClicked={zoomClicked}/>
