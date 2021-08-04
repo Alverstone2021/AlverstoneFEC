@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import QaAddAnswerModal from './QaAddAnswerModal.jsx'
 import apiCalls from '../../../../helpers/shoppingApi.js';
 
-const QaQuestion = ({question}) => {
+const QaQuestion = ({question, currentProduct}) => {
 
 
   question.answers = Object.values(question.answers).sort((a, b) => {
@@ -92,7 +92,7 @@ const QaQuestion = ({question}) => {
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
        {moreAnswers && <button onClick={answerLimitPlusTwo}><strong>Load More Answers</strong></button>}
-       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body}/>}
+       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body} currentProduct={currentProduct}/>}
       </div>
 
     </div>
