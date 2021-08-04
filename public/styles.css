@@ -536,18 +536,19 @@ select {
 
 /* ---- Related Products ---- */
 
-.related-product-tray, .outfit-tray{
-  width: calc(800% + 10px);
-  display: grid;
-  grid-template-columns: repeat(35,minmax(0,1fr));
+.related-products-container{
+  display: flex;
+  align-items: center;
+}
 
+.related-product-tray {
+  display: flex;
 }
 
 .related-product-card, .outfit-card{
   background-color: rgba(58, 56, 52, 0.1);
   position: relative;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
   box-sizing: border-box;
   display: block;
   width: 310px;
@@ -570,6 +571,8 @@ select {
 .ato-btn {
   padding-top: 80px;
   align-items: center;
+  padding-right: 18px;
+  padding-left: 12px;
 }
 
 .rp-card-text {
@@ -577,6 +580,7 @@ select {
 }
 
 .outfit-tray {
+  display: flex;
   padding-top: 10px;
 }
 
