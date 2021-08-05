@@ -3,7 +3,6 @@ import token from '../config.js';
 
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
-
 // Retrieves the first five products from the API
 const getAllProducts = function () {
   var config = {
