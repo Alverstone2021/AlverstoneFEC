@@ -1,4 +1,5 @@
 import React from 'react'
+import plusSign from '../../assets/assets.js'
 
 const AddToOutfit = (props) => {
 
@@ -7,7 +8,8 @@ const AddToOutfit = (props) => {
         addToLocalStorage(props.currentProduct);
         props.setTrigger(props.trigger + 1);
       }}>
-        <img className='ato-btn' src='https://cdn.icon-icons.com/icons2/1339/PNG/512/plussign_87467.png' height='300' width='300'/>
+        <img className='ato-btn' src={plusSign} height='300' width='300'/>
+
       </div>
   )
 }

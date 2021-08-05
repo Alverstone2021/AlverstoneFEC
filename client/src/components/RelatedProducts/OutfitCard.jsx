@@ -2,6 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
 import classNames from 'classnames'
+import StarRating from '../SharedComponents/Stars.jsx'
 
 const OutfitCard = (props) => {
 
@@ -39,7 +40,7 @@ const OutfitCard = (props) => {
       <div>{props.product.category}</div>
       <div>{props.product.name}</div>
       <div>{props.product.default_price}</div>
-      <div>so many stars dude</div>
+      <StarRating productId={props.product.id} />
     </div>
   )
 }

@@ -7,24 +7,27 @@ const StarRating = (props) => {
   const [aggregatedRating, setAggregatedRating] = useState(0)
 
   useEffect(() => {
-    apiCalls.getMetaData(props.productId)
+    if (props.productId === undefined && props.rating) {
+      setAggregatedRating(props.rating)
+    } else {
+      apiCalls.getMetaData(props.productId)
       .then((reviews) => {
         setAggregatedRating(getAverage(reviews.data))
       })
       .catch((error) => {
         console.log('Error: ', error)
       })
+    }
   }, [])
 
   return (
-    <div className="Stars" style={{'--rating': aggregatedRating}} aria-label={`Rating of this product is ${aggregatedRating} out of 5.`}></div>
+    <div className="Stars" style={{'--rating': aggregatedRating, '--star-size': props.size}} aria-label={`Rating of this product is ${aggregatedRating} out of 5.`}></div>
   )
 }
 
 const getAverage = (metaData) => {
 
   var total = 0;
-
   var sumStars = 0;
 
   total += parseInt(metaData.ratings[1] || 0);
