@@ -12,7 +12,6 @@ const RelatedProductsTray = (props) => {
   const [trigger, setTrigger] = useState(0)
 
   useEffect(() => {
-    console.log(props.relatedProductIds)
     var renderedProductIds = [];
     for (var i = leftIndex; i < rightIndex; i++) {
       if (props.relatedProductIds[i] !== props.currentProduct.id) {

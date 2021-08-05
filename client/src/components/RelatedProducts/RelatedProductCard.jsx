@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
 import CompareModal from './CompareModal.jsx'
 import classNames from 'classnames'
+import StarRating from '../SharedComponents/Stars.jsx'
+
 
 //each card represents a related product
 const RelatedProductCard = (props) => {
@@ -47,7 +49,7 @@ const RelatedProductCard = (props) => {
       <div className='rp-card-text'>{productOnCard.category}</div>
       <div className='rp-card-text'>{productOnCard.name}</div>
       <div className='rp-card-text'>{productOnCard.default_price}</div>
-      <div className='rp-card-text'>5 Stars baby</div>
+      <StarRating productId={props.productId}/>
     </div>
   )
 }
