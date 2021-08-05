@@ -19,7 +19,7 @@ const Overview = (props) => {
   const [selected, setSelected] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(5);
+  const [endIndex, setEndIndex] = useState(6);
 
 
   useEffect(() => {
