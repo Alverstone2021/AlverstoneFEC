@@ -65,7 +65,7 @@ const ImageView = (props) => {
       clientY = clientY / mHeight * 100;
 
       img.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2.5)`;
-      //img.style.cursor = 'crosshair';
+      img.style.cursor = 'crosshair';
     }
   }
 

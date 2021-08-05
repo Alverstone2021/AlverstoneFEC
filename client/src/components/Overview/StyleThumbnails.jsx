@@ -12,10 +12,10 @@ const StyleThumbnails = (props) => {
 
         return (
           <div className="indv-thumb-container" onClick={(e) => {props.setCurrentStyle(style); props.setProductImageCarousel(style.photos); props.setProductImage(style.photos[0].url); props.setSelected(index); placeCheck(style, props.productStyles)}}>
-            <IconContext.Provider value={{ style: {fontSize: "15px"}}}>
-              <div className="check-circle" id={'check' + style.style_id} style={props.selected === index ? {display: "block"} : {display: "none"}}>
-                <AiOutlineCheckCircle className="inner-check-circle" />
-              </div>
+            <IconContext.Provider value={{ style: {fontSize: "15px", position: "absolute"}}}>
+              {/* <div className="check-circle" style={props.selected === index ? {display: "block"} : {display: "none"}}> */}
+                <AiOutlineCheckCircle className="inner-check-circle" id={'check' + style.style_id}/>
+              {/* </div> */}
             </IconContext.Provider >
             <img className="style-thumbnails" id={style.style_id} style={styleStuff} src={style.photos[0].thumbnail_url}></img>
           </div>
