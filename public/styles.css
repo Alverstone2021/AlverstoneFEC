@@ -149,6 +149,8 @@ input {
   display: inline-block;
   position: relative;
   object-fit: cover;
+  height: fit-content;
+  width: fit-content;
 }
 
 .style-thumb-container {
@@ -170,34 +172,31 @@ input {
   flex: 3;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  /* flex: 3; */
-  height: 100%;
-  width: 100%;
-  /* z-index: 1; */
+  align-items: flex-start;
+  height: fit-content;
+  /* width: fit-content; */
+  z-index: 1;
 }
 
 .indv-thumb-container {
-  position: relative;
-  /* display: inline-block; */
-  height: 100%;
-  width: 100%;
-  padding: 5px;
-  flex: 1
+  display: block;
+  height: auto;
+  width: auto;
+  flex: 1;
 }
 
 .style-thumbnails {
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   display: inline-block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  margin-top: 10px;
+  /* position: absolute; */
+  width: 50px;
+  height: 50px;
   overflow: hidden;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 6px;
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  /* padding: 6px; */
   border-radius: 50%;
   z-index: -1;
   object-fit: cover;
@@ -213,7 +212,6 @@ input {
 } */
 
 .inner-check-circle {
-  position: absolute;
   z-index: 1;
   padding: 0px;
   margin: 0px;
@@ -226,11 +224,13 @@ input {
 .button-container {
   display: flex;
   flex-direction: row;
+  margin-top: 30px;
 }
 
 .sharethis-inline-share-buttons {
   max-width: 200px;
-  align-self: flex-end;
+  align-self: flex-start;
+  margin-top: 50px;
   bottom: 0px;
 }
 

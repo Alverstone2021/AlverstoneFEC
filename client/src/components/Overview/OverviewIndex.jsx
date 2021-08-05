@@ -5,6 +5,7 @@ import ImageView from './ImageView.jsx';
 import StaticDescription from './StaticDescription.jsx';
 import AnnouncementBanner from './AnnouncementBanner.jsx';
 import StyleSelector from './StyleSelector.jsx';
+import Stars from '../SharedComponents/Stars.jsx';
 
 const Overview = (props) => {
 
@@ -15,7 +16,11 @@ const Overview = (props) => {
   const [zoomClicked, setZoomClicked] = useState(false);
   const [sizeSelection, setSizeSelection] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [selected, setSelected] = useState(0)
+  const [selected, setSelected] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(5);
+
 
   useEffect(() => {
     apiCalls.getStyles(props.currentProduct.id || '19089')
@@ -29,7 +34,8 @@ const Overview = (props) => {
             setCurrentStyle(style)
             setProductImageCarousel(style.photos)
             setSelected(index)
-          } // else if its the last index and it doesnt have a default and hasDefault is false
+            setSelectedIndex(index)
+          } // else if its the last index and hasDefault is false
         })
       })
   }, [props]);
@@ -42,8 +48,9 @@ const Overview = (props) => {
       </header>
       <AnnouncementBanner/>
       <div className="product-info-container">
-        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage} setZoomClicked={setZoomClicked} zoomClicked={zoomClicked}/>
+        <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage} setZoomClicked={setZoomClicked} zoomClicked={zoomClicked} startIndex={startIndex} setStartIndex={setStartIndex} endIndex={endIndex} setEndIndex={setEndIndex} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/>
         <div className="name-and-style-container">
+          {/* <Stars id="rating" className="rating" productId={props.productId}/> */}
           <p className="rating">⭐️⭐️⭐️⭐️⭐️ <a href="#reviews">Read all reviews</a></p>
           <h4 className="category">{props.currentProduct.category}</h4>
           <h1 className="product-name">{props.currentProduct.name}</h1>
@@ -53,7 +60,6 @@ const Overview = (props) => {
         </div>
       </div>
       <StaticDescription className="static-description" currentProduct={props.currentProduct}/>
-      <h2>------END OF OVERVIEW-------</h2>
     </div>
   )
 }
