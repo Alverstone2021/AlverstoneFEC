@@ -599,18 +599,45 @@ select {
   background: rgba(0, 0, 0, 0.6);
 } */
 
-.reviews-grid-container .review-modal {
+.review-modal {
   position:fixed;
   background: rgb(238, 234, 234);
   width: auto;
-  height: auto;
+  height: fit-content;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
-.display-block {
-  display: block;
+/* .review-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  max-height: 70%;
+} */
+.review-modal-grid-title {
+  max-height: 100px;
+  grid-area: 1 / 1 / 2 / 5;
+}
+
+.review-modal-grid-feedback {
+  display: flex;
+  flex-direction: column;
+  grid-area: 2 / 3 / 4 / 5;
+}
+
+.review-modal-buttons {
+  grid-area: 4 / 1 / 5 / 5;
+}
+
+.display-grid {
+  display: grid;
+
 }
 
 .display-none {
@@ -621,11 +648,13 @@ select {
   display: flex;
   flex-direction: column;
   margin: 8px;
+  grid-area: 2 / 1 / 4 / 3;
 }
 
 .modal-recommend-parent {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 .modal-characteristic {
   display: flex;

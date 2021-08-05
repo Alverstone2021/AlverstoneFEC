@@ -3,7 +3,7 @@ import React from 'react';
 const ModalRatingBar = (props) => {
   return (
     <div>
-      <h4>{props.title}:</h4>
+      <h4 Style='margin: 2px'>{props.title}:</h4>
       <div className='modal-radios-div'>
         <p>{props.label1}</p>
         <input type="radio" id={props.title + '1'} value={1} name={props.title}></input>
