@@ -24,7 +24,6 @@ const StarRating = (props) => {
 const getAverage = (metaData) => {
 
   var total = 0;
-
   var sumStars = 0;
 
   total += parseInt(metaData.ratings[1] || 0);
