@@ -89,7 +89,7 @@ const RatingsIndex = (props) => {
         </div>
         <ReviewsList filteredReviews={filteredReviews} />
         <button onClick={() => setShowModal(true)}>Add a review</button>
-        <ReviewModal show={showModal} handleClose={setShowModal} />
+        <ReviewModal metaData={metaData} show={showModal} handleClose={setShowModal} />
       </div>
     </div>
   );
@@ -100,17 +100,17 @@ const getAverage = (metaData) => {
   // get total amount of ratings
   var total = 0;
   var sumStars = 0;
-  total += parseInt(metaData.ratings[1]);
-  total += parseInt(metaData.ratings[2]);
-  total += parseInt(metaData.ratings[3]);
-  total += parseInt(metaData.ratings[4]);
-  total += parseInt(metaData.ratings[5]);
+  total += parseInt(metaData.ratings[1] || 0);
+  total += parseInt(metaData.ratings[2] || 0);
+  total += parseInt(metaData.ratings[3] || 0);
+  total += parseInt(metaData.ratings[4] || 0);
+  total += parseInt(metaData.ratings[5] || 0);
   // adding to sumStars
-  sumStars += parseInt(metaData.ratings[1]);
-  sumStars += parseInt(metaData.ratings[2] * 2);
-  sumStars += parseInt(metaData.ratings[3] * 3);
-  sumStars += parseInt(metaData.ratings[4] * 4);
-  sumStars += parseInt(metaData.ratings[5] * 5);
+  sumStars += parseInt(metaData.ratings[1] || 0);
+  sumStars += parseInt((metaData.ratings[2] * 2) || 0);
+  sumStars += parseInt((metaData.ratings[3] * 3) || 0);
+  sumStars += parseInt((metaData.ratings[4] * 4) || 0);
+  sumStars += parseInt((metaData.ratings[5] * 5) || 0);
 
   // return average star review
   var decimal = sumStars / total;

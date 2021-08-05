@@ -495,19 +495,19 @@ select {
 
 /* Modal window */
 
-.review-modal {
+/* .review-modal {
   position: fixed;
   top: 0;
   left: 0;
   width:100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-}
+} */
 
 .reviews-grid-container .review-modal {
   position:fixed;
   background: rgb(238, 234, 234);
-  width: 80%;
+  width: auto;
   height: auto;
   top:50%;
   left:50%;
@@ -525,6 +525,49 @@ select {
 .review-modal-layout {
   display: flex;
   flex-direction: column;
+  margin: 8px;
+}
+
+.modal-recommend-parent {
+  display: flex;
+  flex-direction: row;
+}
+.modal-characteristic {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-radios-div {
+  display: flex;
+  flex: 1 1;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-radios-div p {
+  width: 110px;
+}
+
+.modal-radios-div > p:nth-of-type(2) {
+  text-align: right;
+}
+
+.modal-radios-div > p:nth-of-type(1) {
+  text-align: left;
+}
+
+.modal-label-div {
+  display: flex;
+  flex: 1 1;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.modal-divider-div {
+  height: 1px;
+  width: 85%;
+  margin: 0 auto;
+  background-color: #555;
 }
 
 
