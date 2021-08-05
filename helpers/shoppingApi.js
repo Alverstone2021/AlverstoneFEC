@@ -48,7 +48,6 @@ const getMetaData = function (productId) {
       'Authorization': token,
     }
   }
-  // Return call for metaData
   return axios(config);
 }
 
@@ -87,8 +86,6 @@ const getRelatedProducts = function (productId) {
 
 
 const addToCart = function (skus, size) {
-  // console.log('skus', skus)
-  // console.log('size', size)
   let sku_id;
 
   for (const [key, value] of Object.entries(skus)) {
