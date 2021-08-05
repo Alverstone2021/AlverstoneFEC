@@ -628,24 +628,51 @@ select {
 
 /* ---- Related Products ---- */
 
-.related-product-tray, .outfit-tray{
-  width: calc(800% + 10px);
-  display: grid;
-  grid-template-columns: repeat(35,minmax(0,1fr));
-  grid-column-gap: 0 10px;
+.related-products-container{
+  display: flex;
+  align-items: center;
+}
+
+.related-product-tray {
+  display: flex;
 }
 
 .related-product-card, .outfit-card{
-  border: 2px solid blue;
+  background-color: rgba(58, 56, 52, 0.1);
   position: relative;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
   box-sizing: border-box;
   display: block;
   width: 310px;
 }
 
+.compare-modal-btn {
+  position: absolute;
+  z-index: 9;
+  right: 0;
+  color:rgb(182, 16, 16);
+}
+
+.remove-outfit-btn {
+  position: absolute;
+  z-index: 9;
+  right: 0;
+  color:rgb(182, 16, 16);
+}
+
+.ato-btn {
+  padding-top: 80px;
+  align-items: center;
+  padding-right: 18px;
+  padding-left: 12px;
+}
+
+.rp-card-text {
+  padding-left: 4px;
+}
+
 .outfit-tray {
+  display: flex;
   padding-top: 10px;
 }
 
@@ -663,8 +690,8 @@ select {
 }
 
 .modal-content {
-  width: 300px;
-  background-color: #fff;
+  width: 325px;
+  background-color: rgb(231, 230, 230);
 }
 
 .modal-title {
@@ -689,6 +716,11 @@ select {
 
 .modal-checkmarks {
   order: 2;
+  display: flex;
+}
+
+.current-prod-feature, .prod-on-card-feature {
+  order: 2;
 }
 
 .related-product-right-column {
@@ -706,6 +738,31 @@ select {
 
 .outfit-card .remove-outfit-btn:hover {
   background-color: black;
+}
+
+td {
+  text-align: center;
+}
+
+:root {
+  --star-size: 15px;
+  --star-color: #fff;
+  --star-background: #fc0;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+.Stars::before {
+  content: "★★★★★";
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 

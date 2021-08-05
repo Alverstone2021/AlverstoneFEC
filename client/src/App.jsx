@@ -48,6 +48,9 @@ const App = () => {
           .then((RPIds) => {
             setRelatedProductIds(RPIds.data)
           })
+          .catch((error) => {
+            console.log('Error: ', error)
+          })
       })
       .catch((error) => {
         console.log('Error fetching all products');
@@ -59,10 +62,16 @@ const App = () => {
       .then((RPIds) => {
         setRelatedProductIds(RPIds.data)
       })
+      .catch((error) => {
+        console.log('Error: ', error)
+      })
       setAllQuestions([])
     apiCalls.getQandA(currentProduct.id)
       .then((questions) => {
         setAllQuestions(questions.data)
+      })
+      .catch((error) => {
+        console.log('Error: ', error)
       })
   }, [currentProduct])
 

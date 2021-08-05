@@ -5,10 +5,7 @@ import QaLoadAdd from './QaLoadAdd.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const QaIndex = ({allQuestions}) => {
-
-  // console.log('qaindex', allQuestions)
-
+const QaIndex = ({allQuestions, currentProduct}) => {
 
   var temparr = [];
   for (var i = 0; i < 4; i++) {
@@ -35,14 +32,20 @@ const QaIndex = ({allQuestions}) => {
       updateQuestions()
   }
 
+  const updateSearch = (e) => {
+    if (e.length >= 3) {
+      setQuestions(allQuestions.results.filter(answer => answer.question_body.toLowerCase().includes(e.toLowerCase())))
+    } else if (e.length <3) {
+      setQuestions(temparr)
+    }
+  }
+
   return (
     <div>
-      <h1 className='center'>***Start of QA***</h1>
       <h3>QUESTIONS & ANSWERS</h3>
-      <QaSearchBar />
-      <QaQuestionsList allQuestions={allQuestions} qLimit={qLimit} questions={questions}/>
-      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo}  product_id={allQuestions.product_id}/>
-      <h1 className='center'>***End of QA***</h1>
+      <QaSearchBar updateSearch={updateSearch}/>
+      <QaQuestionsList questions={questions} currentProduct={currentProduct.name}/>
+      <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo} product_id={allQuestions.product_id}/>
     </div>
   )
 }

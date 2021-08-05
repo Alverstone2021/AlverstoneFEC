@@ -3,12 +3,16 @@ import QaAnswersList from './QaAnswersList.jsx';
 import moment from 'moment';
 import { useEffect, useState } from 'react'
 import QaAddAnswerModal from './QaAddAnswerModal.jsx'
+import apiCalls from '../../../../helpers/shoppingApi.js';
 
-const QaQuestion = ({question}) => {
+const QaQuestion = ({question, currentProduct}) => {
 
-  // console.log('qaquestion', question.question_id)
 
-var temparr = [];
+  question.answers = Object.values(question.answers).sort((a, b) => {
+    return b.helpfulness - a.helpfulness
+  })
+
+  var temparr = [];
   for (var i = 0; i < 2; i++) {
     if (Object.values(question.answers)[i] !== undefined) {
       temparr.push(Object.values(question.answers)[i])
@@ -20,9 +24,10 @@ var temparr = [];
   const [numOfAnswersShowing, setNumOfAnswersShowing] = useState(answers.length)
   const [totalNumOfAnswers, setTotalNumOfAnswers] = useState(Object.values(question.answers).length)
   const [moreAnswers, setMoreAnswers] = useState(false)
+  const [helpfulnessRating, setHelpfulnessRating] = useState(question.question_helpfulness)
+  const [reported, setReported] = useState(false)
 
   if (totalNumOfAnswers > 2 && moreAnswers === false && totalNumOfAnswers > numOfAnswersShowing) {
-    // console.log('button should show')
     setMoreAnswers(true)
   }
 
@@ -34,17 +39,10 @@ var temparr = [];
       }
     }
     setAnswers(temp)
-    console.log('totalNumOfAnswers', totalNumOfAnswers)
-    console.log('before numOfAnswersShowing', numOfAnswersShowing + 2)
 
     if (numOfAnswersShowing + 2 >= totalNumOfAnswers) {
-      console.log('inside here')
       setMoreAnswers(false)
-      console.log('status', moreAnswers)
     }
-
-
-
   }
 
   const answerLimitPlusTwo = () => {
@@ -56,19 +54,45 @@ var temparr = [];
 
   const [answerModal, setAnswerModal] = useState(false)
 
+
+  const clickHelpfulness = () => {
+    apiCalls.questionHelpful(question.question_id)
+    .then(() => {
+      setHelpfulnessRating(helpfulnessRating + 1)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
+  const clickReport = () => {
+    apiCalls.questionReport(question.question_id)
+    .then(() => {
+      setReported(true)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
   return (
     <div className='question'>
-
       <div>
         <div>
           <h3><strong>Q: {question.question_body}</strong></h3>
+
           <div>
-            <h4>{question.asker_name}, {moment(question.question_date).format('MMMM Do YYYY')} | Helpful? Yes({question.question_helpfulness}) | <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}>Add Answer</span> | Report</h4>
+            <h4>{question.asker_name}, </h4>
+            <h4>{moment(question.question_date).format('MMMM Do YYYY')} | </h4>
+            <div onClick={clickHelpfulness}>Helpful? Yes({helpfulnessRating})</div>
+            <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}> | Add Answer</span>
+            <div onClick={clickReport}> | {reported ? 'Reported' : 'Report'}</div>
           </div>
+
         </div>
        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
        {moreAnswers && <button onClick={answerLimitPlusTwo}><strong>Load More Answers</strong></button>}
-       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body}/>}
+       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body} currentProduct={currentProduct}/>}
       </div>
 
     </div>
