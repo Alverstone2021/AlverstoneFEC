@@ -3,6 +3,7 @@ import token from '../config.js';
 
 const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
+
 // Retrieves the first five products from the API
 const getAllProducts = function () {
   var config = {
@@ -88,21 +89,25 @@ const getRelatedProducts = function (productId) {
 const addToCart = function (skus, size) {
   let sku_id;
 
-  for (const [key, value] of Object.entries(skus)) {
-    if (value.size === size) {
-      sku_id = key;
+  if (size === '') {
+    alert('Please choose a size')
+  } else {
+    for (const [key, value] of Object.entries(skus)) {
+      if (value.size === size) {
+        sku_id = key;
+      }
     }
-  }
-
-  var config = {
-    method: 'post',
-    url: `${baseUrl}cart/`,
-    headers: {
-      'Authorization': token,
-    },
-    data: {
-      sku_id: sku_id
+    var config = {
+      method: 'post',
+      url: `${baseUrl}cart/`,
+      headers: {
+        'Authorization': token,
+      },
+      data: {
+        sku_id: sku_id
+      }
     }
+    alert('item added to bag!')
   }
   return axios(config);
 }

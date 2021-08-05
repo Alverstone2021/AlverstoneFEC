@@ -2,7 +2,7 @@ import React from 'react';
 
 const AnnouncementBanner = (props) => {
   return (
-    <p className="banner">sale bby</p>
+    <p className="banner">SITE-WIDE ANNOUNCEMENT -- NEW ITEM ON SALE -- NEW PRODUCT HILIGHT</p>
   )
 }
 

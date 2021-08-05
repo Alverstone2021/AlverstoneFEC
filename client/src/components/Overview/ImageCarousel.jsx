@@ -5,7 +5,7 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
 
 
 const ImageCarousel = (props) => {
-  {if (props.productImageCarousel !== []) {
+  {if (props.productImageCarousel.length !== 0) {
     return (
       <div className="carousel-container">
         <IconContext.Provider value={{ style: {fontSize: "20px",  top: "0%", position: "absolute"}}}>
@@ -36,6 +36,7 @@ const ImageCarousel = (props) => {
 function underline(e, total) {
   e.preventDefault();
   // FOR ALL OTHER THUMBNAILS, SET BORDER TO NONE
+
   for (let i = 0; i < total; i++) {
     let thumbnail = document.getElementById('thumb' + i);
     thumbnail.style['border'] = "none"

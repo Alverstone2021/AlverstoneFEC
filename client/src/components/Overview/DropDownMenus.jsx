@@ -1,19 +1,3 @@
-
-// const DropDownMenus = (props) => {
-//   return (
-//     <div className="select">
-//       <select id="STYLE">
-//         <option value="">Option 1</option>
-//       </select>
-//       <select id="QUANTITY">
-//         <option value="1">1</option>
-//       </select>
-//     </div>
-//   )
-// }
-
-// export default DropDownMenus;
-
 import React from 'react';
 
 
@@ -27,12 +11,10 @@ const DropDownMenus = (props) => {
         <select id="SIZE" required onChange={(e) => {props.setSizeSelection(e.target.value)}}>
           <option value="">SELECT SIZE</option>
           {inventory.map((sku, index) => {
-            //if the sku.size value already exists, skip it
-            if (index < 5) {
+            //if the sku.size value already exists, skip it     ------------FIX THIS!!--------------
               return (
                 <option value={sku.size}>{sku.size}</option>
               )
-            }
           })}
         </select>
           {inventory.map((sku, index) => {
