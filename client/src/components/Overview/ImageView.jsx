@@ -9,7 +9,7 @@ const ImageView = (props) => {
   return (
     <div className="image-view-container">
       <IconContext.Provider value={{ style: {fontSize: "30px",  bottom: "50%", position: "absolute"}}}>
-        <div className="left-arrow" onClick={(e) => {previousPhoto(e)}}>
+        <div className="left-arrow" id="left-arrow" onClick={(e) => {previousPhoto(e)}}>
           <AiOutlineArrowLeft/>
         </div>
       </IconContext.Provider >
@@ -20,7 +20,7 @@ const ImageView = (props) => {
       <div className="right-arrow">
         <IconContext.Provider value={{ style: {fontSize: "30px", bottom: "50%", position: "absolute"}}}>
           <div onClick={(e) => {nextPhoto(e)}}>
-            <AiOutlineArrowRight className="right-arrow"/>
+            <AiOutlineArrowRight className="right-arrow" id="right-arrow"/>
           </div>
       </IconContext.Provider>
       </div>
@@ -29,13 +29,14 @@ const ImageView = (props) => {
 
   // ON ARROW CLICK
   function nextPhoto(e) {
+    let end = (props.currentStyle.photos.length - 1);
     props.currentStyle.photos.map((photo, index) => {
       if (props.productImage === photo.url) {
-        // if the next one isnt undefined
         props.setProductImage(props.currentStyle.photos[index+1].url)
-        // if it is undefined, tho
-          // set it to the beginning again
-        //also something about making the arrow dissapear (easy)
+        if (index === end) {
+          let arrow = document.getElementById('right-arrow');
+          arrow.style.display = "none";
+        }
       }
     })
   }
@@ -64,7 +65,7 @@ const ImageView = (props) => {
       clientY = clientY / mHeight * 100;
 
       img.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2.5)`;
-      //img.style.cursor = 'crosshair';
+      img.style.cursor = 'crosshair';
     }
   }
 

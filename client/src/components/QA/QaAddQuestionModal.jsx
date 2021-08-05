@@ -1,6 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import apiCalls from '../../../../helpers/shoppingApi.js';
+
 
 const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
   // console.log('load props product_id', typeof Number(product_id))
@@ -10,7 +12,7 @@ const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
   const [nicknameInput, setNicknameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
 
-  const createNewQuestion = (e) => {
+  const createNewQuestion = () => {
 
     if (questionInput.length < 15) {
       alert('Please write a longer question with a minimum of 15 characters.')
@@ -23,8 +25,6 @@ const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
     } else if (emailInput.length <= 5) {
       alert('Please enter a email address.')
     } else {
-      console.log(questionInput, nicknameInput, emailInput)
-
       var data = JSON.stringify({
         "body": questionInput,
         "name": nicknameInput,
@@ -32,37 +32,15 @@ const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
         "product_id": Number(product_id)
       });
 
-      var config = {
-        method: 'post',
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/',
-        headers: {
-          'Authorization': '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',
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-
-      axios(config)
+      apiCalls.postNewQuestion(data)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        //close modal
         setQuestionModal(false)
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
-
-
-
-
     }
-
-
-
-
-
   }
-
 
   return (
     <div className="modal-qa">

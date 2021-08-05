@@ -19,7 +19,7 @@ const getAllProducts = function () {
 const getQandA = function (productId) {
   var config = {
     method: 'get',
-    url: `${baseUrl}qa/questions/?product_id=${productId}`,
+    url: `${baseUrl}qa/questions/?product_id=${productId}&count=10000`,
     headers: {
       'Authorization': token,
     }
@@ -48,7 +48,6 @@ const getMetaData = function (productId) {
       'Authorization': token,
     }
   }
-  // Return call for metaData
   return axios(config);
 }
 
@@ -85,6 +84,108 @@ const getRelatedProducts = function (productId) {
   return axios(config)
 }
 
+
+const addToCart = function (skus, size) {
+  let sku_id;
+
+  if (size === '') {
+    alert('Please choose a size')
+  } else {
+    for (const [key, value] of Object.entries(skus)) {
+      if (value.size === size) {
+        sku_id = key;
+      }
+    }
+    var config = {
+      method: 'post',
+      url: `${baseUrl}cart/`,
+      headers: {
+        'Authorization': token,
+      },
+      data: {
+        sku_id: sku_id
+      }
+    }
+    alert('item added to bag!')
+  }
+  return axios(config);
+}
+
+const postNewQuestion = function(data) {
+  var config = {
+    method: 'post',
+    url: `${baseUrl}/qa/questions/`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+    data: data
+  }
+  return axios(config)
+}
+
+const postNewAnswer = function(data, question_id) {
+  var config = {
+    method: 'post',
+    url: `${baseUrl}qa/questions/${question_id}/answers`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+    data: data
+  }
+  return axios(config)
+}
+
+const questionHelpful = function(question_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/questions/${question_id}/helpful`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
+  }
+  return axios(config)
+}
+
+const answerHelpful = function(answer_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/answers/${answer_id}/helpful`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
+  }
+  return axios(config)
+}
+
+const answerReport = function(answer_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/answers/${answer_id}/report`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
+  }
+  return axios(config)
+}
+
+const questionReport = function(question_id) {
+  var config = {
+    method: 'put',
+    url: `${baseUrl}qa/questions/${question_id}/report`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
+  }
+  return axios(config)
+}
+
+
 const apiCalls = {
   getAllProducts: getAllProducts,
   getQandA: getQandA,
@@ -92,7 +193,14 @@ const apiCalls = {
   getStyles: getStyles,
   getFeatures: getFeatures,
   getRelatedProducts: getRelatedProducts,
-  getMetaData: getMetaData
+  getMetaData: getMetaData,
+  addToCart: addToCart,
+  postNewQuestion: postNewQuestion,
+  postNewAnswer: postNewAnswer,
+  questionHelpful: questionHelpful,
+  answerHelpful: answerHelpful,
+  answerReport: answerReport,
+  questionReport: questionReport,
 };
 
 export default apiCalls;
