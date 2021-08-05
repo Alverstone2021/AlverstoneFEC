@@ -1,19 +1,22 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
+import QaPhotoInput from './QaPhotoInput.jsx'
 
-
-
-const QaAddAnswerModal = ({setAnswerModal, question, question_id}) => {
+const QaAddAnswerModal = ({setAnswerModal, question, question_id, currentProduct}) => {
   const [answerInput, setAnswerInput] = useState('')
   const [nicknameInput, setNicknameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
-  const [photoInput, setPhotoInput] = useState('')
+  const [photoInput, setPhotoInput] = useState([])
 
-  console.log('question', question_id)
-
+  const [numOfPhotos, setNumOfPhotos] = useState([0])
+  const [showMinus, setShowMinus] = useState(false)
+  const [showPlus, setShowPlus] = useState(true)
 
   const createNewAnswer = (e) => {
+
+    // console.log('photoInput on submit', photoInput)
+
 
     if (answerInput.length === 0) {
       alert('Please type in your answer before submitting')
@@ -29,8 +32,11 @@ const QaAddAnswerModal = ({setAnswerModal, question, question_id}) => {
       "body": answerInput,
       "name": nicknameInput,
       "email": emailInput,
-      "photos": []
+      "photos": photoInput
     });
+
+
+    // console.log('SUBMITION DATA', data)
 
     apiCalls.postNewAnswer(data, question_id)
     .then(function (response) {
@@ -42,6 +48,64 @@ const QaAddAnswerModal = ({setAnswerModal, question, question_id}) => {
     }
   }
 
+  const addPhoto = () => {
+    event.preventDefault()
+    var temp = Object.create(numOfPhotos)
+    temp = [...temp, numOfPhotos.length]
+    setNumOfPhotos(temp)
+
+    if (temp.length >= 1 && temp.length <= 4) {
+      // console.log('add is between 1 and 4')
+      setShowMinus(true)
+      setShowPlus(true)
+    } else if (temp.length >= 5) {
+      // console.log('add is maxed')
+      setShowPlus(false)
+    } else {
+      // console.log('add else')
+      setShowMinus(false)
+      setShowPlus(true)
+    }
+  }
+
+  const removePhoto = () => {
+
+    var urls = Object.create(photoInput)
+    var urls2 = []
+    for (var i = 0; i < urls.length - 1; i++) {
+      urls2.push(urls[i])
+    }
+    setPhotoInput(urls2)
+
+
+    event.preventDefault()
+    var temp = Object.create(numOfPhotos)
+    temp.pop()
+    setNumOfPhotos(temp)
+
+    if (temp.length === 1) {
+      setShowMinus(false)
+    } else if (temp.length >= 1 && temp.length <= 4) {
+      // console.log('minus between 1 and 4')
+      setShowMinus(true)
+      setShowPlus(true)
+    } else if (temp.length >= 5) {
+      // console.log('minus at 5')
+      setShowPlus(false)
+    } else {
+      // console.log('minus else')
+      setShowMinus(false)
+      setShowPlus(true)
+    }
+  }
+
+  const compilePhotos = (e) => {
+    var index = Number(e.target.title)
+    var temp = photoInput;
+    temp[index] = e.target.value
+    setPhotoInput(temp)
+  }
+
 
   return (
     <div className="modal-qa">
@@ -50,7 +114,7 @@ const QaAddAnswerModal = ({setAnswerModal, question, question_id}) => {
         <div className="modal-header">
           <button onClick={() => {setAnswerModal(false)}}>X</button>
           <h3 className="modal-title"><strong>Submit your Answer</strong></h3>
-          <h4>Product Name: {question}</h4>
+          <h4>{currentProduct}: {question}</h4>
         </div>
 
         <form>
@@ -72,8 +136,16 @@ const QaAddAnswerModal = ({setAnswerModal, question, question_id}) => {
               <h5>For authentication reasons, you will not be emailed</h5>
 
               <label>Photo(s) URL</label>
-              <input type="text" placeholder="Photo URL" value={photoInput} onChange={(e) => {setPhotoInput(e.target.value)}}/>
+                {numOfPhotos.map((e, i) => {
+                  // console.log('mapping i', e, i);
+                  return <QaPhotoInput key={i} index={i} compilePhotos={compilePhotos}/>
+                  // return <input type="text" placeholder="Photo URL" value={photoInput} onChange={(e) => {setPhotoInput(e.target.value)}} key={i}/>
+                })}
+
               <h5>add some photo urls if you want</h5>
+              {showPlus ? <button onClick={addPhoto}>+</button> : <button onClick={addPhoto} disabled>+</button>}
+              {showMinus ? <button onClick={removePhoto}>-</button> : <button onClick={removePhoto} disabled>-</button>}
+
             </div>
           </div>
         </form>
