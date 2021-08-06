@@ -8,6 +8,7 @@ import StyleSelector from './StyleSelector.jsx';
 import Stars from '../SharedComponents/Stars.jsx';
 
 const Overview = (props) => {
+  //console.log('hiiii', props)
 
   const [productImage, setProductImage] = useState('');
   const [productImageCarousel, setProductImageCarousel] = useState([]);
@@ -20,6 +21,8 @@ const Overview = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(6);
+  const [currentId, setCurrentId] = useState(0);
+  const [salePrice, setSalePrice] = useState('');
 
 
   useEffect(() => {
@@ -30,12 +33,17 @@ const Overview = (props) => {
         styles.data.results.map((style, index) => {
           if (style.['default?']) {
             hasDefault = true;
+            setCurrentId(props.currentProduct.id)
             setProductImage(style.photos[0].url || 'http://placecorgi.com/260/180')
             setCurrentStyle(style)
             setProductImageCarousel(style.photos)
             setSelected(index)
             setSelectedIndex(index)
-          } // else if its the last index and hasDefault is false
+            if (style.sale_price) {
+              setSalePrice(style.sale_price);
+            }
+          }
+          // else if its the last index and hasDefault is false
         })
       })
   }, [props]);
@@ -43,19 +51,23 @@ const Overview = (props) => {
   return (
     <div className="overview-container">
       <header className="logo-header">
-        <h2 className="logo-boi" >THE STORE</h2>
-        <input type="text" className="search-bar" placeholder="Search.."></input>
+        <h1 className="logo-boi" >THE STORE</h1>
+        <input type="text" className="search-bar" placeholder="Do we have it?"></input>
+        <button className="search-button">Find out</button>
       </header>
       <AnnouncementBanner/>
       <div className="product-info-container">
         <ImageView className="image-view-container" currentProduct={props.currentProduct} currentStyle={currentStyle} productStyles={productStyles} productImage={productImage} productImageCarousel={productImageCarousel} setProductImage={setProductImage} setZoomClicked={setZoomClicked} zoomClicked={zoomClicked} startIndex={startIndex} setStartIndex={setStartIndex} endIndex={endIndex} setEndIndex={setEndIndex} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/>
         <div className="name-and-style-container">
-          {/* <Stars id="rating" className="rating" productId={props.productId}/> */}
-          <p className="rating">⭐️⭐️⭐️⭐️⭐️ <a href="#reviews">Read all reviews</a></p>
+          <div className="container-again-for-stars">
+            { props.currentProduct.id === currentId ? <Stars id="rating" className="rating" style={{size: "35px"}} productId={props.currentProduct.id}/> :
+            <p className="rating"></p>}
+            <a className="read-reviews" href="#reviews">Read all reviews</a>
+          </div>
           <h4 className="category">{props.currentProduct.category}</h4>
           <h1 className="product-name">{props.currentProduct.name}</h1>
-          <h5 className="price">${props.currentProduct.default_price}</h5>
-          <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage} setSizeSelection={setSizeSelection} sizeSelection={sizeSelection} setQuantity={setQuantity} quantity={quantity} setSelected={setSelected} selected={selected}/>
+          {salePrice ? <div className="price"><h5 className="omg"><strike className="sale-price">${props.currentProduct.default_price}</strike></h5><h5 className="help-me">${salePrice}</h5></div> : <h5 className="price">${props.currentProduct.default_price}</h5>}
+          <StyleSelector className="style-selector" currentProduct={props.currentProduct} productStyles={productStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setProductImageCarousel={setProductImageCarousel} setProductImage={setProductImage} setSizeSelection={setSizeSelection} sizeSelection={sizeSelection} setQuantity={setQuantity} quantity={quantity} setSelected={setSelected} selected={selected} setSalePrice={setSalePrice}/>
           <div class="sharethis-inline-share-buttons" id="share"></div>
         </div>
       </div>

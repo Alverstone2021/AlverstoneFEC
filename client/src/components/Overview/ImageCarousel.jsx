@@ -8,13 +8,9 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
 const ImageCarousel = (props) => {
 
   useEffect(() => {
-    // console.log('start', props.startIndex);
-    // console.log('end', props.endIndex);
-    // console.log('endtag', document.getElementById('thumb' + (props.endIndex - 1)));
     if (document.getElementById('thumb' + (props.endIndex - 1))) {
       for (let i = 0; i < props.endIndex - 1; i++) {
         let thumbnail = document.getElementById('thumb' + i);
-        //console.log('thumbb loop', thumbnail);
         thumbnail.style['border'] = "none";
       }
       let current = document.getElementById('thumb' + props.selectedIndex);
@@ -38,12 +34,10 @@ const ImageCarousel = (props) => {
       )
     } else {
       let lessImages = props.productImageCarousel.slice(props.startIndex, props.endIndex);
-      //MAKRE SURE LESS IMAGES IS ALWAYS 6 IN LENGTH
       return (
         <div className="carousel-container">
           {props.startIndex === 0 ? <div style={{width: "20px", height: "20px"}}></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
-            <div className="up-arrow" id="up-arrow" onClick={() => {moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
-            props.setStartIndex(props.startIndex - 1); props.setEndIndex(props.endIndex - 1); props.setSelectedIndex(props.selectedIndex - 1)}}>
+            <div className="up-arrow" id="up-arrow" onClick={() => {props.setStartIndex(props.startIndex - 1); props.setEndIndex(props.endIndex - 1); props.setSelectedIndex(props.selectedIndex - 1)}}>
               <AiOutlineArrowUp/>
             </div>
           </IconContext.Provider >}
@@ -56,8 +50,7 @@ const ImageCarousel = (props) => {
               )
           })}
           {props.productImageCarousel[props.endIndex] === undefined ? <div style={{width: "20px", height: "20px"}}></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
-            <div className="down-arrow" id="down-arrow" onClick={() => {moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
-            props.setStartIndex(props.startIndex + 1); props.setEndIndex(props.endIndex + 1); props.setSelectedIndex(props.selectedIndex + 1)}}>
+            <div className="down-arrow" id="down-arrow" onClick={() => {props.setStartIndex(props.startIndex + 1); props.setEndIndex(props.endIndex + 1); props.setSelectedIndex(props.selectedIndex + 1)}}>
               <AiOutlineArrowDown/>
             </div>
           </IconContext.Provider >}
@@ -69,11 +62,14 @@ const ImageCarousel = (props) => {
   }}
  }
 
-function moveCarousel(start, end, current, total) {
-  //e.preventDefault();
-  //console.log('hi', start, end, current, total)
 
-}
+// moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
+
+// function moveCarousel(start, end, current, total) {
+//   //e.preventDefault();
+//   //console.log('hi', start, end, current, total)
+
+// }
 
 
 export default ImageCarousel;
