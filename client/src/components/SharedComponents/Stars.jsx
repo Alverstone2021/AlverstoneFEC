@@ -1,5 +1,5 @@
 import React from 'react'
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import apiCalls from '../../../../helpers/shoppingApi.js';
 
 const StarRating = (props) => {
@@ -17,7 +17,7 @@ const StarRating = (props) => {
   }, [])
 
   return (
-    <div className="Stars" style={{'--rating': aggregatedRating}} aria-label={`Rating of this product is ${aggregatedRating} out of 5.`}></div>
+    <div className="Stars" style={{ '--rating': aggregatedRating }} aria-label={`Rating of this product is ${aggregatedRating} out of 5.`}></div>
   )
 }
 
