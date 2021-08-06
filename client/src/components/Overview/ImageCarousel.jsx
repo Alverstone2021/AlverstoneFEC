@@ -8,14 +8,13 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
 const ImageCarousel = (props) => {
 
   useEffect(() => {
-    console.log('start', props.startIndex);
-    console.log('end', props.endIndex);
-    console.log('endtag', document.getElementById('thumb' + (props.endIndex - 1)));
+    // console.log('start', props.startIndex);
+    // console.log('end', props.endIndex);
+    // console.log('endtag', document.getElementById('thumb' + (props.endIndex - 1)));
     if (document.getElementById('thumb' + (props.endIndex - 1))) {
-      console.log('hi')
       for (let i = 0; i < props.endIndex - 1; i++) {
         let thumbnail = document.getElementById('thumb' + i);
-        console.log('thumbb loop', thumbnail);
+        //console.log('thumbb loop', thumbnail);
         thumbnail.style['border'] = "none";
       }
       let current = document.getElementById('thumb' + props.selectedIndex);
@@ -24,7 +23,7 @@ const ImageCarousel = (props) => {
   }, [props.selectedIndex])
 
 
-  {if (props.productImageCarousel.length !== 0) {
+  {if (props.productImageCarousel.length > 4) {
     let total = props.productImageCarousel.length;
     if (total <= 6) {
       return (
@@ -38,14 +37,11 @@ const ImageCarousel = (props) => {
         </div>
       )
     } else {
-      // START INDEX CANT BE LESS THAN 0
-      // END INDEX CANT BE MORE THAN 5
-      // IF LAST BIT IS THE CASE,
       let lessImages = props.productImageCarousel.slice(props.startIndex, props.endIndex);
       //MAKRE SURE LESS IMAGES IS ALWAYS 6 IN LENGTH
       return (
         <div className="carousel-container">
-          {props.startIndex === 0 ? <div></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
+          {props.startIndex === 0 ? <div style={{width: "20px", height: "20px"}}></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
             <div className="up-arrow" id="up-arrow" onClick={() => {moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
             props.setStartIndex(props.startIndex - 1); props.setEndIndex(props.endIndex - 1); props.setSelectedIndex(props.selectedIndex - 1)}}>
               <AiOutlineArrowUp/>
@@ -59,7 +55,7 @@ const ImageCarousel = (props) => {
                 </div>
               )
           })}
-          {/* FIX ME */props.endIndex === props.selectedIndex ? <div></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
+          {props.productImageCarousel[props.endIndex] === undefined ? <div style={{width: "20px", height: "20px"}}></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
             <div className="down-arrow" id="down-arrow" onClick={() => {moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
             props.setStartIndex(props.startIndex + 1); props.setEndIndex(props.endIndex + 1); props.setSelectedIndex(props.selectedIndex + 1)}}>
               <AiOutlineArrowDown/>
@@ -75,22 +71,7 @@ const ImageCarousel = (props) => {
 
 function moveCarousel(start, end, current, total) {
   //e.preventDefault();
-  console.log('hi', start, end, current, total)
-
-  // if (end === total) {
-  //   let arrow = document.getElementById('down-arrow');
-  //   console.log(arrow);
-  //   arrow.style.display = "none";
-  // } else if (start === 0) {
-  //   let arrow = document.getElementById('up-arrow');
-  //   console.log(arrow);
-  //   arrow.style.display = "none";
-  // } else {
-  //   let downArrow = document.getElementById('down-arrow');
-  //   downArrow.style.display = "block";
-  //   let upArrow = document.getElementById('up-arrow');
-  //   upArrow.style.display = "block";
-  // }
+  //console.log('hi', start, end, current, total)
 
 }
 
