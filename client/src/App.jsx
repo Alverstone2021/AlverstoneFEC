@@ -1,5 +1,5 @@
 import React from 'react';
-import Overview from './components/Overview/overviewIndex.jsx'
+import Overview from './components/Overview/OverviewIndex.jsx'
 import RelatedProducts from './components/RelatedProducts/RelatedProducts.jsx'
 import QA from './components/QA/QaIndex.jsx'
 import Ratings from './components/Ratings/RatingsIndex.jsx'
