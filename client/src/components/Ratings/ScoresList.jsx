@@ -10,17 +10,17 @@ const ScoresList = (props) => {
 
   useEffect(() => {
     setCurrentAverage(props.average)
-  }, [props.average])
+  }, [props.average]);
 
   return (
     <div className='review-grid-item2'>
       <div className='flex-rating-header'>
         <h1>{props.average}</h1>
-        {currentAverage ? <StarsComponent rating={props.average} /> : <div>empty</div>}
+        {currentAverage === props.average ? <StarsComponent rating={currentAverage} size={'40px'} /> : <div>empty</div>}
       </div>
       <p>{props.recommend}% recommend this product</p>
       {props.starsArray.map((rating, i) => {
-        return <ScoreBarItem key={i} starLabel={rating.value} starCount={rating.count} starScore={rating.score} />
+        return <ScoreBarItem index={i} key={i} starLabel={rating.value} starCount={rating.count} starScore={rating.score} updateStarFilter={props.updateStarFilter} />
       })}
       <div className='comfort-bar-parent'>
         {createCharBars(props.characteristics).map((bar, i) => {
