@@ -41,8 +41,8 @@ const QaIndex = ({allQuestions, currentProduct}) => {
   }
 
   return (
-    <div>
-      <h3>QUESTIONS & ANSWERS</h3>
+    <div className="QnA">
+      <h3 className="QAHeader">QUESTIONS & ANSWERS</h3>
       <QaSearchBar updateSearch={updateSearch}/>
       <QaQuestionsList questions={questions} currentProduct={currentProduct.name}/>
       <QaLoadAdd qLimitPlusTwo={qLimitPlusTwo} product_id={allQuestions.product_id}/>

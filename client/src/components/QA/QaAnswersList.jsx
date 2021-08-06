@@ -3,11 +3,11 @@ import QaAnswer from './QaAnswer.jsx'
 
 const QaAnswersList = ({limitedAnswers}) => {
   return (
-    <div>
+    <React.Fragment>
       {limitedAnswers.map(a => {
         return <QaAnswer answer={a} key={a.id} />;
       })}
-    </div>
+    </React.Fragment>
   )
 }
 

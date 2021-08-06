@@ -357,29 +357,218 @@ select {
 /*-----END OF OVERIEW-----*/
 
 /*------- START of QA ------- */
+
+.qa-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-Block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.question-Text {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.question-Info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 18px;
+}
+
+.QI {
+  margin: 0 5px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.answer-Text {
+  font-weight: 300;
+  margin-top: 15px;
+}
+
+.answerBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.answer-Info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 18px;
+}
+
+.AI {
+  margin: 0 5px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.loadAnswers {
+  margin-top: 10px;
+  margin-left: 23px;
+  font-size: 14px;
+}
+
+.answer-Photos {
+  margin: 5px 0;
+  margin-left: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .QaImage {
+  display: block;
   max-height: 100px;
   max-width: 100px;
+  width: auto;
+  height: auto;
+  border: 2px solid #555;
+  margin: 0 7px;
 }
+
 .answer {
   border: 3px solid black;
   margin: 10px;
   padding: 10px;
 }
+
+.QAHeader {
+  margin-left: 15.2%;
+  font-weight: 200;
+}
+
 .question {
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   padding: 10px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 15%;
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
+
 .qasearchbar {
-  width: 60%;
-  height: 70px;
+  width: 69%;
+  height: 58px;
   margin: 10px;
 }
+
+.QA-LoadAdd {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15.5%;
+}
+
+.LoadBtn {
+  height: 58px;
+  margin-right: 15px;
+  background-color: white;
+  padding: 0 29px;
+  font-size: 15px;
+}
+
+.LoadBtn:Hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 600px;
+  background-color: white;
+}
+
+.modal-body {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 600px;
+  background-color: white;
+}
+
+.modal-footer {
+  width: 600px;
+  background-color: white;
+}
+
+.modal-Inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-Input {
+
+}
+
+.modal-Input-Field {
+
+}
+
+.margin-Below {
+  margin-bottom: 30px;
+}
+
+.char-Count {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 300;
+  margin-left: 15px;
+}
+
+.input-Info {
+  margin-top: 3px;
+  margin-left: 15px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.qaSubmit {
+  height: 34px;
+  background-color: white;
+  padding: 0 29px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.qaSubmit:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.exitBtn {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+}
+
+.exitBtn:Hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.btnMargin {
+  margin: 3px 3px 3px 0;
+}
+
+.qaProductName {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+button:disabled {
+  width: 25px;
+  height: 25px;
+  background-color: #dddddd;
+}
+
 .center {
   text-align: center;
 }
@@ -394,6 +583,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .modal-content {
@@ -409,19 +599,9 @@ select {
   margin: 0px;
 }
 
-.modal-body {
-  padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-.addAnswerBtn {
-  color: blue;
-}
-
 .questionsList {
   position: relative;
-  height: 500px;
+  height: 550px;
   overflow-y: scroll;
 }
 

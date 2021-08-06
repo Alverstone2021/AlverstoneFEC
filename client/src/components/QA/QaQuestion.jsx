@@ -76,26 +76,39 @@ const QaQuestion = ({question, currentProduct}) => {
   }
 
   return (
-    <div className='question'>
-      <div>
-        <div>
-          <h3><strong>Q: {question.question_body}</strong></h3>
 
-          <div>
-            <h4>{question.asker_name}, </h4>
-            <h4>{moment(question.question_date).format('MMMM Do YYYY')} | </h4>
-            <div onClick={clickHelpfulness}>Helpful? Yes({helpfulnessRating})</div>
-            <span className="addAnswerBtn" onClick={() => {setAnswerModal(true)}}> | Add Answer</span>
-            <div onClick={clickReport}> | {reported ? 'Reported' : 'Report'}</div>
-          </div>
+    <div className="question qa-container">
 
+      {/*Question block*/}
+      <div className="question-Block">
+        <div className="question-Text">Q:  {question.question_body}</div>
+        <div className="question-Info">
+          <div className="question-Username QI">by {question.asker_name}, </div>
+          {/* <div className="QI">|</div> */}
+          <div className="question-Date QI">{moment(question.question_date).format('MMMM Do YYYY')}</div>
+          <div className="QI">|</div>
+          <div className="question-Helpful QI" onClick={clickHelpfulness}>Helpful? <u>Yes</u> ({helpfulnessRating})</div>
+          <div className="QI">|</div>
+          <div className="question-AddAnswer QI addAnswerBtn" onClick={() => {setAnswerModal(true)}}>Add Answer</div>
+          <div className="QI">|</div>
+          <div className="question-Report QI" onClick={clickReport}><u>{reported ? 'Reported' : 'Report'}</u></div>
         </div>
-       <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
-       {moreAnswers && <button onClick={answerLimitPlusTwo}><strong>Load More Answers</strong></button>}
-       {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body} currentProduct={currentProduct}/>}
       </div>
 
+      {/*Answer block*/}
+      <div className="answerBlock">
+        <QaAnswersList answers={question.answers} answerLimit={answerLimit} limitedAnswers={answers}/>
+      </div>
+
+      {/*Load More block*/}
+      {/* {moreAnswers && <button onClick={answerLimitPlusTwo}><strong>Load More Answers</strong></button>} */}
+      {moreAnswers && <div onClick={answerLimitPlusTwo} className="loadAnswers">LOAD MORE ANSWERS</div>}
+      {answerModal && <QaAddAnswerModal setAnswerModal={setAnswerModal} question_id={question.question_id}  question={question.question_body} currentProduct={currentProduct}/>}
+
     </div>
+
+
+
   )
 }
 

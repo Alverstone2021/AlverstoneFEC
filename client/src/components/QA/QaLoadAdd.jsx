@@ -9,9 +9,9 @@ const QaLoadAdd = (props) => {
 
 
   return (
-    <div>
-      <button onClick={props.qLimitPlusTwo}>MORE ANSWERED QUESTIONS</button>
-      <button onClick={() => {setQuestionModal(true)}}>ADD A QUESTION +</button>
+    <div className="QA-LoadAdd">
+      <button className="LoadBtn" onClick={props.qLimitPlusTwo}>MORE ANSWERED QUESTIONS</button>
+      <button className="LoadBtn" onClick={() => {setQuestionModal(true)}}>ADD A QUESTION +</button>
       {questionModal && <QaAddQuestionModal setQuestionModal={setQuestionModal} product_id={props.product_id}/>}
     </div>
   )
