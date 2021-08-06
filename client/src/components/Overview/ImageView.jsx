@@ -6,10 +6,9 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 
 
 const ImageView = (props) => {
-  //console.log('imageview', props.selectedIndex)
   return (
     <div className="image-view-container">
-      <IconContext.Provider value={{ style: {fontSize: "30px",  bottom: "50%", position: "absolute"}}}>
+      <IconContext.Provider value={{ style: {fontSize: "20px",  bottom: "50%", position: "absolute"}}}>
         <div className="left-arrow" id="left-arrow" onClick={(e) => {previousPhoto(e); props.setSelectedIndex(props.selectedIndex - 1)}}>
           <AiOutlineArrowLeft/>
         </div>
@@ -19,7 +18,7 @@ const ImageView = (props) => {
         <img src={props.productImage} className="main-image" id="main-image"/>
       </div>
       <div className="right-arrow">
-        <IconContext.Provider value={{ style: {fontSize: "30px", bottom: "50%", position: "absolute"}}}>
+        <IconContext.Provider value={{ style: {fontSize: "20px", bottom: "50%", position: "absolute"}}}>
           <div onClick={(e) => {nextPhoto(e); props.setSelectedIndex(props.selectedIndex + 1)}}>
             <AiOutlineArrowRight className="right-arrow" id="right-arrow"/>
           </div>
@@ -86,12 +85,10 @@ const ImageView = (props) => {
       let div = document.getElementsByClassName("name-and-style-container");
       div[0].style.display = "flex"
       mouseLeave(e)
-      //div[0].style.cursor = "zoom-in"
     } else {
       props.setZoomClicked(true);
       let div = document.getElementsByClassName("name-and-style-container");
       div[0].style.display = "none"
-      //div[0].style.cursor = "crosshair"
     }
 
   }
