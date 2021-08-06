@@ -28,15 +28,28 @@ const getQandA = function (productId) {
   return axios(config);
 }
 
-const getRatings = function (productId) {
+const getRatings = function (productId, sort) {
   var config = {
     method: 'get',
-    url: `${baseUrl}reviews/?product_id=${productId}&count=1000`,
+    url: `${baseUrl}reviews/?product_id=${productId}&count=1000&sort=${sort}`,
     headers: {
       'Authorization': token,
     }
   }
   // Return call for ratings
+  return axios(config);
+}
+
+const postReview = function (obj) {
+  var config = {
+    method: 'post',
+    url: `${baseUrl}reviews`,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    },
+    data: obj
+  }
   return axios(config);
 }
 
@@ -111,7 +124,7 @@ const addToCart = function (skus, size) {
   return axios(config);
 }
 
-const postNewQuestion = function(data) {
+const postNewQuestion = function (data) {
   var config = {
     method: 'post',
     url: `${baseUrl}/qa/questions/`,
@@ -124,7 +137,7 @@ const postNewQuestion = function(data) {
   return axios(config)
 }
 
-const postNewAnswer = function(data, question_id) {
+const postNewAnswer = function (data, question_id) {
   var config = {
     method: 'post',
     url: `${baseUrl}qa/questions/${question_id}/answers`,
@@ -137,7 +150,7 @@ const postNewAnswer = function(data, question_id) {
   return axios(config)
 }
 
-const questionHelpful = function(question_id) {
+const questionHelpful = function (question_id) {
   var config = {
     method: 'put',
     url: `${baseUrl}qa/questions/${question_id}/helpful`,
@@ -149,7 +162,7 @@ const questionHelpful = function(question_id) {
   return axios(config)
 }
 
-const answerHelpful = function(answer_id) {
+const answerHelpful = function (answer_id) {
   var config = {
     method: 'put',
     url: `${baseUrl}qa/answers/${answer_id}/helpful`,
@@ -161,7 +174,7 @@ const answerHelpful = function(answer_id) {
   return axios(config)
 }
 
-const answerReport = function(answer_id) {
+const answerReport = function (answer_id) {
   var config = {
     method: 'put',
     url: `${baseUrl}qa/answers/${answer_id}/report`,
@@ -173,7 +186,7 @@ const answerReport = function(answer_id) {
   return axios(config)
 }
 
-const questionReport = function(question_id) {
+const questionReport = function (question_id) {
   var config = {
     method: 'put',
     url: `${baseUrl}qa/questions/${question_id}/report`,
@@ -201,6 +214,7 @@ const apiCalls = {
   answerHelpful: answerHelpful,
   answerReport: answerReport,
   questionReport: questionReport,
+  postReview: postReview
 };
 
 export default apiCalls;

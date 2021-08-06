@@ -16,7 +16,7 @@ const ScoresList = (props) => {
     <div className='review-grid-item2'>
       <div className='flex-rating-header'>
         <h1>{props.average}</h1>
-        {currentAverage ? <StarsComponent rating={props.average} /> : <div>empty</div>}
+        {currentAverage ? <StarsComponent rating={currentAverage} size={'40px'} /> : <div>empty</div>}
       </div>
       <p>{props.recommend}% recommend this product</p>
       {props.starsArray.map((rating, i) => {

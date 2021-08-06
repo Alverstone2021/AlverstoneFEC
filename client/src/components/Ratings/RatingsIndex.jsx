@@ -4,10 +4,10 @@ import ScoresList from './ScoresList.jsx';
 import { useEffect, useState } from 'react';
 import apiCalls from '../../../../helpers/shoppingApi.js';
 import ReviewModal from './ReviewModal.jsx';
+import ReviewListButtons from './ReviewListButtons.jsx';
 
 
 const RatingsIndex = (props) => {
-
   const [allRatings, setAllRatings] = useState([]);
   const [metaData, setMetaData] = useState('');
   const [averageScore, setAverageScore] = useState(0);
@@ -19,16 +19,75 @@ const RatingsIndex = (props) => {
   const [filterTitle, setFilterTitle] = useState('Relevance');
   // modal stuff
   const [showModal, setShowModal] = useState(false);
+
+  const [rating, setRating] = useState(0);
+  const onSaveRating = (index) => {
+    console.log('rating score: ', index);
+    setRating(index);
+  };
+  //object to track through modal
+  var charObj = {};
+  const [characteristicObj, setCharacteristicObj] = useState({});
+  const updateCharObj = (key, value) => {
+    charObj[key] = value;
+    console.log('charObj, ', charObj);
+    //setCharacteristicObj(charObj);
+  }
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
+  const [recommend, setRecommend] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
+  //axios Post
+  const postReview = () => {
+    var obj = {
+      "product_id": props.currentProduct.id,
+      "rating": rating,
+      "summary": summary,
+      "body": body,
+      "recommend": recommend,
+      "name": name,
+      "email": email,
+      "photos": photos,
+      "characteristics": charObj
+    }
+
+    console.log('POST OBJECT: ', obj);
+    apiCalls.postReview(obj)
+      .then((results) => {
+        console.log('POST RESULTS: ', results);
+        setShowModal(false);
+        setFilterTitle('Newest');
+        changeMainFilter('newest');
+      })
+      .catch((error) => {
+        console.log('Error Post Reviews: ', error);
+      })
+  };
+  /////////
+
   //console.log('current product: ', props.currentProduct);
+  const [showAmount, setShowAmount] = useState(2);
+  const [showLoad, setShowLoad] = useState(true);
+
+
+
+
+
 
   //on props updated
   useEffect(() => {
     if (!props.currentProduct.id) return;
-    apiCalls.getRatings(props.currentProduct.id)
+    apiCalls.getRatings(props.currentProduct.id, 'relevant')
       .then((ratings) => {
         // console.log('Reviews: ', ratings.data.results);
         setAllRatings(ratings.data.results);
-        setFilteredReviews(sortData(ratings.data.results));
+        // setFilteredReviews(sortData(ratings.data.results));
+        // HERE YOU WILL APPLY THE STAR FILTERS
+
+        setFilteredReviews(ratings.data.results);
+        setShowAmount(2);
       })
       .catch((error) => {
         console.log('Error fetching reviews: ', error);
@@ -55,6 +114,30 @@ const RatingsIndex = (props) => {
   useEffect(() => {
   }, [mainFilter]);
 
+  //Changing the main filter
+  const changeMainFilter = (value) => {
+    apiCalls.getRatings(props.currentProduct.id, value)
+      .then((ratings) => {
+        // console.log('Reviews: ', ratings.data.results);
+        setAllRatings(ratings.data.results)
+        // setFilteredReviews(sortData(ratings.data.results));
+        // HERE YOU WILL APPLY THE STAR FILTERS
+        setFilteredReviews(ratings.data.results);
+      })
+      .catch((error) => {
+        console.log('Error fetching reviews: ', error);
+      });
+  }
+
+  // useEffect(() => {
+  //   showReviewAmount(0);
+  // }, [allRatings])
+
+  //set show amount function
+  const showReviewAmount = (incrementor) => {
+    setShowAmount(incrementor += showAmount);
+  }
+
   return (
     <div className='reviews-grid-container'>
       <div className='review-grid-item1'>
@@ -68,30 +151,40 @@ const RatingsIndex = (props) => {
             <div className='review-dropdown-content'>
               <p onClick={() => {
                 setFilterTitle('Helpfulness');
-                setMainFilter('h');
-                setFilteredReviews(sortData(allRatings, 'h'));
+                changeMainFilter('helpful');
               }
               }>Helpfulness</p>
               <p onClick={() => {
                 setFilterTitle('Newest');
-                setMainFilter('n');
-                setFilteredReviews(sortData(allRatings, 'n'));
+                changeMainFilter('newest');
               }
               }>Newest</p>
               <p onClick={() => {
                 setFilterTitle('Relevance');
-                setMainFilter('r');
-                setFilteredReviews(sortData(allRatings, 'r'));
+                changeMainFilter('relevant');
               }
               }>Relevance</p>
             </div>
           </span>
         </div>
-        <ReviewsList filteredReviews={filteredReviews} />
-        <button onClick={() => setShowModal(true)}>Add a review</button>
-        <ReviewModal metaData={metaData} show={showModal} handleClose={setShowModal} />
+        <ReviewsList filteredReviews={filteredReviews} showAmount={showAmount} setShowLoad={setShowLoad} />
+        <ReviewListButtons showLoad={showLoad} showAmount={showAmount} setShowAmount={setShowAmount} setShowModal={setShowModal} />
+        <ReviewModal
+          metaData={metaData}
+          show={showModal}
+          handleClose={setShowModal}
+          updateCharObj={updateCharObj}
+          rating={rating}
+          onSaveRating={onSaveRating}
+          setSummary={setSummary}
+          setBody={setBody}
+          setRecommend={setRecommend}
+          setName={setName}
+          setEmail={setEmail}
+          setPhotos={setPhotos}
+          postReview={postReview} />
       </div>
-    </div>
+    </div >
   );
 };
 
@@ -200,4 +293,5 @@ const sortData = (unfilteredArray, mainFilter = 'r') => {
 const clearFiltering = () => {
 
 }
+
 export default RatingsIndex;
