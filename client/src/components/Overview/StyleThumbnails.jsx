@@ -31,10 +31,15 @@ function placeCheck(currentStyle, allStyles) {
 
   allStyles.map((style) => {
     let div = document.getElementById('check' + style.style_id);
+    console.log('div', div);
+    console.log(currentStyle.style_id);
+    console.log(style.style_id)
     if (currentStyle.style_id === style.style_id) {
       div.style.display = "block";
     } else {
+      console.log('hey wtf b4', div)
       div.style.display = "none";
+      console.log('hey wtf afth', div)
     }
   })
 }

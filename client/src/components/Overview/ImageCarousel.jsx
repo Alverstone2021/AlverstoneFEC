@@ -8,19 +8,18 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
 const ImageCarousel = (props) => {
 
   useEffect(() => {
-    // gotta be a different edge case here DEFINITELY its breaking after its loaded lol
-    // so what do we need to check for then, to take care of the null edgecase
     console.log('start', props.startIndex);
-    console.log('end', props.endIndex)
-    //console.log()
-    if (document.getElementById('thumb' + props.endIndex)) {
+    console.log('end', props.endIndex);
+    console.log('endtag', document.getElementById('thumb' + (props.endIndex - 1)));
+    if (document.getElementById('thumb' + (props.endIndex - 1))) {
       console.log('hi')
-      for (let i = props.startIndex; i < props.endIndex; i++) {
+      for (let i = 0; i < props.endIndex - 1; i++) {
         let thumbnail = document.getElementById('thumb' + i);
+        console.log('thumbb loop', thumbnail);
         thumbnail.style['border'] = "none";
       }
       let current = document.getElementById('thumb' + props.selectedIndex);
-      current.style['border-bottom'] = "2px solid black";
+      if (current) {current.style['border-bottom'] = "1px solid black";}
     }
   }, [props.selectedIndex])
 
@@ -28,7 +27,6 @@ const ImageCarousel = (props) => {
   {if (props.productImageCarousel.length !== 0) {
     let total = props.productImageCarousel.length;
     if (total <= 6) {
-      console.log('where ur pics at bro')
       return (
         <div className="carousel-container">
           {props.productImageCarousel.map((img, i) => {
@@ -36,35 +34,37 @@ const ImageCarousel = (props) => {
             <div className="indv-thumbnail-div">
               <img className="indv-thumbnail" id={'thumb' + i} src={img.thumbnail_url} onClick={(e) => {props.setProductImage(img.url); props.setSelectedIndex(i)}}></img>
             </div>
-          )
-      })}
+          )})}
         </div>
       )
     } else {
+      // START INDEX CANT BE LESS THAN 0
+      // END INDEX CANT BE MORE THAN 5
+      // IF LAST BIT IS THE CASE,
       let lessImages = props.productImageCarousel.slice(props.startIndex, props.endIndex);
-      console.log('less', lessImages);
+      //MAKRE SURE LESS IMAGES IS ALWAYS 6 IN LENGTH
       return (
         <div className="carousel-container">
-          <IconContext.Provider value={{ style: {fontSize: "20px",  top: "0%", position: "absolute"}}}>
+          {props.startIndex === 0 ? <div></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
             <div className="up-arrow" id="up-arrow" onClick={() => {moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
             props.setStartIndex(props.startIndex - 1); props.setEndIndex(props.endIndex - 1); props.setSelectedIndex(props.selectedIndex - 1)}}>
               <AiOutlineArrowUp/>
             </div>
-          </IconContext.Provider >
+          </IconContext.Provider >}
+
           {lessImages.map((img, i) => {
               return (
                 <div className="indv-thumbnail-div">
                   <img className="indv-thumbnail" id={'thumb' + i} src={img.thumbnail_url} onClick={(e) => {props.setProductImage(img.url); props.setSelectedIndex(i)}}></img>
                 </div>
               )
-          })
-          }
-          <IconContext.Provider value={{ style: {fontSize: "20px",  bottom: "0%", position: "absolute"}}}>
+          })}
+          {/* FIX ME */props.endIndex === props.selectedIndex ? <div></div> : <IconContext.Provider value={{ style: {fontSize: "20px", left: "45%", position: "absolute"}}}>
             <div className="down-arrow" id="down-arrow" onClick={() => {moveCarousel(props.startIndex, props.endIndex, props.selectedIndex, total);
             props.setStartIndex(props.startIndex + 1); props.setEndIndex(props.endIndex + 1); props.setSelectedIndex(props.selectedIndex + 1)}}>
               <AiOutlineArrowDown/>
             </div>
-          </IconContext.Provider >
+          </IconContext.Provider >}
         </div>
       )
     }
