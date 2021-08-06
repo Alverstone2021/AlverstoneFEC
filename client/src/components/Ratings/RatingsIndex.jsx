@@ -60,7 +60,7 @@ const RatingsIndex = (props) => {
       <div className='review-grid-item1'>
         <h4>RATINGS & REVIEWS</h4>
       </div>
-      <ScoresList average={averageScore} recommend={recommendVal} starsArray={starsArray} characteristics={metaData.characteristics} allRatings={allRatings} />
+      <ScoresList average={averageScore} recommend={recommendVal} starsArray={starsArray} characteristics={metaData.characteristics} allRatings={allRatings} currentProduct={props.currentProduct} />
       <div className='review-grid-item3'>
         <div className='review-dropdown'>
           <h3>{filteredReviews.length} reviews, sorted by </h3>
@@ -121,10 +121,10 @@ const getAverage = (metaData) => {
 const getRecPercent = (metaData) => {
   var total = 0;
   var doRecommend = 0;
-  total += parseInt(metaData.recommended.true);
-  total += parseInt(metaData.recommended.false);
+  total += parseInt(metaData.recommended.true || 0);
+  total += parseInt(metaData.recommended.false || 0);
 
-  doRecommend += parseInt(metaData.recommended.true);
+  doRecommend += parseInt(metaData.recommended.true || 0);
 
   //now return the percent
 
@@ -144,20 +144,20 @@ const getStarsPercentage = (metaData) => {
     { score: 0, value: 1, count: 0 }
   ];
   // set total amount of ratings and get their percentages
-  total += parseInt(metaData.ratings[1]);
-  scoresArray[4].count = parseInt(metaData.ratings[1]);
+  total += parseInt(metaData.ratings[1] || 0);
+  scoresArray[4].count = parseInt(metaData.ratings[1] || 0);
 
-  total += parseInt(metaData.ratings[2]);
-  scoresArray[3].count = parseInt(metaData.ratings[2]);
+  total += parseInt(metaData.ratings[2] || 0);
+  scoresArray[3].count = parseInt(metaData.ratings[2] || 0);
 
-  total += parseInt(metaData.ratings[3]);
-  scoresArray[2].count = parseInt(metaData.ratings[3]);
+  total += parseInt(metaData.ratings[3] || 0);
+  scoresArray[2].count = parseInt(metaData.ratings[3] || 0);
 
-  total += parseInt(metaData.ratings[4]);
-  scoresArray[1].count = parseInt(metaData.ratings[4]);
+  total += parseInt(metaData.ratings[4] || 0);
+  scoresArray[1].count = parseInt(metaData.ratings[4] || 0);
 
-  total += parseInt(metaData.ratings[5]);
-  scoresArray[0].count = parseInt(metaData.ratings[5]);
+  total += parseInt(metaData.ratings[5] || 0);
+  scoresArray[0].count = parseInt(metaData.ratings[5] || 0);
 
   // now find the averages of our array items
   for (var i = 0; i < scoresArray.length; i++) {

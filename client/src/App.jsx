@@ -64,15 +64,17 @@ const App = () => {
       })
       .catch((error) => {
         console.log('Error: ', error)
-      })
-      setAllQuestions([])
+      });
+    setAllQuestions([])
     apiCalls.getQandA(currentProduct.id)
       .then((questions) => {
         setAllQuestions(questions.data)
       })
       .catch((error) => {
         console.log('Error: ', error)
-      })
+      });
+    //fetch meta data
+
   }, [currentProduct])
 
 

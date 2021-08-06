@@ -1,5 +1,5 @@
 import React from 'react'
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import apiCalls from '../../../../helpers/shoppingApi.js';
 
 const StarRating = (props) => {

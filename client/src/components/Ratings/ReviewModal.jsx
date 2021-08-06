@@ -1,50 +1,71 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import ModalRatingBar from './ModalRatingBar.jsx';
 
 const ReviewModal = (props) => {
-  const showHideClassName = props.show ? "review-modal display-block" : "review-modal display-none";
+  const showHideClassName = props.show ? "review-modal display-grid" : "review-modal display-none";
+
+  // hooks
+
   return (
     <div className={showHideClassName}>
+      {/* <div className='review-modal-grid'> */}
+      <div className='review-modal-grid-title'>
+        <p>Please rate this product:</p>
+      </div>
       <div className='review-modal-layout'>
         <form>
-          <p>Please rate this product:</p>
           <span>
             <input type="radio" id="1star" value={1}>
             </input>
-            <label for="1star">1 Stars</label>
+            <label>1 Stars</label>
             <input type="radio" id="2star" value={2}>
             </input>
-            <label for="2star">2 Stars</label>
+            <label>2 Stars</label>
             <input type="radio" id="3star" value={3}>
             </input>
-            <label for="3star">3 Stars</label>
+            <label>3 Stars</label>
             <input type="radio" id="4star" value={4}>
             </input>
-            <label for="4star">4 Stars</label>
+            <label>4 Stars</label>
             <input type="radio" id="5star" value={5}>
             </input>
-            <label for="5star">5 Stars</label>
+            <label>5 Stars</label>
           </span>
         </form>
+        <h4>Do you recommend this product?</h4>
         <div className='modal-recommend-parent'>
-          <label for='recommend-yes'>Yes</label>
-          <input id='recommend-yes' type="radio" value={true}></input>
-          <label for='recommend-no'>No</label>
-          <input id='recommend-no' type="radio" value={false}></input>
+          <label>Yes</label>
+          <input name='recommend' id='recommend-yes' type="radio" value={true}></input>
+          <label>No</label>
+          <input name='recommend' id='recommend-no' type="radio" value={false}></input>
         </div>
         <div className='modal-characteristic'>
-          <h4>Characteristics:</h4>
+          <h4 style={{ margin: '8px' }}>Characteristics:</h4>
           {createCharBars(props.metaData.characteristics).map((char, i) => {
             return (
-              <ModalRatingBar key={i} title={char.title} label1={char.label1} label2={char.label2} label3={char.label3} label4={char.label4} label5={char.label5} />
+              <ModalRatingBar key={i} title={char.title} label1={char.label1} label2={char.label2} label3={char.label3} label4={char.label4} label5={char.label5} charId={char.id} />
             );
           })}
         </div>
-        <input placeholder='Example: jackson11' style={{ height: '25px', width: '25%' }} type='text'></input>
-        <textarea placeholder='Example: Best purchase ever!' type='text' style={{ height: '100px', width: '35%', }}></textarea>
       </div>
-      <button onClick={() => props.handleClose(false)}>Close</button>
-      <button onClick={() => props.handleClose(false)}>Submit review</button>
+      <div className='review-modal-grid-feedback'>
+        <p style={{ margin: '4px' }}>Username:</p>
+        <input placeholder='Example: jackson11' style={{ height: '25px', width: '200px' }} type='text'></input>
+        <p style={{ margin: '4px' }}>Email:</p>
+        <input placeholder='Example: jackson11@email.com' style={{ height: '25px', width: '200px' }} type='text'></input>
+        <p style={{ margin: '4px' }}>Review title:</p>
+        <input placeholder='Example: Best purchase ever!' style={{ height: '25px', width: '200px' }} type='text'></input>
+        <textarea placeholder='Why did you like the product or not?' type='text' style={{ height: '100px', width: '200px', }}></textarea>
+        <div className='review-modal-uploadImages'>
+          <input placeholder='Photo URL' style={{ height: '25px', width: '200px' }} type='text'></input>
+        </div>
+      </div>
+      <div className='review-modal-buttons-parent'>
+        <div className='modal-div-buttons' onClick={() => props.handleClose(false)}>Close</div>
+        <div className='modal-div-buttons' onClick={() => props.handleClose(false)}>Submit +</div>
+      </div>
+      {/* </div> */}
     </div>
   );
 };
@@ -57,6 +78,7 @@ const createCharBars = (charObject) => {
       var barObj = {};
       barObj.title = key;
       barObj.value = parseFloat(charObject[key].value);
+      barObj.id = charObject[key];
       switch (key) {
         case 'Size':
           barObj.label1 = 'A size too small';

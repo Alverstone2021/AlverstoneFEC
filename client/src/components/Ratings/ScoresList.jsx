@@ -1,13 +1,22 @@
 import React from 'react';
 import ScoreBarItem from './ScoreBarItem.jsx';
 import ComfortSizeBar from './ComfortSizeBar.jsx';
+import StarsComponent from '../SharedComponents/Stars.jsx';
+import { useEffect, useState } from 'react';
 
 const ScoresList = (props) => {
+
+  const [currentAverage, setCurrentAverage] = useState(0)
+
+  useEffect(() => {
+    setCurrentAverage(props.average)
+  }, [props.average])
+
   return (
     <div className='review-grid-item2'>
       <div className='flex-rating-header'>
         <h1>{props.average}</h1>
-        <p>Stars Component here!!</p>
+        {currentAverage ? <StarsComponent rating={props.average} /> : <div>empty</div>}
       </div>
       <p>{props.recommend}% recommend this product</p>
       {props.starsArray.map((rating, i) => {
