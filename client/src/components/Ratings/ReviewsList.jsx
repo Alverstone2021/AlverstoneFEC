@@ -13,7 +13,7 @@ const ReviewsList = (props) => {
     } else {
       props.setShowLoad(true);
     }
-  }, [props])
+  }, [props]);
 
 
   //conditional render

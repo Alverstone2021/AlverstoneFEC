@@ -15,10 +15,16 @@ const ReviewsListItem = (props) => {
   var helpVal = 0;
   helpVal += props.review.helpfulness;
 
+  //updating star components
+  const [currentScore, setCurrentScore] = useState(0)
+  useEffect(() => {
+    setCurrentScore(props.review.rating);
+  }, [props.review]);
+
   return (
     <div className='reviewListItem-parent'>
       <div className='flex-review-starLabel'>
-        <StarsComponent rating={props.review.rating} size={'30px'} />
+        {currentScore === props.review.rating ? <StarsComponent rating={props.review.rating} size={'20px'} /> : <div></div>}
         <h5>{props.review.reviewer_name}-{moment(props.review.date).format('MMMM Do YYYY')}</h5>
       </div>
       <h3>{props.review.summary}</h3>

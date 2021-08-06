@@ -22,7 +22,7 @@ const RatingsIndex = (props) => {
 
   const [rating, setRating] = useState(0);
   const onSaveRating = (index) => {
-    console.log('rating score: ', index);
+    // console.log('rating score: ', index);
     setRating(index);
   };
   //object to track through modal
@@ -30,7 +30,7 @@ const RatingsIndex = (props) => {
   const [characteristicObj, setCharacteristicObj] = useState({});
   const updateCharObj = (key, value) => {
     charObj[key] = value;
-    console.log('charObj, ', charObj);
+    // console.log('charObj, ', charObj);
     //setCharacteristicObj(charObj);
   }
   const [summary, setSummary] = useState('');
@@ -56,7 +56,7 @@ const RatingsIndex = (props) => {
     console.log('POST OBJECT: ', obj);
     apiCalls.postReview(obj)
       .then((results) => {
-        console.log('POST RESULTS: ', results);
+        // console.log('POST RESULTS: ', results);
         setShowModal(false);
         setFilterTitle('Newest');
         changeMainFilter('newest');
@@ -67,13 +67,45 @@ const RatingsIndex = (props) => {
   };
   /////////
 
+  //filterStars
+  var filterStarObj = {};
+
+  const filterByStars = (filtObj) => {
+    var finalFilter = [];
+    for (var key in filtObj) {
+      if (filtObj[key]) {
+        var stateCopy = allRatings.slice();
+        var pieceOfArray = stateCopy.filter((review) => {
+          return review.rating == key;
+        });
+        for (var i = 0; i < pieceOfArray.length; i++) {
+          finalFilter.push(pieceOfArray[i]);
+        }
+      }
+    }
+    setFilteredReviews(finalFilter);
+  }
+
+  const updateStarFilter = (key) => {
+    if (filterStarObj[key]) {
+      filterStarObj[key] = false;
+    } else {
+      filterStarObj[key] = true;
+    }
+    filterByStars(filterStarObj);
+  }
+
+
+  // const [filter1, setfilter1] = useState(false);
+  // const [filter2, setfilter2] = useState(false);
+  // const [filter3, setfilter3] = useState(false);
+  // const [filter4, setfilter4] = useState(false);
+  // const [filter5, setfilter5] = useState(false);
+  //////
+
   //console.log('current product: ', props.currentProduct);
   const [showAmount, setShowAmount] = useState(2);
   const [showLoad, setShowLoad] = useState(true);
-
-
-
-
 
 
   //on props updated
@@ -82,6 +114,7 @@ const RatingsIndex = (props) => {
     apiCalls.getRatings(props.currentProduct.id, 'relevant')
       .then((ratings) => {
         // console.log('Reviews: ', ratings.data.results);
+        setFilterTitle('Relevance');
         setAllRatings(ratings.data.results);
         // setFilteredReviews(sortData(ratings.data.results));
         // HERE YOU WILL APPLY THE STAR FILTERS
@@ -143,7 +176,14 @@ const RatingsIndex = (props) => {
       <div className='review-grid-item1'>
         <h4>RATINGS & REVIEWS</h4>
       </div>
-      <ScoresList average={averageScore} recommend={recommendVal} starsArray={starsArray} characteristics={metaData.characteristics} allRatings={allRatings} currentProduct={props.currentProduct} />
+      <ScoresList
+        average={averageScore}
+        recommend={recommendVal}
+        starsArray={starsArray}
+        characteristics={metaData.characteristics}
+        allRatings={allRatings}
+        currentProduct={props.currentProduct}
+        updateStarFilter={updateStarFilter} />
       <div className='review-grid-item3'>
         <div className='review-dropdown'>
           <h3>{filteredReviews.length} reviews, sorted by </h3>
@@ -167,7 +207,7 @@ const RatingsIndex = (props) => {
             </div>
           </span>
         </div>
-        <ReviewsList filteredReviews={filteredReviews} showAmount={showAmount} setShowLoad={setShowLoad} />
+        <ReviewsList filterObj={filterStarObj} filteredReviews={filteredReviews} showAmount={showAmount} setShowLoad={setShowLoad} />
         <ReviewListButtons showLoad={showLoad} showAmount={showAmount} setShowAmount={setShowAmount} setShowModal={setShowModal} />
         <ReviewModal
           metaData={metaData}
