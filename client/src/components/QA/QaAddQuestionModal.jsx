@@ -47,32 +47,38 @@ const QaAddQuestionModal = ({setQuestionModal, product_id}) => {
       <div className="modal-content">
 
         <div className="modal-header">
-          <button onClick={() => {setQuestionModal(false)}}>X</button>
           <h3 className="modal-title"><strong>Submit a new Question</strong></h3>
+          <button className="exitBtn" onClick={() => {setQuestionModal(false)}}>X</button>
         </div>
 
-        <form>
-          <div className="modal-body">
-            <div>
-              <label>Question*</label>
-              <input type="text" placeholder="What's your question?" maxLength="1000" name="question" value={questionInput} onChange={(e) => {setQuestionInput(e.target.value)}}/>
-              <h5>{questionInput.length} / 1000 characters</h5>
-            </div>
-            <div>
-              <label>Nickname*</label>
-              <input type="text" placeholder="Example: jackson11" maxLength="60" value={nicknameInput} onChange={(e) => {setNicknameInput(e.target.value)}}/>
-              <h5>For privacy reasons, do not use your full name or email address</h5>
-              <h5>{nicknameInput.length} / 60 characters</h5>
-              <label>Email*</label>
-              <input type="text" placeholder="Example: jack@email.com" value={emailInput} onChange={(e) => {setEmailInput(e.target.value)}}/>
-              <h5>For authentication reasons, you will not be emailed</h5>
-            </div>
-          </div>
-        </form>
 
+       <div className="modal-body">
+         <form>
+
+            <div className="modal-Inputs">
+              <label className="modal-Input-Field">Question*</label>
+              <input className="modal-Input" type="text" placeholder="What's your question?" maxLength="1000" name="question" value={questionInput} onChange={(e) => {setQuestionInput(e.target.value)}}/>
+              <div className="char-Count margin-Below">{questionInput.length} / 1000 characters</div>
+            </div>
+
+            <div className="modal-Inputs">
+              <label className="modal-Input-Field">Nickname*</label>
+              <input className="modal-Input" type="text" placeholder="Example: jackson11" maxLength="60" value={nicknameInput} onChange={(e) => {setNicknameInput(e.target.value)}}/>
+              <div className="char-Count">{nicknameInput.length} / 60 characters</div>
+              <div className="input-Info margin-Below">For privacy reasons, do not use your full name or email address</div>
+            </div>
+
+            <div className="modal-Inputs">
+              <label className="modal-Input-Field">Email*</label>
+              <input className="modal-Input" type="text" placeholder="Example: jack@email.com" value={emailInput} onChange={(e) => {setEmailInput(e.target.value)}}/>
+              <div className="input-Info margin-Below">For authentication reasons, you will not be emailed</div>
+            </div>
+
+          </form>
+        </div>
 
         <div className="modal-footer">
-          <button className="button" onClick={createNewQuestion}>Submit</button>
+          <button className="qaSubmit" onClick={createNewQuestion}>Submit</button>
         </div>
 
       </div>

@@ -114,7 +114,7 @@ const addToCart = function (skus, size) {
 const postNewQuestion = function(data) {
   var config = {
     method: 'post',
-    url: `${baseUrl}/qa/questions/`,
+    url: `${baseUrl}qa/questions/`,
     headers: {
       'Authorization': token,
       'Content-Type': 'application/json'
