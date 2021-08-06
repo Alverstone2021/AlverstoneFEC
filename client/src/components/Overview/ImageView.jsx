@@ -6,20 +6,21 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 
 
 const ImageView = (props) => {
+  //console.log('imageview', props.selectedIndex)
   return (
     <div className="image-view-container">
       <IconContext.Provider value={{ style: {fontSize: "30px",  bottom: "50%", position: "absolute"}}}>
-        <div className="left-arrow" id="left-arrow" onClick={(e) => {previousPhoto(e)}}>
+        <div className="left-arrow" id="left-arrow" onClick={(e) => {previousPhoto(e); props.setSelectedIndex(props.selectedIndex - 1)}}>
           <AiOutlineArrowLeft/>
         </div>
       </IconContext.Provider >
-        <ImageCarousel className="carousel" productImageCarousel={props.productImageCarousel} currentStyle={props.currentStyle} setProductImage={props.  setProductImage}/>
+        <ImageCarousel className="carousel" productImageCarousel={props.productImageCarousel} currentStyle={props.currentStyle} setProductImage={props.setProductImage} startIndex={props.startIndex} setStartIndex={props.setStartIndex} endIndex={props.endIndex} setEndIndex={props.setEndIndex} selectedIndex={props.selectedIndex} setSelectedIndex={props.setSelectedIndex}/>
       <div className="main-image-div" id="main-image-div" onMouseMove={(e) => {mouseMove(e)}} onMouseLeave={(e) => {mouseLeave(e)}} onClick={(e) => {extendedView(e)}}>
         <img src={props.productImage} className="main-image" id="main-image"/>
       </div>
       <div className="right-arrow">
         <IconContext.Provider value={{ style: {fontSize: "30px", bottom: "50%", position: "absolute"}}}>
-          <div onClick={(e) => {nextPhoto(e)}}>
+          <div onClick={(e) => {nextPhoto(e); props.setSelectedIndex(props.selectedIndex + 1)}}>
             <AiOutlineArrowRight className="right-arrow" id="right-arrow"/>
           </div>
       </IconContext.Provider>
