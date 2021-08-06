@@ -1,13 +1,15 @@
 import React from 'react';
-import Overview from './components/Overview/OverviewIndex.jsx'
-import RelatedProducts from './components/RelatedProducts/RelatedProducts.jsx'
-import QA from './components/QA/QaIndex.jsx'
-import Ratings from './components/Ratings/RatingsIndex.jsx'
-// import axios from 'axios'
-// import token from '../../config.js'
+// import Overview from './components/Overview/OverviewIndex.jsx'
+const Overview = React.lazy(() => import('./components/Overview/OverviewIndex.jsx'))
+// import RelatedProducts from './components/RelatedProducts/RelatedProducts.jsx'
+const RelatedProducts = React.lazy(() => import('./components/RelatedProducts/RelatedProducts.jsx'))
+// import QA from './components/QA/QaIndex.jsx'
+const QA= React.lazy(() => import('./components/QA/QaIndex.jsx'))
+// import Ratings from './components/Ratings/RatingsIndex.jsx'
+const Ratings = React.lazy(() => import('./components/Ratings/RatingsIndex.jsx'))
 import apiCalls from '../../helpers/shoppingApi.js';
-
 import { useEffect, useState } from 'react'
+import { Suspense, lazy } from 'react'
 
 const App = () => {
 
@@ -80,10 +82,13 @@ const App = () => {
 
   return (
     <div className="hi">
+      <Suspense fallback={<div>Loading...</div>}>
       <Overview currentProduct={currentProduct} />
-      <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} relatedProductIds={relatedProductIds} />
+      <RelatedProducts currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}
+      relatedProductIds={relatedProductIds} />
       {JSON.stringify(allQuestions) !== '[]' && <QA currentProduct={currentProduct} allQuestions={allQuestions} />}
       <Ratings currentProduct={currentProduct} allRatings={allRatings} />
+      </Suspense>
     </div>
   );
 };
